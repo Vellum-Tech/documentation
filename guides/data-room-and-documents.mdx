@@ -1,0 +1,160 @@
+---
+title: "Data room and documents"
+description: "Upload evidence files, understand how Vellum processes them, and keep every number anchored to a real document."
+---
+
+Every figure Vellum produces has to trace back to something real: a funding agreement, an attendance spreadsheet, a survey export, an annual report. The data room is where those files live.
+
+## What the data room is
+
+The data room is one secure store of files per organisation. Everything you upload for a client lands in that single store, no matter which screen you uploaded it from. Projects don't get their own separate filing cabinet. Instead, a project's **Data room** tab shows you the same store filtered down to the files filed against that project.
+
+That's a deliberate design. An audited financial statement is often evidence for three different projects at once, and you shouldn't have to upload it three times or wonder which copy is the real one. There is one file, and it can be filed to a project, reclassified, or left sitting at organisation level as general background.
+
+You'll meet the data room in two places.
+
+**The organisation's Data tab.** Open a client record and choose **Data**. This is the whole picture for that [organisation](/guides/organisations): written notes, uploaded files, and connected sources in one list. It's the right place to look when you want everything a client has ever given you, regardless of project.
+
+**A project's Data room tab.** Open a [project](/guides/projects) and choose **Data room**. The left-hand rail gives you **Files**, **Data requests**, **Outcomes**, **Activities** and **Beneficiaries**. **Files** is the data room proper: the organisation's store, narrowed to this project. Anything you upload here is filed to the project automatically.
+
+The data room also holds written documents, meaning notes you type directly in Vellum rather than upload. Meeting notes, a methodology rationale, a record of what a client told you on a call. They sit in the same list as the files because, as evidence, they play the same role.
+
+## Uploading documents
+
+The quickest route is from inside the project you're working on.
+
+<Steps>
+  <Step title="Open the project and go to the Data room tab">
+    This is the project's own view of the organisation's store.
+  </Step>
+  <Step title="Make sure Files is selected in the left-hand rail">
+    **Files** is the data room proper.
+  </Step>
+  <Step title="Click Add at the top right, then choose File">
+    If the project has no documents yet, you can also just click anywhere on the empty card.
+  </Step>
+  <Step title="Pick one file or several">
+    Your file browser's multi-select works, and Vellum uploads a few at a time in the background.
+  </Step>
+  <Step title="Watch for the confirmation">
+    You'll get a short message telling you how many files landed, and a separate message naming any file that didn't.
+  </Step>
+</Steps>
+
+To upload against the organisation rather than a specific project, open the client record, go to the **Data** tab, and use the **+** button on the toolbar. You can also use the **Add** menu in the client record header and choose **File**, which uploads straight away and drops you on the **Data** tab so you can see it arrive.
+
+To write a document rather than upload one, choose **Document** from the same **Add** menu. An editor panel opens on the right. Give it a title, write the body, and save with the tick in the panel header. You can drag the panel by its header to move it, or drag its left edge to make it wider. Images you paste into a written document are stored securely alongside your other files rather than on some third-party host.
+
+### File types Vellum accepts
+
+Vellum only accepts file types its processing pipeline can actually read, so an unsupported file is refused at upload rather than sitting in your data room doing nothing.
+
+Accepted: PDF; Word documents and the older Word format; Excel workbooks, including macro-enabled and older Excel files; PowerPoint decks and the older PowerPoint format; OpenDocument text files; CSV; plain text; Markdown; HTML; and PNG, JPEG, WebP and GIF images.
+
+Not accepted: SVG images, deliberately, because an SVG can carry executable content, so Vellum won't serve one back to you. Anything else outside the list above will be refused with a message telling you the type can't be ingested.
+
+### Size limit
+
+Each file must be **25 MB or smaller**. Larger files are rejected before any data is transferred, with a message saying so. If you're routinely bumping against this, the usual culprits are scanned PDFs at unnecessarily high resolution and workbooks with embedded images. Both usually shrink a long way without losing anything that matters as evidence.
+
+## Understanding processing
+
+Uploading a file is only the first half. Once the bytes arrive, Vellum reads the document. It works out the structure (headings, tables, spreadsheet cells and their formulas), pulls the content into a searchable form, and generates a thumbnail. This is what makes a document useful as evidence rather than just an attachment.
+
+Processing is automatic and takes anywhere from a few seconds to a couple of minutes, depending on the file. Big scanned PDFs and dense workbooks take longest.
+
+Here's what you'll actually see while that's happening.
+
+**A file that's still uploading** shows **Uploading…** in place of its thumbnail. If you click it, Vellum tells you the file will open once it finishes rather than showing you a broken viewer.
+
+**A file whose upload didn't finish** shows **Upload failed**. Clicking it tells you there's no file to open and asks you to upload it again. That's the right response, so try the upload once more.
+
+**A file that's ready** shows either a thumbnail image or a document icon, and opens when you click it.
+
+There's no separate progress bar or percentage, and no processing column in the table. The honest summary is this: if the file opens and looks right, it's landed. The deeper content processing that makes it searchable happens quietly afterwards and doesn't block you from viewing, classifying or filing the document.
+
+<Note>
+One thing worth knowing about timing. The project **Data room** shows a file the moment you upload it, still in flight. The organisation's **Data** tab lists files from the processed corpus, so a file you've just uploaded there may take a short while to appear. If you've uploaded something and can't see it yet on the **Data** tab, give it a moment and refresh rather than uploading a second copy.
+</Note>
+
+## Working with documents
+
+### Viewing a document
+
+Click any row to open it. A viewer panel slides in from the right.
+
+PDFs and images display directly in the panel. For other formats, such as spreadsheets, Word documents and presentations, the panel shows the file's name and type with a note that in-browser preview isn't available for that type yet. The panel header carries the file name, its type, and when it was uploaded.
+
+The viewer behaves like a proper window: drag it by its header to reposition it, drag its left edge to resize it, and press **Escape** or click the **X** to close. Because it doesn't block the rest of the screen, you can keep a document open beside the register you're working in.
+
+Down the right of the viewer is the **Extractions** panel. When Vellum has pulled structured fields out of a document, they're listed here. When it hasn't yet, you'll see a note saying extractions will appear once the document is processed.
+
+<Tip>
+If you open a file and get the "preview isn't available" placeholder for something you'd expect to display, a PDF say, try opening the same file from the project's **Data room** instead of the organisation's **Data** tab. The project view resolves a viewable link more reliably.
+</Tip>
+
+### Downloading
+
+There's no separate download button. For PDFs and images, use your browser's own controls in the preview. The built-in PDF viewer has download and print, and you can right-click an image to save it. Vellum is designed around evidence staying in one referenceable place rather than being passed around as copies, so the emphasis is on viewing and linking rather than exporting.
+
+### Classifying a document
+
+Every file can carry one document type, which drives the **Type** column and the **Type** filter. Hover a row, click the **⋯** menu, and choose one under **Classify**:
+
+- **Financial**: statements, budgets, invoices, funding agreements
+- **Programme data**: attendance registers, service counts, activity logs
+- **Media asset**: photos, diagrams, images for reports
+- **Credential**: accreditations, certifications, registrations
+- **Engagement**: contracts, scopes of work, correspondence
+
+The change takes effect immediately. Written documents show as **Document** and aren't classified.
+
+Classification is worth doing even though nothing forces you to. Once a client's store has fifty files in it, the **Type** filter is the difference between finding the funding agreement in five seconds and scrolling.
+
+### Finding a document
+
+Both registers have a search box: **Search documents…** in the project data room, and **Search data…** on the organisation's Data tab. Search covers file names and the text of written documents. Beside it, the **Type** filter narrows the list. On the organisation's **Data** tab that filter distinguishes **Note**, **File** and **Source** instead.
+
+### Filing a document to a project, or removing it
+
+Uploading from a project's **Data room** files the document to that project automatically. If a file was filed explicitly, its **⋯** menu offers **Remove from this project**. That takes it out of the project's view but leaves it in the organisation's store. Nothing is deleted.
+
+### Deleting
+
+<Warning>
+Deleting is only available from the organisation's **Data** tab, and it's permanent.
+</Warning>
+
+Open the client record, go to **Data**, find the row, use its **⋯** menu and choose **Delete**. You'll be asked to confirm. To remove several at once, tick the rows you want and use the bar that appears at the bottom of the screen, which carries its own confirmation step.
+
+Uploaded files can't be deleted from a project's **Data room**. Only **Remove from this project** is offered there. Written documents are the exception, and they can be deleted from either place, via **Delete document** on the row menu.
+
+## How documents back up your numbers
+
+Vellum's rule is that nobody types a dollar figure onto a report. Everything is computed, and everything computed has to trace to a real input. The data room is where those inputs live.
+
+In practice, the chain works like this. You upload the client's evidence into the data room. When you record a [quantified output](/guides/workbench-and-valuations), meaning the client's own measured quantity such as meals delivered or hours volunteered, you record where it came from using the **Source** field, choosing between **Document extraction**, **Client upload**, **Engagement answer** or **Analyst estimate**, and adding a note. In the project's **Sources** register, each input carries its **Value / claim**, its **Source** in words, an optional **Source link**, a **Responsible person** and a **Reviewed by**, which together are the audit trail a reviewer will read.
+
+<Note>
+Be aware of what this does and doesn't do today. Vellum records in words which document an input came from. It does not yet let you click a number and jump straight to the page of the PDF it came from. That means the discipline is on you: name the document precisely in the **Source** field, giving the actual file name and the sheet or page where the figure sits, so that anyone auditing the work can find it in the data room in one search. A source note reading "client spreadsheet" will cost someone an hour in six months' time.
+</Note>
+
+The other half of the chain is the **Data requests** section of the project's **Data room**, which is where you chase the evidence you don't have yet. What arrives from those requests lands here in **Files**.
+
+## Tips and gotchas
+
+**Upload where the file belongs.** If a document is evidence for one project, upload it from that project's **Data room** so it's filed automatically. If it's general background on the organisation, upload it from the client record's **Data** tab. Retagging later is possible but fiddly.
+
+**A refused upload is usually the type or the size.** Vellum only accepts what it can read, and caps files at 25 MB. The error message names the reason, so read it rather than retrying the same file.
+
+**"Upload failed" means try again, not wait.** A file stuck at **Upload failed** will never recover on its own. Delete nothing, just upload it again.
+
+**Don't upload twice because you can't see it.** The organisation's **Data** tab lags a little behind an upload. Refresh before you assume it failed. Duplicates in a data room are worse than a missed refresh.
+
+**Classify as you go.** It takes two clicks at upload time and saves real time later. A store where every file has a **Type** is searchable. One where nothing does isn't.
+
+**Deleting is permanent and organisation-wide.** If a file backs a figure in a signed-off report, don't delete it. Remove it from the project view instead if it's cluttering things up.
+
+**Written documents are first-class.** A note capturing what a client told you on a call is legitimate evidence and belongs in the data room, not in your own notebook. It's searchable there, and it's visible to whoever reviews the project after you.
+
+**Name files as your reviewer would search for them.** Vellum keeps the file name you uploaded. "Attendance_Register_2025_Q3.xlsx" is findable. "final_v2 (1).xlsx" is not.

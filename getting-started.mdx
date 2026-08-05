@@ -1,0 +1,250 @@
+---
+title: "Getting started"
+description: "What Vellum is, the one rule that shapes everything in it, the four ideas you need to understand, and a guided first half hour."
+---
+
+Welcome to Vellum. This page is the front door. It explains what the app is for, the single rule that everything else follows, the handful of ideas worth learning properly, and then walks you through your first half hour so you finish with a real number on the screen.
+
+You don't need any technical background. If a word looks like jargon, it gets explained the first time it appears.
+
+## What is Vellum
+
+Vellum helps you build impact reports you can defend.
+
+Most impact work lives in a spreadsheet. The spreadsheet gets the job done, but a year later nobody can say where a particular figure came from: which cell, which source, which assumption, or who agreed to it. When a board member or an auditor asks "how did you get $508,620?", the honest answer is often "let me go and find out".
+
+Vellum replaces that spreadsheet with something that remembers. You bring the evidence (the organisation's own measured numbers and the published reference values you rely on) and Vellum's calculation engine does the arithmetic. Every dollar figure it produces can be opened up and traced back to the exact quantities and sources that made it.
+
+The shape of the work is simple. You keep a list of the **organisations** you work with. For each one you run **projects**. One project is one reporting engagement, covering one period. Inside a project you describe what the organisation does, gather the evidence, and let the engine value it.
+
+## The golden rule
+
+There is one rule in Vellum, and it explains almost every design decision in the app:
+
+**No human ever types a dollar figure onto a report.**
+
+Not you, not your colleague, and not an AI assistant. Every number on a Vellum report is computed by the calculation engine, and every number traces back to either a sourced reference value or the client's own measured data.
+
+You will run into this rule the first time you try to correct a figure. In the **Workbench**, the screen where valuations are computed, the **Value** cell won't let you type in it. Hover over it and you'll see a small padlock. Click it and Vellum tells you plainly:
+
+> This figure is the engine's own output. It never takes a typed value. To change it, change the evidence behind it and let the engine recompute.
+
+That is not the app being awkward. It is the whole point. If a person could type over a computed figure, the audit trail behind it would be a fiction. So when a number looks wrong in Vellum, you don't fix the number. You fix the evidence underneath it, and the number follows.
+
+Two smaller rules travel with the golden one. Every piece of evidence you use is captured with its source. And every approval is recorded against a named person: AI can draft and suggest, but it never signs anything off.
+
+## The core concepts
+
+There are four objects worth learning properly. Once these click, the rest of the app is mostly navigation.
+
+Two of them share a similar name, which is genuinely confusing at first, so it's worth separating them straight away:
+
+- A **Reporting methodology** is the *style of report* you're producing, chosen once, up front, for the whole project.
+- A **Methodology** is a *single formula* used to value one outcome. You'll use several in a project.
+
+### Reporting methodology: the style of report
+
+Before you value anything, you choose how the report as a whole will be framed. This is the **Reporting methodology**, and you set it on the project's **Overview** tab.
+
+Vellum ships with six of them, and you cannot add to or edit the list. They are the established protocols the field already recognises:
+
+- **SROI / sSROI**
+- **Cost-Benefit Analysis (CBA)**
+- **Impact Weighted Accounting**
+- **Choice Modelling / Stated Preference**
+- **Public Value / Policy Evaluation**
+- **Natural Capital / Environmental Accounting**
+
+Choosing one is a considered decision, not a dropdown you flick past. Vellum asks you to record the **Version / standard** you're following, a **Rationale** for why this approach suits this project, and who chose it. When you're confident, you press **Lock methodology**, which freezes the choice so it can't drift mid-engagement. Unlocking later is possible, but you have to give your name and a reason, and that's recorded.
+
+### Methodology: a formula with empty slots
+
+A **Methodology** in the singular sense is one formula. Something like *meals served × replacement cost per meal*.
+
+The important part is what a formula is made of. Each named blank in the formula is called an **operand**. An operand has a name and a unit, and nothing else. No value.
+
+This is where the analogy that makes everything else obvious comes in.
+
+**An operand is a labelled empty jar.** The label says "cost per visit (AUD)". That's all it is: a name, a unit, and empty space. The formula knows it needs something that measures cost per visit in Australian dollars, but it has no opinion about what the number is.
+
+Methodologies live in the **Methodology library**, and you build them on a small calculator-style keypad: name the operands, give each one a unit, then tap out the formula. Vellum checks the units as you go, so a formula whose units don't reconcile to dollars can't be created at all.
+
+### Factors: sourced reference values
+
+A **Factor** is a published reference value that your practice reuses across clients. The wholesale price of a meal. The social value of an hour of volunteering. An emissions conversion rate. Factors live in the **Factor library** and are shared by every project.
+
+Every factor carries a **Source citation** (you cannot save one without saying where the number came from) and most carry a **Source URL** and a **Source tier** recording whether it's a government statistic, a peer-reviewed paper, an industry report, or your own internal work. Factors are versioned: when the value changes, the old one stays on the record, and any report that used it still shows which version it used.
+
+**A factor is a full jar with the same label.** It says "cost per visit (AUD)", it has an actual number in it, and it has a citation stuck to the side saying where the number came from.
+
+### Quantified outputs: the client's own measured evidence
+
+The other thing you can pour into a jar is the client's own data. In Vellum these are called **Quantified outputs**, and you find them inside a project, on the **Quantify** tab.
+
+These are the things the organisation actually measured and can evidence: 29,960 kilograms of food rescued, 1,200 volunteer hours, 4,300 clinic visits. Each one has a value, a unit, the period it covers, and a note saying where it came from: which document, which cell, which conversation.
+
+The distinction is worth holding onto. A quantified output is **what this organisation measured**. A factor is **what the world already knows**. A typical valuation multiplies one by the other, which is exactly why quantified outputs stay with the project and factors live in a shared library.
+
+### How the four fit together
+
+At valuation time, in the **Workbench**, you take a methodology's empty jars and fill them. For each operand you choose a source: a factor from the library, or one of the client's quantified outputs. Vellum calls this *binding*.
+
+Then you press **Compute valuation**, and the engine, not you, works out the figure.
+
+<Tip>
+  The sequence, in jar terms: the reporting methodology decides what kind of report you're writing. The methodology gives you a row of labelled empty jars. Factors and quantified outputs are the full jars. The Workbench is where you pour one into the other, and the engine reads off the result.
+</Tip>
+
+## A tour of the app
+
+The left sidebar has five sections, and they're in roughly the order you'll use them.
+
+### Home
+
+**Home** is your work desk. It shows **Continue**, the projects you're partway through, most recent first, so you can drop straight back in. Below that, **Needs attention** flags a small number of honest, specific things: an organisation with no projects on it yet, an in-flight project with no report type set, or a project sitting at the **Review** stage waiting on a human. It shows at most five, and when there's nothing to raise it simply says you're clear. **Jump in** gives you quick links into the three main areas. The buttons in the top corner let you create a **New organisation** or a **New project** without going anywhere first.
+
+### Organisations
+
+**Organisations** is your client list: the charities, companies, foundations and government bodies you report on. Each one gets a record with its profile, its people, its stated goals, and its own **Data** tab holding every document you've been given. Deleting an organisation is always reversible: it goes to **Trash** and can be restored. Archiving is separate, and just hides an organisation you're no longer active with. See the [Organisations guide](/guides/organisations) for the full walkthrough.
+
+### Projects
+
+**Projects** are the engagements themselves: one project, one period, one report. A project always belongs to exactly one organisation, chosen when you create it. Inside a project you'll find tabs running left to right in the order the work happens: **Overview**, **Data room**, **Model**, **Quantify**, **Sources**, **Report** and **Audit trail**. If you ever lose your bearings, the **?** button in the project header opens **How a report comes together**, a six-step map that jumps you to the right tab. See the [Projects guide](/guides/projects) for the detail.
+
+### Libraries
+
+**Libraries** hold the shared building blocks that keep your reports consistent from client to client. There are seven: the **Factor library** (reference values), the **Methodology library** (formulas), the **Reporting methodology library** (the fixed six), and governed wording for **Outcomes**, **Activities**, **Beneficiaries** and **Surveys**. Libraries suggest, they don't gate, so a project can always use its own wording. The [Libraries guides](/libraries/factors) cover each one.
+
+### Chat
+
+**Chat** is where a Vellum assistant will eventually sit, with a panel you can open from any screen. It is not switched on yet. The interface is in place, but the assistant returns a placeholder rather than a real answer. Treat it as coming soon. The [Chat assistant guide](/guides/chat-assistant) will be worth reading once it's live.
+
+### Documents
+
+There is no **Documents** item in the sidebar, because documents always belong to somebody. You'll find them in two places: an organisation's **Data** tab, which is the full vault of everything that client has given you, and a project's **Data room** tab, which is that same vault filtered to the project at hand. Upload from inside a project and the file is automatically filed to it. Vellum accepts PDFs, Word documents, spreadsheets, presentations, text and Markdown files, CSVs, web pages and common image formats, up to 25 MB each and 20 at a time. See the [Data room and documents guide](/guides/data-room-and-documents).
+
+### Settings and support
+
+At the bottom of the sidebar, **Settings** currently holds two things: **Appearance**, where you choose **Light**, **Dark** or **System** for this device, and **Account**, which shows who you're signed in as and offers **Sign out**. More is coming. Below it, **Support** opens an email to the Vellum team. Your name and avatar sit at the very bottom. Click them for a quick theme switch and **Log out**.
+
+## Signing in
+
+Vellum uses a hosted sign-in service, so the sign-in and sign-up screens are standard and secure, and Vellum never sees your password.
+
+<Steps>
+  <Step title="Go to your Vellum address">
+    If you're not signed in, you'll land on the sign-in screen automatically. Every page in the app is protected.
+  </Step>
+  <Step title="Sign in if you have an account">
+    Enter your details and sign in.
+  </Step>
+  <Step title="Sign up if you don't">
+    Choose the sign-up option and follow the prompts. Depending on how your practice has set things up, you may be asked to verify your email address.
+  </Step>
+  <Step title="Start work">
+    That's it. There is no setup wizard. You land straight on **Home**, ready to work.
+  </Step>
+</Steps>
+
+<Warning>
+  Vellum is currently a single shared workspace for your practice. Everyone who signs in can see every organisation and every project. There is no per-person or per-team separation yet, so treat access to the app itself as the boundary.
+</Warning>
+
+To change your name, email or password, use the account controls on the sign-in service. Vellum's **Settings** page shows your details but doesn't edit them yet.
+
+## Your first 30 minutes
+
+This walkthrough takes you from an empty app to a computed, traceable dollar figure. Use a real client if you have one, or invent a small one to feel your way around.
+
+<Steps>
+  <Step title="Create the organisation">
+    1. From **Home** or the **Organisations** page, click **New organisation**.
+    2. Fill in the **Name**. This is the only required field, and everything else can wait.
+    3. Optionally add the **Legal name**, **Type**, **Status**, **Sector** and **Website**. The **Sector** box lets you pick an existing sector or type a new one, which is then available to everyone.
+    4. If Vellum spots a similar organisation already on file, it shows you the match but doesn't stop you. Have a look, then carry on if it's genuinely a different organisation.
+    5. Click **Create organisation**.
+  </Step>
+  <Step title="Give it some evidence">
+    1. Open the new organisation and go to its **Data** tab.
+    2. Click the upload button, or click anywhere on the empty card, and choose some files: annual reports, programme spreadsheets, funding agreements.
+    3. Wait for the upload to finish. Each file gets a thumbnail once it's landed, and you can click any row to preview PDFs and images right in the app.
+    4. Use the row menu to **Classify** each file as **Financial**, **Programme data**, **Media asset**, **Credential** or **Engagement**. This is optional now and helpful later.
+  </Step>
+  <Step title="Create the project">
+    1. Go to **Projects** in the sidebar and click **New project**. (Projects can only be created from here for the moment.)
+    2. Choose the **Organisation** you just created. You have to pick an existing one, as you can't type a new organisation in here.
+    3. Give it a **Title**, such as "FY2025 Impact Report".
+    4. Check the **Period start** and **Period end**. Vellum pre-fills the current Australian financial year, so adjust only if your period differs.
+    5. Choose a **Report type**: **Impact**, **SROI** or **CBA**. It defaults to **Impact**.
+    6. Click **Create project**. Vellum takes you straight into the new project, at the **Discovery** stage.
+  </Step>
+  <Step title="Choose the reporting methodology">
+    1. On the project's **Overview** tab, find the **Reporting methodology** card.
+    2. Pick one of the six from the dropdown. A guidance panel appears telling you what that approach is best suited to and what it typically produces. Read it before committing.
+    3. Fill in the **Version / standard** you're following, and a short **Rationale** for the choice.
+    4. Enter your name under **Chosen by**. This is deliberate: the choice is recorded against a person.
+    5. When you're confident, press **Lock methodology**. You can unlock later with a reason, but locking is what lets the report progress to sign-off.
+  </Step>
+  <Step title="Describe what the organisation does">
+    1. Go to the **Model** tab, which holds the **Chart of Impact Accounts**.
+    2. Click **Add account**. Each account is one row linking an activity, a beneficiary, and the outcome it produces, for example food rescue, families in crisis, and families receiving nutritious meals.
+    3. Add a few accounts covering the organisation's main programmes. No numbers here at all. This is just the story of what changes and for whom.
+  </Step>
+  <Step title="Record the client's numbers">
+    1. Go to the **Quantify** tab and choose **Quantified outputs** from the left rail.
+    2. Click **Record metric**.
+    3. Enter the **Metric** name, its **Value**, its **Unit**, the **Period** it covers, and a **Source** with a note saying exactly where the figure came from.
+    4. Repeat for each measured quantity you have evidence for. These are the full jars you'll pour from in a moment.
+  </Step>
+  <Step title="Compute your first valuation">
+    1. Still on the **Quantify** tab, choose **Workbench** from the left rail.
+    2. Click the ghost row at the bottom of the sheet, or open the **⋯** menu and choose **New valuation**. (If it's greyed out, add an activity to the project first.)
+    3. Pick the **Activity** you're valuing and the **Methodology**, which is the formula. Vellum shows you the formula underneath so you know what you're feeding it.
+    4. Now fill the jars. For each operand you'll see three tabs. Choose **Factor library** to bind a governed reference value, **Client data** to bind one of the quantified outputs you just recorded, or **Enter value** to type a quantity in directly along with a rationale saying where it came from. Vellum warns you if a factor's unit doesn't match the operand's.
+    5. Click **Compute valuation**.
+
+    A new row appears in the sheet. The **Formula** column shows the sum in plain words, such as *50,862 meals × $10.00 AUD/meal*. Click it to see exactly which factor or client figure filled each jar. The **Value** column shows the engine's answer, locked. The **Total valued impact** bar at the bottom updates.
+
+    You have just produced a defensible number, and you never typed it.
+  </Step>
+  <Step title="See it as a report">
+    Open the **Report** tab. It's a clean, read-only view of what the engine would produce right now: the headline total, every valued line, and the evidence behind each one. Nothing on it is editable, because it's the deliverable rather than a workspace. If a figure looks wrong, go back to **Quantify**, change the evidence, and watch it update.
+  </Step>
+</Steps>
+
+## A few things that will save you time
+
+**You can't measure everything, and that's fine.** When a real outcome genuinely can't be credibly measured yet, don't guess and don't leave it out. Use **Add gap** in the Workbench to record it, along with why it can't be measured and what data you expect next round. It shows as a dashed **$1** placeholder and is excluded from every total. Gaps are honesty, not failure.
+
+**Reviews are for confidence, not gates.** The **Review** column on each valuation line lets you mark a line reviewed, raise a query, or send it back to draft, always against your name. This builds the record; it doesn't block anything.
+
+**Sign-off is a ladder, not a switch.** A separate seven-step ladder takes a report from **Draft only** through to an **Auditable export bundle**, and each step is recorded against a named person. AI is never a final approver at any step.
+
+**Purposes and audiences belong to the organisation.** A project picks from the organisation's list rather than creating its own. If a project's list looks empty, add the entries on the organisation's record first.
+
+## Where to go next
+
+Pick whichever matches what you're doing now.
+
+<CardGroup cols={2}>
+  <Card title="Organisations" href="/guides/organisations">
+    Creating and maintaining client records, contacts, goals, archiving and trash.
+  </Card>
+  <Card title="Projects" href="/guides/projects">
+    The project record end to end, its tabs, stages, and the reporting methodology lock.
+  </Card>
+  <Card title="Workbench and valuations" href="/guides/workbench-and-valuations">
+    Binding operands, computing and recomputing, data gaps, review, locking and sign-off.
+  </Card>
+  <Card title="Libraries" href="/libraries/factors">
+    Factors, methodologies, and the governed wording libraries.
+  </Card>
+  <Card title="Data room and documents" href="/guides/data-room-and-documents">
+    Uploading, classifying, previewing and filing evidence.
+  </Card>
+  <Card title="Chat assistant" href="/guides/chat-assistant">
+    What the assistant will do once it's switched on.
+  </Card>
+</CardGroup>
+
+If you only remember one thing from this page, make it the golden rule. You supply the evidence; the engine supplies the numbers. Everything else in Vellum exists to make that trade honest.

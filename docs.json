@@ -3,95 +3,51 @@
   "theme": "luma",
   "name": "Vellum",
   "colors": {
-    "primary": "#ef7025",
-    "light": "#eec9bc",
-    "dark": "#4fa1ab"
+    "primary": "#0e3f34",
+    "light": "#d3f2ca",
+    "dark": "#0a2e26"
+  },
+  "background": {
+    "color": {
+      "light": "#fffbf6",
+      "dark": "#1a1a1a"
+    }
   },
   "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Product",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "product/introduction",
-              "product/quickstart",
-              "product/key-concepts"
-            ]
-          },
-          {
-            "group": "Prompts",
-            "pages": [
-              "product/prompts/overview",
-              "product/prompts/prompt-engineering",
-              "product/prompts/deployments"
-            ]
-          },
-          {
-            "group": "Workflows",
-            "pages": [
-              "product/workflows/introduction",
-              "product/workflows/nodes",
-              "product/workflows/deployments",
-              "product/workflows/agent-builder"
-            ]
-          },
-          {
-            "group": "Evaluation",
-            "pages": [
-              "product/evaluation/overview",
-              "product/evaluation/test-suites",
-              "product/evaluation/metrics",
-              "product/evaluation/online-evaluations"
-            ]
-          },
-          {
-            "group": "Document Search",
-            "pages": [
-              "product/documents/overview",
-              "product/documents/indexing",
-              "product/documents/rag-search"
-            ]
-          },
-          {
-            "group": "Monitoring",
-            "pages": [
-              "product/monitoring/observability",
-              "product/monitoring/environments"
-            ]
-          }
+        "group": "Get started",
+        "pages": [
+          "index",
+          "getting-started"
         ]
       },
       {
-        "tab": "Developers",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "developers/overview",
-              "developers/authentication",
-              "developers/sdks"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "developers/api/execute-prompt",
-              "developers/api/execute-workflow",
-              "developers/api/documents",
-              "developers/api/deployments"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "developers/guides/version-control",
-              "developers/guides/cicd-integration",
-              "developers/guides/self-hosted"
-            ]
-          }
+        "group": "Guides",
+        "pages": [
+          "guides/organisations",
+          "guides/projects",
+          "guides/workbench-and-valuations",
+          "guides/data-room-and-documents",
+          "guides/chat-assistant"
+        ]
+      },
+      {
+        "group": "Libraries",
+        "pages": [
+          "libraries/overview",
+          "libraries/factors",
+          "libraries/methodologies",
+          "libraries/reporting-methodologies",
+          "libraries/activities",
+          "libraries/beneficiaries",
+          "libraries/outcomes",
+          "libraries/surveys"
         ]
       }
     ]
@@ -99,21 +55,30 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:support@vellum.ai"
+        "label": "Website",
+        "href": "https://vellum.com.au"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Sign In",
-      "href": "https://app.vellum.ai"
+      "label": "Sign in",
+      "href": "https://app.vellum.com.au"
     }
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/vellum_ai",
-      "github": "https://github.com/vellum-ai",
-      "linkedin": "https://linkedin.com/company/vellum-ai"
-    }
+    "links": [
+      {
+        "items": [
+          {
+            "label": "Website",
+            "href": "https://vellum.com.au"
+          },
+          {
+            "label": "Sign in",
+            "href": "https://app.vellum.com.au"
+          }
+        ]
+      }
+    ]
   }
 }

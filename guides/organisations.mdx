@@ -1,0 +1,465 @@
+---
+title: "Organisations"
+description: "Create and manage the organisations you work with, including their profile, contacts, goals, data room, notes and full change history."
+---
+
+## What the organisations area is for
+
+**Organisations** is your client list. Every organisation you measure impact for gets one record here, and that record is the permanent home for everything you know about them: who they are, what they're trying to achieve, who you talk to, what documents you've collected, and every change anyone has made along the way.
+
+Think of it as your practice's memory of a client. Projects are the actual pieces of measurement work, each with its own reporting period and methodology, and they sit *underneath* an organisation. The organisation record holds the things that stay true across all of that work. The project records hold the things that are true for one period only.
+
+That split matters more than it sounds. Beneficiaries, activities, outcomes and measured numbers all live inside a project, locked to that project's reporting period and its assurance chain. They are never copied up to the organisation. So if you're looking for a figure, you want the project record. If you're looking for context (the mission, the contacts, the source documents, the relationship), you want the organisation record.
+
+## The organisation list
+
+Open **Organisations** from the sidebar. The header shows how many organisations you're looking at, with two actions beside it: **Trash** (deleted organisations, which can be brought back) and **New organisation**.
+
+### Finding an organisation
+
+The toolbar under the header gives you three ways to narrow the list, and they all work together:
+
+- **Search**: the box marked *Search organisations…* matches on name, common name, legal name, sector and jurisdiction.
+- **Filters**: click a column's filter to pick values. **Status**, **Sector** and **Type** each offer a tick-list, and choosing several values shows organisations matching any of them.
+- **Show archived**: archived organisations are hidden by default. When you have any, a **Show archived** button appears with the count. Click it to bring them into the list, and **Hide archived** to put them away again.
+
+The count in the page header always reflects what's actually on screen, so it will read something like *2 of 9* once a filter is on.
+
+### Grid or list
+
+The toggle at the right of the toolbar switches between two views of the same filtered set:
+
+- **List** shows one row per organisation with its columns.
+- **Grid** shows cards with the logo, name, sector, audience tags, project count and impact value.
+
+Search and filters apply to both.
+
+### Choosing what the list shows
+
+The **View options** panel (also in the toolbar) controls the list's shape, and your choices are remembered:
+
+- **Group by**: bucket the rows into collapsible sections by **Status**, **Sector** or **Type**, or leave it as **None**.
+- **Ordering**: sort by **Name**, **Status**, **Sector**, **Type**, **Projects** or **Impact value**.
+- **Display properties**: show or hide the optional columns. **Status**, **Audiences**, **Primary contact**, **Projects** and **Impact value** are on by default. **Sector** and **Type** are off until you turn them on.
+
+The columns themselves are:
+
+| Column | What it tells you |
+| --- | --- |
+| **Name** | The organisation on file, with its sector underneath |
+| **Status** | Its standing with your practice |
+| **Sector** | The sector it works in |
+| **Type** | How it's constituted: charity, corporate, government and so on |
+| **Audiences** | Who it reports its impact to |
+| **Primary contact** | The main person you deal with |
+| **Projects** | How many projects are on file |
+| **Impact value** | Lifetime impact value measured across its projects |
+
+Hovering any value shows a short explanation of the column, which is handy when you're new to the list.
+
+### Acting on rows
+
+Click anywhere on a row to open the organisation's record.
+
+The **⋯** button at the end of a row offers **Archive** (or **Unarchive**) and **Move to trash**.
+
+To act on several at once, tick the checkboxes. Shift-click selects a range, and a floating bar appears at the bottom of the screen with **Archive** and **Move to trash**. Both destructive paths ask you to confirm first.
+
+## Statuses: what they mean
+
+An organisation's **Status** is its standing with your practice, and you pick from three values:
+
+- **Prospect**: someone you're talking to, not yet engaged.
+- **Active client**: engaged and working with you.
+- **Self-serve**: using Vellum without a hands-on engagement.
+
+There's a fourth state, **Archived**, but you never choose it from a list. An organisation becomes archived through the **Archive** action, and **Unarchive** puts back whatever status it had immediately before, not a guessed default. If Vellum can't tell what the prior status was, it leaves the status blank rather than inventing one.
+
+<Note>
+Archiving is not deleting. An archived organisation is simply hidden from the default list.
+</Note>
+
+## The organisation record
+
+Click an organisation to open its record. The header carries, from left to right: a breadcrumb back to **Organisations**, the tab bar, the status pill, an **Add** button and a **⋯** menu.
+
+The tab bar collapses gracefully. If the window is too narrow for all seven tabs, the trailing ones fold into a **+N** dropdown. The tab you're on is reflected in the address bar, so you can bookmark or share a link straight to, say, the Contacts tab.
+
+### The status pill
+
+The coloured pill in the header is also the status editor. Click it and choose **Prospect**, **Active client** or **Self-serve**. If no status is set yet it reads **Set status**. The change saves immediately.
+
+### The Add menu
+
+**Add** is a shortcut to create something without hunting for the right tab:
+
+- **File** opens your file picker and uploads straight into the organisation's data room, then jumps you to the **Data** tab to show the result.
+- **Document** opens a blank note in the floating note editor.
+- **Goal** jumps to the **Goals** tab with a fresh goal form open.
+- **Source** and **Project** are listed but not yet available. Choosing them tells you they're coming soon.
+
+### The ⋯ menu
+
+**Archive** (or **Unarchive**) and **Move to trash**. Moving to trash asks you to confirm, then returns you to the list with an undo-style **Restore** action in the confirmation message.
+
+## Overview tab
+
+The landing tab. It leads with the organisation's name, logo, type, primary contact, operating regions and methodology lead, then shows three things:
+
+**Impact over time** is a bar per reporting period showing the impact value measured in that period, with the SROI ratio printed under each period label. Before any projects have been reported it says so plainly: values roll up as projects are reported.
+
+**Cumulative impact value** is the running total across all periods, with the commercial facts beside it: **Projects**, **Account owner**, **Relationship since**, **Engagement model** and **Next renewal**. Any commercial tags appear as chips at the bottom. Rows only appear when they have a value, so a sparse record stays tidy.
+
+**SDG & theme footprint** is a bar per theme showing how much value is attributed to it across all engagements. It's hidden entirely until there's something to show.
+
+If the organisation has goals, the two most recent appear underneath with a **See all** link through to the **Goals** tab.
+
+Everything on this tab is read-only. The numbers come from the calculation engine and roll up from projects. Nobody types them.
+
+## Profile tab
+
+This is where the organisation's own information lives, in a stack of cards. Each card has a pencil icon: click it and the whole card swaps to a form. **Save** commits it and **Cancel** discards it. Cards save independently, so you can edit one without touching the others.
+
+### Organisation summary
+
+A short written summary of the organisation, drafted by a Vellum agent from the documents and sources on file. When it's been checked by a person, you'll see **Confirmed by** with their name, along with any source documents it drew on.
+
+If new material has landed since the summary was written, a banner appears: *New document detected. Summary may be out of date.* You can **Dismiss** it for now, or **Confirm re-draft** to accept the newer version. The **Regenerate** button is not yet wired up.
+
+### Identity & registration
+
+The formal facts about who the organisation is:
+
+- **Display name**: what Vellum calls them everywhere.
+- **Legal name**: the registered entity name.
+- **Aliases**: other names they trade or are known under. Add them one at a time, and each becomes a removable row.
+- **Type**: Charity, Nonprofit, Corporate, Government, Investor or Foundation.
+- **Jurisdiction**: where they're registered, for example *AU-NSW*.
+- **Registration number (ABN / EIN / charity #)**.
+- **Sector**: a searchable picker over the sectors already in use across your practice, most-used first. If the sector you need isn't there, type it and choose **Add "…"**. It joins the shared list for everyone.
+- **Industry code**: for example an ANZSIC code.
+- **Website**: click the field to open a small panel where you type a domain and press Enter. You can hold several, and the first is the one shown. Protocol and path are stripped automatically, so pasting a full URL is fine. Removing the last domain clears the website.
+- **Operating regions**: a comma-separated list, for example *NSW, VIC*.
+
+### Mission & profile
+
+What the organisation actually does:
+
+- **Mission** and **What they do**: free text.
+- **Maturity**: Startup, Growing, Established or Mature.
+- **Org size**: Micro, Small, Medium, Large or Enterprise.
+- **Headcount**: a number.
+- **Revenue band**: chosen from bands such as `<$1m` through `>$250m`.
+- **Existing claims**: impact claims the organisation already makes publicly. Worth capturing, because these are what you'll be measured against.
+- **Stated targets**: targets they've published.
+- **Theory of change**: how their activities are meant to lead to outcomes.
+
+### Impact profile
+
+How measurement should be approached for this organisation:
+
+- **Priority SDGs**: click the field to open a searchable list of all seventeen UN Sustainable Development Goals, then tick as many as apply. They show as coloured numbered badges.
+- **Methodology**: the top-level reporting approach, chosen from SROI / sSROI, Cost-benefit analysis (CBA), Impact-weighted accounting, Choice modelling / stated preference, Public value / policy evaluation, or Natural capital / environmental accounting. You can also type a bespoke approach.
+- **Currency**: the default currency for this organisation's figures.
+- **Base year**.
+- **Impact thesis**: their core hypothesis about the change they create.
+
+### Purpose & audiences
+
+One card holding two connected lists that explain *why* this organisation reports and *who* receives it.
+
+A **purpose** is a reason for reporting: **Compliance**, **Funding**, **Donation**, **Investment**, **Corporate partnership**, **IPO**, **Policy support**, **Development approval** or **Internal alignment**, or anything else you type. Each purpose records:
+
+- **Disclosure**: **Disclosed** if the organisation told you this, or **Research-inferred** if you worked it out. Inferred purposes show a confidence percentage, so nobody mistakes an inference for a statement of fact.
+- **Status**: **Active**, **Achieved** or **Abandoned**.
+- **Notes**: optional context.
+
+An **audience** is a group that receives the reporting: **Board**, **Investors**, **Government**, **Corporate partner**, **Donors**, **Beneficiaries**, **Public**, **Rating agency**, or your own. Each audience can be linked to the purpose it serves, or left as **General (no purpose)**.
+
+The two lists cross-reference each other. A purpose row lists the audiences it serves, and an audience row names its purpose. Click any row to edit it, or use the small bin icon that appears on hover to delete it. Deleting a purpose doesn't delete its audiences, which move to **General**.
+
+<Tip>
+Purposes matter downstream: they're what Vellum uses to recommend a reporting framework.
+</Tip>
+
+### Commercial
+
+The relationship facts: **Account owner**, **Methodology lead**, **Engagement model**, **Contract status** (No contract, Draft, Signed, Expiring or Lapsed), **Pipeline stage**, **MSA reference**, **Next renewal**, **Relationship since**, **Source** (how they came to you) and **Commercial tags**.
+
+### Governance
+
+How the organisation's data may be used and how assured it is: **Assurance** (None, Internal review or External assured), **External assurer**, **Confidentiality** (Public, Standard or Restricted) and **Data sharing terms**.
+
+### Branding
+
+- **Logo URL**: currently a link to an image, not an upload. Paste a full address beginning with *http* or *https* and the logo appears on the record, in the list and in the breadcrumb.
+- **Brand colours**: pick a colour with the swatch picker or type a hex value and press Enter. Each becomes a removable chip, and the first in the list is the **Primary**.
+- **Report template**: a text field for now. The template picker arrives with report export.
+
+## Projects tab
+
+A roll-up strip across the top shows **Lifetime SDG value**, **Projects**, **Latest period** and **Year on year**, followed by the list of the organisation's projects. Each row shows the project title, its reporting period and its lifecycle stage. Click through to open the project record.
+
+Projects are created from the [Projects](/guides/projects) area, not from here.
+
+## Data tab
+
+This is the organisation's **data room**, everything you've collected about them in one register. It holds three kinds of thing:
+
+- **Note**: something you or a colleague wrote inside Vellum.
+- **File**: a document you uploaded. Files are ingested automatically, which is what makes their contents searchable and lets Vellum draw on them.
+- **Source**: a connected system that syncs data in. Sources appear here when they exist, but connecting new ones isn't available yet.
+
+The toolbar gives you a **Search data…** box and a **Type** filter. The **+** button at the right uploads files. Columns are **Name**, **Type**, **Added by** and **Updated**, and a file with a preview image shows its thumbnail.
+
+Click a note to open it in the note editor, or a file to open it in the file viewer. The **⋯** menu on a row lets you **Pin** a note (pinned notes sort to the top and show a pin marker) or **Delete** the row. Tick several rows to delete them together. Every delete asks you to confirm first.
+
+<Note>
+A note on terminology: this tab holds the *evidence and context*, meaning the spreadsheets, reports and notes a measurement draws on. The measured numbers themselves, the **Quantified outputs**, live inside each project, tied to that project's reporting period and its audit trail. If you're looking for a figure rather than the document it came from, go to the project.
+</Note>
+
+### The note editor
+
+Notes open in a floating panel that you can drag by its header to move and drag by its left edge to resize. Type a title at the top, write the body underneath, and click the tick to save. Press **Escape** or click the cross to close. Images you paste into a note are stored against this organisation.
+
+### The file viewer
+
+Files open in a similar floating panel, split in two. On the left is the file itself: PDFs and images preview directly in the browser, and other formats show their name and type with a note that in-browser preview isn't available yet. On the right, under **Extractions**, are the fields Vellum has pulled out of the document. If the document hasn't finished processing, that panel says so.
+
+## Goals tab
+
+Goals are the organisation's own impact targets, the things they're trying to achieve, tracked over time.
+
+Each goal has a **Goal statement** (for example, *Reach 50,000 children by 2028*) and one of two types:
+
+- **Metric goal**: has **What is measured** (for example, *children supported*), a **Target value** and a **Target date**. Progress is shown as a bar and the current figure rolls up automatically from the organisation's projects. You never type the current value.
+- **Milestone goal**: has no metric, just a **Status** of **Not started**, **On track**, **At risk** or **Met**.
+
+Either type can be linked to **SDGs** by entering their numbers, for example *3, 10*.
+
+One thing to be clear about: a metric goal's target is a count of the thing being measured, not a dollar amount. Dollar figures only ever come out of the calculation engine.
+
+Click any goal to edit it, or use **Delete** inside the edit dialog to remove it.
+
+## Contacts tab
+
+The people at this organisation. Each contact holds a **Name**, **Role** (the part they play in your work, such as *Impact sponsor* or *Report sign-off*), **Job title**, **Email** and **Phone**, plus two switches:
+
+- **Primary contact**: shown on the organisation header and in the list's **Primary contact** column. Only one contact can be primary, so ticking it on someone else clears it from whoever had it.
+- **Route elicitation questions**: when Vellum needs to ask the organisation a question to fill a gap, this is who it goes to.
+
+Click a contact to edit them, or use **Remove** inside the dialog to delete them. Removing a contact can't be undone.
+
+## Audit trail tab
+
+The record's history, in three parts.
+
+**Recent changes** is the real, permanent change log for the organisation record itself. Every edit is listed newest first, in plain language, such as *Status changed from Prospect to Active client*, *Contact added: Priya Raman* or *Mission updated*, with who made it and when. Long free-text fields are reported as added, updated or cleared rather than quoting the whole thing.
+
+Names come from your practice's user list. If Vellum can't resolve who someone was, it shows an identifier rather than guessing a name.
+
+**Projects & everything else** covers every recorded change *underneath* the organisation: its projects, documents, sources, valuations, impact accounts and sign-offs. This one is fed by the database's own trail, so it catches changes made from anywhere, not just from this app. The two sections never double-count, because edits to the organisation record appear only in the first.
+
+**Earlier (reconstructed)** appears on older records. It's an inferred history, worked out from the record's current state for the period before change history was captured. It's useful, but it isn't an audit trail, and it's labelled as such. The filter buttons (**All**, **Summary**, **Documents**, **Sources**, **Notes**, **Goals**) apply only to this section.
+
+## Trash and restoring
+
+**Move to trash** doesn't destroy anything. The organisation is removed from the list and from search, and it goes to **Organisation trash**, reachable from the **Trash** button in the list header.
+
+Trash shows each deleted organisation with how long ago it was deleted and a **Restore** button. Restoring brings it straight back into the list with everything intact.
+
+If a delete is refused, Vellum shows the reason rather than a generic failure, usually because something still depends on the record.
+
+## How-to guides
+
+### Add an organisation
+
+<Steps>
+  <Step title="Start a new record">
+    Open **Organisations** and click **New organisation**.
+  </Step>
+  <Step title="Type the name">
+    This is the only required field.
+  </Step>
+  <Step title="Watch for a duplicate warning">
+    If a similar organisation already exists, a banner appears with links to each one. Open them in a new tab to check. It's a hint, not a block, so you can still create a new record.
+  </Step>
+  <Step title="Fill in whatever else you know">
+    **Legal name**, **Type**, **Status**, **Sector** and **Website**. Everything here can be changed later, and everything else lives on the record.
+  </Step>
+  <Step title="Create it">
+    Click **Create organisation**.
+  </Step>
+  <Step title="Finish the profile">
+    Open the new record and go to the **Profile** tab to fill in the rest.
+  </Step>
+</Steps>
+
+### Add a contact
+
+<Steps>
+  <Step title="Open the Contacts tab">
+    Open the organisation and go to the **Contacts** tab.
+  </Step>
+  <Step title="Click Add contact">
+    The contact form opens.
+  </Step>
+  <Step title="Enter their details">
+    The **Name** is required. **Role**, **Job title**, **Email** and **Phone** are all optional.
+  </Step>
+  <Step title="Set them as primary if they are">
+    Turn on **Primary contact** if this is your main point of contact. This takes primary status away from whoever had it.
+  </Step>
+  <Step title="Decide who answers data questions">
+    Turn on **Route elicitation questions** if this is the person who answers them.
+  </Step>
+  <Step title="Save">
+    Click **Add contact**.
+  </Step>
+</Steps>
+
+### Record a goal
+
+<Steps>
+  <Step title="Open the Goals tab">
+    Open the organisation and go to the **Goals** tab, or use **Add → Goal** in the header from any tab.
+  </Step>
+  <Step title="Write the goal statement">
+    Use the organisation's own words.
+  </Step>
+  <Step title="Choose the goal type">
+    Pick **Metric goal** if it can be counted, then fill in **What is measured**, the **Target value** and the **Target date**. Pick **Milestone goal** if it can't, and set the **Status** instead.
+  </Step>
+  <Step title="Map it to SDGs">
+    If the goal maps to Sustainable Development Goals, enter their numbers in **SDGs**, separated by commas.
+  </Step>
+  <Step title="Save">
+    Click **Add goal**.
+  </Step>
+</Steps>
+
+Progress on metric goals fills in on its own as projects are reported. Leave it alone.
+
+### Attach a file
+
+<Steps>
+  <Step title="Open the organisation">
+    Any tab will do.
+  </Step>
+  <Step title="Start the upload">
+    Either click **Add → File** in the header, or go to the **Data** tab and click the **+** button in the toolbar. On a record with no data yet, you can click the empty card itself.
+  </Step>
+  <Step title="Choose your files">
+    Pick one or more. They upload and are ingested automatically.
+  </Step>
+  <Step title="Check the result">
+    You land on the **Data** tab with the new files listed. Click one to preview it and see what Vellum has extracted.
+  </Step>
+</Steps>
+
+If a file fails to ingest, you'll be told which one and why. The rest of the batch still lands.
+
+### Write a note
+
+<Steps>
+  <Step title="Open a blank note">
+    Open the organisation and choose **Add → Document** in the header.
+  </Step>
+  <Step title="Title it">
+    Type a title in the header of the panel that appears.
+  </Step>
+  <Step title="Write it">
+    Drag the panel by its header to move it, or its left edge to make it wider.
+  </Step>
+  <Step title="Save">
+    Click the tick.
+  </Step>
+</Steps>
+
+Notes appear in the **Data** tab alongside files. Pin the ones you want to keep at the top.
+
+### Set the purposes and audiences
+
+<Steps>
+  <Step title="Find the card">
+    Open the organisation, go to the **Profile** tab and find the **Purpose & audiences** card.
+  </Step>
+  <Step title="Add a purpose">
+    Click **Add purpose**, then choose a purpose or type your own.
+  </Step>
+  <Step title="Set the disclosure">
+    Choose **Disclosed** if they told you, or **Research-inferred** if you worked it out.
+  </Step>
+  <Step title="Save the purpose">
+    Set the **Status**, add any **Notes**, then click **Add purpose**.
+  </Step>
+  <Step title="Add an audience">
+    Click **Add audience**, then choose or type the audience.
+  </Step>
+  <Step title="Link it to a purpose">
+    Under **Linked purpose**, pick the purpose it serves, or leave it as **General (no purpose)**.
+  </Step>
+  <Step title="Save the audience">
+    Click **Add audience**.
+  </Step>
+</Steps>
+
+### Archive an organisation
+
+<Steps>
+  <Step title="Choose Archive">
+    From the list, open the row's **⋯** menu and choose **Archive**. From the record, use the **⋯** menu in the header.
+  </Step>
+  <Step title="It leaves the default list">
+    The organisation disappears from view.
+  </Step>
+  <Step title="Find it again">
+    Click **Show archived** in the list toolbar.
+  </Step>
+  <Step title="Bring it back">
+    Choose **Unarchive** from the same menu. Its previous status is restored.
+  </Step>
+</Steps>
+
+### Move an organisation to trash, and restore it
+
+<Steps>
+  <Step title="Choose Move to trash">
+    Open the **⋯** menu, either on the row or in the record header.
+  </Step>
+  <Step title="Confirm">
+    The organisation leaves the list and search.
+  </Step>
+  <Step title="Undo it straight away">
+    If that was a mistake, click **Restore** in the message that appears immediately afterwards.
+  </Step>
+  <Step title="Or restore it later">
+    Click **Trash** in the list header, find the organisation, and click **Restore**.
+  </Step>
+</Steps>
+
+## Tips and gotchas
+
+**Archive and trash do different jobs.** Archive is for organisations you've finished with but want to keep in view. They're one click away behind **Show archived**, and they keep their place in reporting. Trash is for records that shouldn't be there at all. Neither destroys anything.
+
+**The duplicate check runs as you type.** Give the create dialog a moment after typing a name before you click **Create organisation**. If a similar organisation exists, the warning appears within a second or so.
+
+**Each profile card saves on its own.** If you open two cards for editing and save one, the other stays in edit mode with your changes intact. Nothing is lost, but nothing is saved either until you click **Save** on that card.
+
+**Clearing a field really clears it.** Emptying a text field and saving removes the stored value rather than quietly leaving the old one in place.
+
+**Website and domains are the same thing.** The **Website** field on the Identity card holds a list. The first entry is what shows everywhere else, and clearing the list clears the organisation's website.
+
+**"Add → Document" creates a note, not a file upload.** Use **Add → File** if you have a document on disk.
+
+**Sector is shared across your practice.** Adding a new sector makes it available to everyone, so check the existing list before inventing a variant. *Aged care* and *Aged Care* will read as two different sectors.
+
+**Research-inferred purposes are marked as such, deliberately.** Don't switch one to **Disclosed** unless the organisation actually told you. The distinction is what stops an inference being reported as a fact.
+
+**Goal progress is never typed.** It rolls up from the organisation's projects. If a number looks wrong, the fix is in the project, not here.
+
+<Warning>
+**Numbers on this record come from the engine.** Impact value, cumulative value, SROI, the theme footprint and goal progress are all calculated from project data. There is nowhere in Vellum to type a dollar figure onto a record, and that's on purpose: every figure has to trace back to its source.
+</Warning>
+
+**A few things aren't ready yet.** Connecting a **Source**, creating a **Project** from the organisation header, regenerating the organisation summary, uploading a logo file (rather than linking one) and picking a report template are all still to come. Vellum tells you when you reach one.

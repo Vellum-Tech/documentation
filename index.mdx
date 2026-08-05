@@ -1,72 +1,77 @@
 ---
-title: "Vellum: AI Development Platform for Production LLMs"
-sidebarTitle: "Home"
-description: "Vellum helps teams build, evaluate, deploy, and monitor LLM-powered applications with a collaborative platform for every contributor."
+title: "Vellum Documentation"
+description: "Everything you need to know to measure, value and report impact with Vellum."
 ---
 
-Vellum is an end-to-end AI development platform that gives you everything you need to go from prototype to production with LLM-powered applications. Whether you're iterating on prompts, building multi-step workflows, running evaluations, or monitoring production deployments, Vellum brings it all together in one workspace.
+Welcome to Vellum, the platform that turns an organisation's real-world evidence into audited, defensible impact reports.
+
+Vellum is built around one golden rule: **no person ever types a dollar figure onto a report**. Every number you'll see in a Vellum report is computed by a deterministic engine, and every input to that computation traces back to either a sourced reference value or the client's own measured data. These guides explain how that works in practice, screen by screen.
+
+## Where to start
+
+If you're new, read these two first:
+
+- **[Getting started](/getting-started)** covers what Vellum is, the core concepts, and your first 30 minutes in the app.
+- **[Workbench and valuations](/guides/workbench-and-valuations)** shows how evidence becomes a dollar figure, step by step.
+
+## The guides
 
 <CardGroup cols={2}>
-  <Card title="Get Started" icon="rocket" href="/product/introduction">
-    Learn what Vellum is and how to set up your account in minutes.
+  <Card title="Getting started" href="/getting-started">
+    Core concepts, navigation, signing in, your first session.
   </Card>
-  <Card title="Quickstart" icon="bolt" href="/product/quickstart">
-    Build and deploy your first AI application step by step.
+  <Card title="Organisations" href="/guides/organisations">
+    The client area: profiles, contacts, goals, client data, notes and files.
   </Card>
-  <Card title="Workflows" icon="diagram-project" href="/product/workflows/introduction">
-    Build multi-step LLM pipelines with the visual workflow builder.
+  <Card title="Projects" href="/guides/projects">
+    A measurement engagement from creation to sign-off.
   </Card>
-  <Card title="Evaluation" icon="chart-bar" href="/product/evaluation/overview">
-    Test and measure your AI applications with metrics and test suites.
+  <Card title="Workbench and valuations" href="/guides/workbench-and-valuations">
+    Quantified outputs, running valuations, binding operands, sign-off.
   </Card>
-  <Card title="Developer Docs" icon="code" href="/developers/overview">
-    Integrate Vellum with SDKs for Python, TypeScript, and Go.
+  <Card title="Data room and documents" href="/guides/data-room-and-documents">
+    Uploading evidence files and how they're processed.
   </Card>
-  <Card title="API Reference" icon="brackets-curly" href="/developers/api/execute-prompt">
-    Explore the full REST API for prompts, workflows, and documents.
-  </Card>
-</CardGroup>
-
-## What you can build with Vellum
-
-<CardGroup cols={3}>
-  <Card title="Prompt Management" icon="pencil" href="/product/prompts/overview">
-    Engineer, version, and deploy prompts without touching code.
-  </Card>
-  <Card title="Agent Workflows" icon="robot" href="/product/workflows/agent-builder">
-    Build autonomous agents with tool calling and loop logic.
-  </Card>
-  <Card title="RAG Pipelines" icon="magnifying-glass" href="/product/documents/overview">
-    Index documents and add semantic search to any workflow.
-  </Card>
-  <Card title="Quantitative Evals" icon="flask" href="/product/evaluation/test-suites">
-    Run test suites and compare model versions objectively.
-  </Card>
-  <Card title="Online Monitoring" icon="eye" href="/product/monitoring/observability">
-    Track latency, cost, and quality scores in production.
-  </Card>
-  <Card title="Multi-Environment" icon="layer-group" href="/product/monitoring/environments">
-    Manage dev, staging, and production deployments cleanly.
+  <Card title="Chat assistant" href="/guides/chat-assistant">
+    What the built-in assistant can (and deliberately can't) do.
   </Card>
 </CardGroup>
 
-## How Vellum works
+## The libraries
 
-<Steps>
-  <Step title="Build in the sandbox">
-    Use the Vellum UI to craft prompts or design multi-step workflows using the visual builder. Add test scenarios to validate behavior across different inputs.
-  </Step>
-  <Step title="Evaluate before shipping">
-    Run your application against test suites with quantitative metrics. Compare versions side-by-side before promoting any change to production.
-  </Step>
-  <Step title="Deploy with one click">
-    Push a versioned release to any environment. Vellum exposes a stable API endpoint — your application code never needs to change when you update a prompt or workflow.
-  </Step>
-  <Step title="Monitor in production">
-    Track every execution. Review inputs, outputs, latency, cost, and quality scores in the Vellum dashboard. Configure online evaluations to run automatically on live traffic.
-  </Step>
-</Steps>
+The Libraries area holds your firm's reusable knowledge, shared across every organisation and project.
 
-<Tip>
-  New to Vellum? Start with the [Quickstart guide](/product/quickstart) to deploy your first prompt in under 10 minutes.
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Libraries overview" href="/libraries/overview">
+    How the libraries fit together.
+  </Card>
+  <Card title="Factors" href="/libraries/factors">
+    Sourced reference values with citations and version history.
+  </Card>
+  <Card title="Methodologies" href="/libraries/methodologies">
+    Your valuation formulas and their operands.
+  </Card>
+  <Card title="Reporting methodologies" href="/libraries/reporting-methodologies">
+    The six report-level protocols (SROI, CBA and friends).
+  </Card>
+  <Card title="Activities" href="/libraries/activities">
+    The catalogue of activities organisations run.
+  </Card>
+  <Card title="Beneficiaries" href="/libraries/beneficiaries">
+    The people and groups who benefit.
+  </Card>
+  <Card title="Outcomes" href="/libraries/outcomes">
+    The changes those activities create.
+  </Card>
+  <Card title="Surveys" href="/libraries/surveys">
+    Survey templates for gathering evidence.
+  </Card>
+</CardGroup>
+
+## One picture to keep in mind
+
+A **Reporting methodology** sets the style of report you're writing. A **Methodology** is a formula whose inputs, called **operands**, are labelled empty jars ("cost per visit, in AUD"). A **Factor** is a full jar with the same label, a value and a citation. A **Quantified output** is a jar the client filled themselves with measured evidence.
+
+<Note>
+  The Workbench pours the full jars into the matching empty ones, the engine does the arithmetic, and the result lands on the report with its full audit trail attached.
+</Note>

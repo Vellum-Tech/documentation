@@ -1,0 +1,133 @@
+---
+title: "Methodology library"
+description: "Your firm's valuation formulas: how each one is built from named operands, why the units have to reconcile, and how a methodology differs from a factor."
+---
+
+A **methodology** is one of your firm's valuation formulas. It says how an outcome turns into a dollar figure: meals delivered, multiplied by what it would cost to replace a meal; hours volunteered, multiplied by an hourly wellbeing value.
+
+What makes a Vellum methodology different from the same formula in a spreadsheet is what it deliberately leaves out. A methodology holds **no numbers whatsoever**. It names the inputs it needs, gives each one a unit, and arranges them into a formula. Where those inputs actually come from is decided later, one valuation at a time.
+
+## The jar analogy
+
+This is the picture worth carrying around.
+
+An **operand** is a labelled empty jar. The label says what belongs in it and what unit it must be measured in, such as "meal count, in meals", and the jar is empty. That's all an operand is: a name and a unit.
+
+A **factor** is a labelled full jar. Same kind of label, same unit, such as "cost per meal, in AUD per meal", but this jar has something in it: a value, and a citation saying where the value came from.
+
+A methodology is a recipe written entirely in empty jars. When you run a valuation in the Workbench, you fill each empty jar, sometimes from a factor (a full jar your firm has sourced), sometimes from the client's own measured data. The **matching unit label is what lets one fill the other.** A jar labelled *per meal* can only be filled by something also measured *per meal*. That's not fussiness. It's the safety catch that stops a per-hour value being poured into a per-person slot and producing a number that looks fine and is wrong.
+
+### "Why do factors and operands look the same?"
+
+Because they're two halves of the same connector.
+
+Both are just a **name and a unit**, because the unit is the plug and socket. An operand advertises the socket it needs filled. A factor advertises the plug it offers. They have to describe themselves the same way, or nothing could ever be safely matched up.
+
+The difference is what's behind the label. **Only a factor carries a value and a citation.** An operand carries nothing at all. It's a shape, waiting. That's why you'll never see a number on this screen, and why sourcing isn't asked for here: the same methodology might be filled from a factor on one project and from the client's own data on the next, and locking that decision into the formula would make the formula less reusable, not more trustworthy.
+
+You'll see this on a methodology's record: every operand's **Source** reads **Bound per valuation**. That's the platform saying, plainly, "not decided here".
+
+## The methodology list
+
+Open **Libraries > Methodology library**. Each row shows:
+
+| Column | What it shows |
+| --- | --- |
+| **Methodology** | Its name. |
+| **Family** | Either **Output value** or **Activity cost** (see below). |
+| **Slug** | The short stable identifier the engine knows it by. |
+| **Version** | Which version of this methodology is current. |
+| **Operands** | How many inputs it demands. A rough proxy for how much evidence a valuation using it will need. |
+| **Formula** | The stored expression, truncated. The full thing is on the record. |
+
+Search matches the name, slug, description and formula. The **Family** filter and **View options > Grouping** both let you split the catalogue by family.
+
+If the list can't load, you'll see a message explaining why rather than an empty library pretending to be an empty catalogue. The two mean very different things.
+
+### The two families
+
+**Output value** methodologies value what an activity produced, which is the benefit side. **Activity cost** methodologies value what it took to produce, which is the investment side. Most reports need both, because a value without its cost isn't a ratio and isn't much of an argument.
+
+## The methodology record
+
+Click any row. The record is entirely read-only, with the family shown as a pill beside the name.
+
+**Methodology details** holds the **Methodology** name, its **Family**, **Slug**, **Version** and **Description**.
+
+**Formula** shows the formula rendered naturally, with the unit the result comes out in shown beside it. Where the formula was stored in the engine's structured form, an **As stored** disclosure lets you see the exact stored text. Nothing is evaluated here. You're looking at structure, not a result.
+
+**Operands** gives a row per input, with the **Operand** name, its **Unit**, and its **Source**, which reads **Bound per valuation**. No values, because there are none to show.
+
+At the foot of the record is a quiet line noting that the methodology is owned by the calculation engine.
+
+## How to create a methodology
+
+Creating one is a single sheet with four parts. Click **New methodology** at the right of the toolbar.
+
+<Steps>
+  <Step title="Name it">
+    Give it a name a colleague would recognise on a menu: "Meal Relief: Replacement Cost" rather than "Method 4".
+  </Step>
+
+  <Step title="Pick the Family">
+    Choose **Output value** or **Activity cost**.
+  </Step>
+
+  <Step title="Declare the operands">
+    Each row is a name and a unit, nothing more. Click **+ Add operand** for another row, or the small cross to remove one.
+
+    Units are **picked, not typed**. The picker searches your firm's shared unit registry as you type. If the unit you need genuinely doesn't exist yet, type it and choose **Add**. That registers it properly, with an optional display label, so it becomes available everywhere rather than existing as a one-off bit of text.
+
+    For a counting noun that only matters inside this one methodology, such as sessions, hampers or placements, use **+ Local count…** instead. Give it a plain word like *session*, and the picker will offer you both a count of them and a rate per one. Local counts are scoped to this methodology, so genuinely one-off nouns don't clutter the shared registry for everyone else.
+  </Step>
+
+  <Step title="Build the formula">
+    The formula is **built, never free-typed**. Below the canvas sit two things: a key for each operand you declared, and a scientific keypad with the four operators, brackets, digits, roots (**√**, **∛**) and powers (**x²**, **x³**, **xʸ**). Press keys to compose the expression. You can also click into the canvas and type, but letters will only ever complete an operand you've already declared, so the vocabulary stays closed. The backspace key deletes the last item and **AC** clears everything.
+
+    Roots and powers apply to the value you just built, and the brackets are added for you. Bare numbers are fine as scalers, since multiplying by 2 is a legitimate thing to do, but an added dollar amount is not. That belongs in an operand, where it can be sourced and cited.
+  </Step>
+
+  <Step title="Watch the verdict">
+    As you build, Vellum tracks the units through the formula and tells you where you stand:
+
+    - *"Reconciles: every unit cancels to AUD. Ready to create."* means the formula is sound.
+    - *"This computes [something else], but a methodology must produce AUD. Check the operand units."* means the units don't cancel to money. Something is per-hour that should be per-person, or a division is the wrong way round.
+    - A warning that an operand is *declared and never used* is harmless, but it usually means you meant to include it.
+
+    A formula that doesn't reconcile to AUD cannot be created. This is the same fence as everywhere else in Vellum: if the arithmetic can't be checked mechanically, it doesn't get to run.
+  </Step>
+
+  <Step title="Add a Description">
+    Optional but recommended: when to use this methodology, and what assumptions it carries.
+  </Step>
+
+  <Step title="Enter your name">
+    Fill in **Created by** with your own name. This must be a named human. Vellum will reject "AI", "assistant" or similar: someone is accountable for every methodology in the catalogue, and it is never a machine.
+  </Step>
+
+  <Step title="Create it">
+    Click **Create methodology**. Vellum validates the whole thing again on the server before anything is saved, then opens the new record.
+  </Step>
+</Steps>
+
+## Editing and versions
+
+There's no edit, archive or delete on a methodology today. That's deliberate: reports already published may depend on the formula, and quietly changing it underneath them would make those reports unreproducible.
+
+Supersede-only editing, where a change creates a new version and the old one stays intact for the reports that used it, is coming. Until then, a correction means creating a new methodology with the corrected formula.
+
+## Tips and gotchas
+
+**Name operands the way you'd say them out loud.** "meal count", "cost per meal". They become keys on the formula pad and labels in the Workbench, and a cryptic name there costs someone real time later.
+
+**If the units won't reconcile, the formula is telling you something.** The usual cause is a rate that's per the wrong thing, or a multiplication that should be a division. Read the operand units before you start rearranging brackets.
+
+**Don't put a dollar amount in the formula.** A bare number in a formula is a scaler with no source and no citation. Any figure that could be questioned belongs in an operand, so it can be filled by a cited factor.
+
+**Don't decide sourcing here. You can't, and that's the point.** The same methodology should be usable when the client has measured the input themselves *and* when they haven't and you need a factor. Leaving it open is what makes it reusable.
+
+**Reach for a local count before inventing a registry unit.** If the noun is specific to this one methodology, keep it local. The shared registry stays clean for everyone.
+
+<Note>
+  **A methodology and a reporting methodology are different things.** The six [reporting methodologies](/libraries/reporting-methodologies) are report-level protocols, the style of report you're writing, chosen before valuation starts. The methodologies here are the formulas that do the valuing inside it.
+</Note>

@@ -1,0 +1,148 @@
+---
+title: "Reporting methodology library"
+description: "The six report-level protocols (SROI, CBA, Impact Weighted Accounting and three others) chosen for a project before any outcome is valued."
+---
+
+A **reporting methodology** is the kind of report you're writing. Not a formula, not a calculation, but a protocol. It sets what your report is arguing, who it's arguing to, what evidence you'll be expected to show, and what a reader should take away.
+
+You choose it for a project *before* you start valuing outcomes, because it shapes everything that follows. An SROI report and a Cost-Benefit Analysis of the same programme ask for different evidence, present different outputs, and are read by different people.
+
+## Why it exists
+
+Two reasons.
+
+The first is that "what sort of report is this?" is a real decision with real consequences, and it deserves to be recorded rather than assumed. Choosing **Cost-Benefit Analysis (CBA)** commits you to a discount rate, a counterfactual and a sensitivity analysis. Choosing **SROI / sSROI** commits you to stakeholders, financial proxies and adjustments for attribution, deadweight and drop-off. Making that choice explicit and early means nobody discovers halfway through that they've been building the wrong evidence base.
+
+The second is comparability. When a reader knows which protocol a report follows, they know how to weigh it, and they know what its limitations are likely to be, without having to reverse-engineer them from your appendices.
+
+## What's in the library
+
+Six protocols. They ship with Vellum, they're the same for every firm, and they don't change, so this library is read-only. There's no create button and no edit. The six are the six.
+
+<Note>
+  This layer carries **no monetary value of its own**. A reporting methodology sets the pathway. The actual valuing is done by the [methodologies](/libraries/methodologies) in your formula catalogue, and every figure is computed by the engine.
+</Note>
+
+## The list
+
+Open **Libraries > Reporting methodology library**. The list shows each protocol's **Methodology** name, its **Primary purpose**, its **Best fit** audience and its **Typical output**, which is enough to choose between them at a glance. Search matches all four. **View options** lets you change the ordering and hide columns you don't need.
+
+Click any row for the full record.
+
+## The record
+
+Each record has three cards.
+
+**Methodology** carries the four guidance columns: **Primary purpose** (what the methodology shows), **Best-fit audience** (who it suits), **Evidence required** (what it demands of you) and **Typical output** (what it produces).
+
+**Bridge to valuation methods** explains how this protocol connects down to the outcome-level valuation methods that do the arithmetic, and which sorts of methodology it typically draws on. It also carries the reminder that a reporting methodology sets the pathway and nothing more. The figures live in the engine.
+
+**Reader interpretation** is the one to read before you promise a client anything. It says how a reader should weigh the report and where this protocol is weak.
+
+## The six protocols
+
+### SROI / sSROI
+
+**What it shows:** social value created relative to the resources invested.
+
+**Best fit:** charities, foundations, community programmes, social enterprises and philanthropy portfolios.
+
+**Evidence required:** stakeholders, inputs, outcomes, financial proxies, attribution, deadweight, displacement, duration and drop-off.
+
+**Typical output:** social value, an SROI ratio, stakeholder outcomes, sensitivity analysis and narrative.
+
+**Links to valuation methods:** uses methods such as avoided cost, replacement cost, wellbeing proxy and direct-cost fallback for individual outcomes.
+
+**How a reader should weigh it:** good for understanding value-for-money and stakeholder benefit, but it relies heavily on proxy quality and attribution assumptions.
+
+### Cost-Benefit Analysis (CBA)
+
+**What it shows:** quantified benefits compared against costs, usually over time.
+
+**Best fit:** government policy, infrastructure, hospitals, schools, transport, affordable living, grants and public programmes.
+
+**Evidence required:** project costs, benefit streams, scenarios, a discount rate, timing, a counterfactual and sensitivity analysis.
+
+**Typical output:** net present value, benefit-cost ratio, distributional analysis and scenario comparison.
+
+**Links to valuation methods:** uses methods such as avoided public cost, productivity uplift, willingness-to-pay, carbon price and health cost savings.
+
+**How a reader should weigh it:** strong for policy and investment decisions where readers need scenario discipline and public-value comparability.
+
+### Impact Weighted Accounting
+
+**What it shows:** environmental and social outcomes translated into monetary impact that can sit alongside financial reporting.
+
+**Best fit:** corporates, investors, asset managers, large accounting firms, ratings platforms and annual-report readers.
+
+**Evidence required:** standardised outcome units, a defined entity boundary, attribution, unit values, confidence, time period and an audit trail.
+
+**Typical output:** an impact revenue line, an impact-weighted profit and loss, a portfolio impact view and comparable disclosures.
+
+**Links to valuation methods:** uses outcome-level valuation methods, then normalises them for accounting-style presentation.
+
+**How a reader should weigh it:** useful when readers want impact beside financial performance, but the governance of the methodology has to be very clear.
+
+### Choice Modelling / Stated Preference
+
+**What it shows:** value estimated from the choices people make between trade-offs.
+
+**Best fit:** government, infrastructure, health, environment, education, community preference and service design reports.
+
+**Evidence required:** survey design, respondent segments, choice sets, willingness-to-pay estimates, bias controls and statistical review.
+
+**Typical output:** preference values, willingness-to-pay values and scenario comparison.
+
+**Links to valuation methods:** can create financial proxies that later feed SROI, CBA or Impact Weighted Accounting.
+
+**How a reader should weigh it:** useful where no market price exists, but it needs careful survey design and clearly stated limitations.
+
+### Public Value / Policy Evaluation
+
+**What it shows:** outcomes connected to government priorities, public budgets, regulation, grants and community trust.
+
+**Best fit:** government departments, grant programmes, public infrastructure, bonds and public-sector partners.
+
+**Evidence required:** policy objectives, programme logic, beneficiaries, public costs and savings, distributional outcomes, and the political and regulatory context.
+
+**Typical output:** a policy impact dashboard, a programme-level report, acquittal evidence and an improvement plan.
+
+**Links to valuation methods:** may combine CBA, avoided public cost, fiscal return, wellbeing valuation and SDG mapping.
+
+**How a reader should weigh it:** readers can see which initiatives create public value, and where the evidence is still weak.
+
+### Natural Capital / Environmental Accounting
+
+**What it shows:** value created or protected through environmental assets and ecosystem services.
+
+**Best fit:** climate, biodiversity, circular economy, agriculture, land, water, energy and nature-positive projects.
+
+**Evidence required:** environmental units, a baseline, the ecosystem service in question, location, permanence, leakage, carbon and biodiversity factors, and assurance.
+
+**Typical output:** a natural capital account, environmental return, ecosystem service value and an SDG or environmental dashboard.
+
+**Links to valuation methods:** uses carbon price, ecosystem-service proxy, avoided disposal, replacement or restoration cost, and market values.
+
+**How a reader should weigh it:** readers can find climate and nature activities by SDG and compare the evidence behind environmental claims.
+
+## Choosing one
+
+Start with the audience, not the method. A grant acquittal for a state department and an annual report for institutional investors want different things from the same programme, and the protocol that fits is usually obvious once you've named who's reading.
+
+Then check the **Evidence required** line honestly. If a protocol demands a counterfactual and a discount rate and you have neither, that's not a detail to sort out later. It's a reason to choose differently, or to go and get the evidence first.
+
+Finally, read **Reader interpretation** before you commit. Every one of the six has a known weakness. Knowing it upfront lets you address it in the report rather than have a reviewer find it for you.
+
+<Tip>
+  You set the reporting methodology on the project itself, not here. This library is the reference you consult while deciding. A project can also use a bespoke methodology that isn't one of the six. The six are what Vellum knows about and can give you guidance for.
+</Tip>
+
+## Tips and gotchas
+
+**Choose before you value, not after.** The protocol determines what evidence you need. Discovering it once the impact model is built means rework.
+
+**No numbers live at this level.** If you're looking for a figure, you want the [Methodology library](/libraries/methodologies) and the Workbench. This layer sets the pathway.
+
+**Don't confuse the two libraries.** "Methodology" in Vellum means a valuation formula. "Reporting methodology" means one of these six protocols. They sit at different altitudes and do different jobs.
+
+**The six are fixed.** Nothing here is editable, and that's intentional. These are recognised external protocols, not house style.
