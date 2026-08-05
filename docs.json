@@ -14,106 +14,42 @@
         "tab": "Product",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Get started",
             "pages": [
-              "product/introduction",
-              "product/quickstart",
-              "product/key-concepts"
+              "index",
+              "product/getting-started"
             ]
           },
           {
-            "group": "Prompts",
+            "group": "Working with clients",
             "pages": [
-              "product/prompts/overview",
-              "product/prompts/prompt-engineering",
-              "product/prompts/deployments"
+              "product/organisations",
+              "product/projects"
             ]
           },
           {
-            "group": "Workflows",
+            "group": "Valuing impact",
             "pages": [
-              "product/workflows/introduction",
-              "product/workflows/nodes",
-              "product/workflows/deployments",
-              "product/workflows/agent-builder"
+              "product/workbench-and-valuations",
+              "product/data-room-and-documents",
+              "product/chat-assistant"
             ]
           },
           {
-            "group": "Evaluation",
+            "group": "Libraries",
             "pages": [
-              "product/evaluation/overview",
-              "product/evaluation/test-suites",
-              "product/evaluation/metrics",
-              "product/evaluation/online-evaluations"
-            ]
-          },
-          {
-            "group": "Document Search",
-            "pages": [
-              "product/documents/overview",
-              "product/documents/indexing",
-              "product/documents/rag-search"
-            ]
-          },
-          {
-            "group": "Monitoring",
-            "pages": [
-              "product/monitoring/observability",
-              "product/monitoring/environments"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Developers",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "developers/overview",
-              "developers/authentication",
-              "developers/sdks"
-            ]
-          },
-          {
-            "group": "API Reference",
-            "pages": [
-              "developers/api/execute-prompt",
-              "developers/api/execute-workflow",
-              "developers/api/documents",
-              "developers/api/deployments"
-            ]
-          },
-          {
-            "group": "Guides",
-            "pages": [
-              "developers/guides/version-control",
-              "developers/guides/cicd-integration",
-              "developers/guides/self-hosted"
+              "product/libraries/overview",
+              "product/libraries/factors",
+              "product/libraries/methodologies",
+              "product/libraries/reporting-methodologies",
+              "product/libraries/activities",
+              "product/libraries/beneficiaries",
+              "product/libraries/outcomes",
+              "product/libraries/surveys"
             ]
           }
         ]
       }
     ]
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:support@vellum.ai"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Sign In",
-      "href": "https://app.vellum.ai"
-    }
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/vellum_ai",
-      "github": "https://github.com/vellum-ai",
-      "linkedin": "https://linkedin.com/company/vellum-ai"
-    }
   }
 }

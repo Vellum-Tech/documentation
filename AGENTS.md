@@ -14,8 +14,13 @@
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- Use **organisation**, not "client" or "customer", for the entities being measured (Australian spelling).
+- A **project** is one measurement engagement for one reporting period.
+- An **operand** is a named, unit-labelled input slot on a methodology — it never carries a value.
+- A **factor** is a sourced reference value with a citation and version history.
+- **Quantified outputs** are the organisation's own measured evidence (the schema's "client metrics" — never use that phrase in docs).
+- A **reporting methodology** (SROI, CBA, …) is the report-level protocol chosen per project; a **methodology** is a valuation formula. Don't conflate them.
+- The **golden rule**: no person ever types a dollar figure onto a report — the deterministic engine computes every number. State it, don't soften it.
 
 ## Style preferences
 
