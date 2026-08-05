@@ -1,0 +1,59 @@
+---
+title: "LLM Evaluation in Vellum: Measure Quality Before You Ship"
+sidebarTitle: "Overview"
+description: "Systematically test prompts and workflows with test suites, scoring metrics, and side-by-side version comparisons before deploying to production."
+---
+
+Shipping an LLM feature without measuring its quality is like deploying code without tests. Vellum's evaluation system gives you the tools to define what "good" looks like, run structured tests against your prompts and workflows, and catch regressions before they reach your users. Whether you're iterating on a prompt or refactoring a multi-step workflow, evaluations turn subjective gut checks into repeatable, quantitative signals.
+
+## The evaluation workflow
+
+<Steps>
+  <Step title="Create a Test Suite with representative inputs">
+    Build a curated set of test cases that reflect real usage — including edge cases, common inputs, and any scenarios that have caused problems in the past. You can add cases manually, upload a CSV, or seed them directly from your production execution history.
+  </Step>
+  <Step title="Define Metrics to score outputs">
+    Choose from Vellum's built-in metrics — such as Exact Match, Semantic Similarity, or LLM-as-Judge — or write your own custom scoring functions in Python or TypeScript. Metrics produce a numeric score for each output so you can compare results objectively.
+  </Step>
+  <Step title="Run an evaluation and review results">
+    Trigger an evaluation run against a specific version of your Prompt or Workflow. Vellum executes every test case, applies your chosen metrics, and surfaces pass/fail rates, score distributions, and per-case drill-downs in a single results view.
+  </Step>
+  <Step title="Compare versions to detect regressions">
+    Run evaluations against two versions side by side to see exactly which test cases improved or regressed. Use this before promoting a new version to production to make sure changes move the needle in the right direction.
+  </Step>
+</Steps>
+
+## Types of evaluation
+
+### Offline evaluation
+
+Offline evaluations run on demand against a fixed Test Suite before you deploy. They are the foundation of a pre-deployment quality gate — you control when they run, which version is tested, and which metrics are applied. Use offline evaluations during active development whenever you change a prompt, model, or workflow configuration.
+
+### Online evaluation
+
+Online evaluations run automatically in production. Every execution of a deployed Prompt or Workflow is scored by the metrics you configure, giving you a continuous stream of quality signal from real traffic. Use online evaluations to detect drift, catch edge cases that didn't appear in your test suite, and maintain a historical record of production quality over time.
+
+<Note>
+  Offline and online evaluations share the same metric definitions, so the scores you see in your test suite are directly comparable to production scores.
+</Note>
+
+## What you can evaluate
+
+Vellum evaluations work with both of the core building blocks of your AI application:
+
+- **Prompts** — Evaluate any version of a Prompt Deployment, including different model configurations, system prompts, and few-shot examples.
+- **Workflows** — Evaluate end-to-end Workflow Deployments, scoring the final output of a multi-step pipeline against your test cases.
+
+## Next steps
+
+<CardGroup cols={3}>
+  <Card title="Test Suites" icon="flask" href="/product/evaluation/test-suites">
+    Create test cases, run evaluations, and compare versions of your Prompts and Workflows.
+  </Card>
+  <Card title="Metrics" icon="chart-bar" href="/product/evaluation/metrics">
+    Explore built-in scoring metrics and learn how to write custom metric functions.
+  </Card>
+  <Card title="Online Evaluations" icon="signal" href="/product/evaluation/online-evaluations">
+    Automatically score every production execution for continuous quality monitoring.
+  </Card>
+</CardGroup>

@@ -1,0 +1,136 @@
+---
+title: "Version Control for AI: Managing Prompt and Workflow Versions"
+sidebarTitle: "Version Control"
+description: "Use Vellum's built-in versioning to track, compare, and roll back prompt and workflow changes safely across development, staging, and production environments."
+---
+
+Shipping AI features with confidence requires the same versioning discipline you apply to application code. Vellum provides first-class version control for every prompt and workflow you build — so you can iterate freely in a sandbox, validate before promoting, and roll back instantly if something goes wrong in production.
+
+## How versioning works in Vellum
+
+Every time you save changes inside a **Sandbox**, Vellum records a new immutable **version** of that prompt or workflow. Versions capture the full state: model parameters, system prompt, variables, and configuration.
+
+When you're ready to ship, you create a **Deployment**. A deployment packages a specific sandbox version into a **Release** — a named, immutable snapshot that can be referenced by your application code. Once a Release is created, its contents never change. You can create as many releases as you need from the same sandbox, and each one retains a complete audit trail back to the originating version.
+
+<Note>
+  Deleting a sandbox version does not affect any Release that was already created from it. Releases are durable.
+</Note>
+
+## Release tags
+
+Every Release automatically receives the reserved **`LATEST`** tag, which always points to the most recently created Release for a given Deployment. In addition, you can assign any number of **custom tags** to a Release to give it a stable, human-readable identifier.
+
+### Creating and assigning tags
+
+<Steps>
+  <Step title="Open the Releases tab">
+    Navigate to your Deployment in the Vellum UI and click the **Releases** tab to see all existing releases.
+  </Step>
+  <Step title="Add a tag to a release">
+    Click the **⋯** menu next to any Release and select **Add Tag**. Enter the tag name (e.g. `v2.1.0`) and confirm.
+  </Step>
+  <Step title="Assign a tag via the API">
+    You can also manage tags programmatically using the Deployments API:
+
+    ```python
+    client.deployments.upsert_deployment_release_tag(
+        deployment_name="classifier",
+        tag_name="v2.1.0",
+        release_id="<release-id>",
+    )
+    ```
+  </Step>
+</Steps>
+
+<Tip>
+  Adopt a **semantic versioning** convention (`MAJOR.MINOR.PATCH`) for your production release tags. Increment `PATCH` for prompt-wording tweaks, `MINOR` for new variables or structural changes, and `MAJOR` for breaking changes to the input/output schema. This makes rollbacks and changelogs much easier to reason about.
+</Tip>
+
+## Comparing versions
+
+Before promoting a new release, use the **diff view** in the Sandbox to understand exactly what changed.
+
+<Steps>
+  <Step title="Open the version history">
+    In your Prompt or Workflow Sandbox, click the **History** icon in the top toolbar to open the version list.
+  </Step>
+  <Step title="Select two versions to compare">
+    Check the box next to any two versions. Vellum will open a side-by-side diff highlighting added, removed, and modified content — including model parameters and prompt text.
+  </Step>
+  <Step title="Review and decide">
+    Use the diff to confirm the change is intentional before creating a new Release from the updated version.
+  </Step>
+</Steps>
+
+## Promoting releases across environments
+
+The recommended promotion flow is:
+
+```
+Dev → Staging → Production
+```
+
+Each environment maps to a separate Deployment in Vellum, each with its own API key and release history.
+
+<Steps>
+  <Step title="Deploy to Dev">
+    From the Sandbox, create a new Release targeting your **Dev** Deployment. Run your integration tests against it using your `VELLUM_API_KEY_DEV` key.
+  </Step>
+  <Step title="Validate in Dev">
+    Confirm that evaluation metrics, latency, and output quality meet your acceptance criteria before moving on.
+  </Step>
+  <Step title="Promote to Staging">
+    Assign the same release tag to your **Staging** Deployment, or create a parallel Release targeting staging. Run your full evaluation suite.
+  </Step>
+  <Step title="Promote to Production">
+    Once staging passes, assign the production tag (e.g. `v2.1.0`) to your **Production** Deployment. No new artifacts are created — you are promoting the exact same immutable Release that passed validation.
+  </Step>
+</Steps>
+
+<Note>
+  Promoting an existing, validated Release is safer than redeploying from the sandbox. Redeploying creates a brand-new Release artifact, which could inadvertently include unsaved sandbox edits made after your last test run.
+</Note>
+
+## Rolling back
+
+If a release causes unexpected issues in production, you can revert to a previous Release in seconds — no code changes required.
+
+<Steps>
+  <Step title="Go to the Releases tab">
+    Open the affected Deployment in the Vellum UI and click the **Releases** tab.
+  </Step>
+  <Step title="Select the target release">
+    Find the last known-good Release in the list.
+  </Step>
+  <Step title="Reassign the tag">
+    Click **⋯ → Move Tag** (or **Add Tag**) and reassign your production tag (e.g. `v2.0.3`) to that Release. Traffic that references the `v2.0.3` tag will immediately resume using the older Release.
+  </Step>
+</Steps>
+
+Because your application code pins to a named tag rather than a raw release ID, the rollback is instantaneous and transparent to downstream consumers.
+
+## Versioning with code
+
+Reference specific release tags in your API calls to control exactly which version runs in each environment:
+
+```python
+# Always use the latest release in development — convenient for rapid iteration
+result = client.execute_prompt(
+    prompt_deployment_name="classifier",
+    release_tag="LATEST",
+    inputs=[...],
+)
+
+# Pin to a specific, validated version in production — safe and reproducible
+result = client.execute_prompt(
+    prompt_deployment_name="classifier",
+    release_tag="v2.1.0",
+    inputs=[...],
+)
+```
+
+Pinning to `LATEST` in development lets you iterate quickly without updating your code on every save. Pinning to a named tag in production ensures that a new release never reaches your users until you explicitly promote it.
+
+<Tip>
+  Store the release tag as an environment variable (e.g. `VELLUM_RELEASE_TAG`) in your deployment config rather than hard-coding it in source. This lets you promote a new version by updating a single config value — no code changes, no re-deploys.
+</Tip>

@@ -1,0 +1,243 @@
+---
+title: "Document Indexes and Search API Reference"
+sidebarTitle: "Documents API"
+description: "Upload documents, manage document indexes, and run semantic search queries against your knowledge base using the Vellum Documents API."
+---
+
+Vellum's Documents API lets you build and query knowledge bases for retrieval-augmented generation (RAG) workflows. You can upload files of any type into named document indexes, then issue natural-language search queries to retrieve the most relevant passages. The upload endpoint uses a dedicated base URL, while search and index management use the standard API base URL.
+
+---
+
+## Upload Document
+
+```
+POST https://documents.vellum.ai/v1/upload-document
+```
+
+<Tip>
+  Note that document uploads use a **different base URL** — `https://documents.vellum.ai` — rather than `https://api.vellum.ai`. Make sure your HTTP client or SDK is pointed at the correct host for this endpoint.
+</Tip>
+
+This endpoint accepts a `multipart/form-data` request containing the file and associated metadata. After a successful upload, the document is processed asynchronously and added to each index listed in `document_index_names`.
+
+### Request Parameters
+
+<ParamField body="document_index_names" type="array" required>
+  An array of document index name strings. The uploaded document will be added to each named index. You must have already created these indexes via the Vellum dashboard or the API.
+</ParamField>
+
+<ParamField body="label" type="string" required>
+  A human-readable label for the document. This label appears in the Vellum dashboard and is included in search result metadata.
+</ParamField>
+
+<ParamField body="contents" type="file" required>
+  The file to upload, sent as a `multipart/form-data` part. Supported types include PDF, plain text, Markdown, DOCX, and HTML.
+</ParamField>
+
+<ParamField body="metadata" type="object">
+  An optional JSON object of arbitrary key-value pairs attached to this document. You can use metadata fields to filter or annotate search results later.
+</ParamField>
+
+### Example
+
+<CodeGroup>
+
+```python Python SDK
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+with open("report.pdf", "rb") as f:
+    client.upload_document(
+        add_to_index_names=["my-knowledge-base"],
+        label="Q3 Report",
+        contents=f,
+        content_type="application/pdf",
+    )
+```
+
+```bash cURL
+curl -X POST https://documents.vellum.ai/v1/upload-document \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -F "label=Q3 Report" \
+  -F "document_index_names[]=my-knowledge-base" \
+  -F "contents=@report.pdf;type=application/pdf" \
+  -F 'metadata={"source": "finance-team", "quarter": "Q3-2024"}'
+```
+
+</CodeGroup>
+
+**Example Response**
+
+```json
+{
+  "document_id": "doc_01hxyz1234abcdef",
+  "label": "Q3 Report",
+  "status": "PROCESSING"
+}
+```
+
+---
+
+## Search
+
+```
+POST https://api.vellum.ai/v1/search
+```
+
+Issue a natural-language query against one of your document indexes. Vellum returns the most relevant passages ranked by a configurable blend of semantic similarity and keyword matching.
+
+### Request Parameters
+
+<ParamField body="index_name" type="string" required>
+  The name of the document index to search.
+</ParamField>
+
+<ParamField body="query" type="string" required>
+  The natural-language search query string.
+</ParamField>
+
+<ParamField body="options.limit" type="number">
+  The maximum number of results to return. Defaults to `8`.
+</ParamField>
+
+<ParamField body="options.weights" type="object">
+  Controls the blend of retrieval strategies used to rank results. Both values must sum to `1.0`.
+
+  ```json
+  {
+    "semantic_similarity": 0.8,
+    "keywords": 0.2
+  }
+  ```
+
+  | Field | Type | Description |
+  |---|---|---|
+  | `semantic_similarity` | number | Weight applied to dense vector similarity (0.0–1.0). |
+  | `keywords` | number | Weight applied to keyword (BM25) matching (0.0–1.0). |
+</ParamField>
+
+### Response Fields
+
+<ResponseField name="results" type="array">
+  An array of matching passage objects, ordered by relevance score. Each item contains:
+
+  | Field | Type | Description |
+  |---|---|---|
+  | `text` | string | The passage text extracted from the document. |
+  | `score` | number | Relevance score between 0.0 and 1.0. |
+  | `document_name` | string | The label of the document this passage came from. |
+  | `document_id` | string | The unique ID of the source document. |
+</ResponseField>
+
+### Example
+
+<CodeGroup>
+
+```python Python SDK
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+response = client.search(
+    index_name="my-knowledge-base",
+    query="What were the key drivers of revenue growth?",
+    options={
+        "limit": 5,
+        "weights": {"semantic_similarity": 0.8, "keywords": 0.2},
+    },
+)
+
+for result in response.results:
+    print(f"[{result.score:.2f}] {result.document_name}")
+    print(result.text)
+    print()
+```
+
+```typescript TypeScript SDK
+import { VellumClient } from "vellum-ai";
+
+const client = new VellumClient({ apiKey: "YOUR_API_KEY" });
+
+const response = await client.search({
+  indexName: "my-knowledge-base",
+  query: "What were the key drivers of revenue growth?",
+  options: {
+    limit: 5,
+    weights: { semanticSimilarity: 0.8, keywords: 0.2 },
+  },
+});
+
+for (const result of response.results) {
+  console.log(`[${result.score.toFixed(2)}] ${result.documentName}`);
+  console.log(result.text);
+}
+```
+
+</CodeGroup>
+
+**Example Response**
+
+```json
+{
+  "results": [
+    {
+      "text": "Cloud segment revenue increased 34% year-over-year, accounting for the majority of total growth...",
+      "score": 0.93,
+      "document_name": "Q3 Report",
+      "document_id": "doc_01hxyz1234abcdef"
+    },
+    {
+      "text": "Subscription renewals remained strong at 96%, contributing approximately $42M in recurring revenue...",
+      "score": 0.87,
+      "document_name": "Q3 Report",
+      "document_id": "doc_01hxyz1234abcdef"
+    }
+  ]
+}
+```
+
+---
+
+## List Document Indexes
+
+```
+GET https://api.vellum.ai/v1/document-indexes
+```
+
+Returns a paginated list of all document indexes in your workspace, including their names, IDs, and document counts. Use this endpoint to enumerate available indexes before issuing search queries or uploading documents.
+
+```python
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+indexes = client.document_indexes.list()
+
+for index in indexes.results:
+    print(index.name, index.id)
+```
+
+**Example Response**
+
+```json
+{
+  "count": 3,
+  "results": [
+    {
+      "id": "idx_01hxyz1111aaaaaa",
+      "name": "my-knowledge-base",
+      "label": "My Knowledge Base",
+      "status": "ACTIVE",
+      "document_count": 42
+    },
+    {
+      "id": "idx_01hxyz2222bbbbbb",
+      "name": "product-docs",
+      "label": "Product Documentation",
+      "status": "ACTIVE",
+      "document_count": 17
+    }
+  ]
+}
+```

@@ -1,0 +1,70 @@
+---
+title: "Vellum Developer Documentation: APIs, SDKs, and Integrations"
+sidebarTitle: "Overview"
+description: "Integrate Vellum into your application using the REST API and official Python, TypeScript, and Go SDKs to execute prompts, run workflows, and more."
+---
+
+Welcome to the Vellum developer documentation. Whether you're building a production AI pipeline, experimenting with prompt deployments, or integrating Vellum's document search into your app, these docs cover everything you need to call the Vellum API, install an official SDK, and wire Vellum into your existing stack.
+
+## What you can do with the Vellum API
+
+The Vellum API gives you programmatic access to every core capability of the platform:
+
+- **Execute prompts** — run a versioned Prompt Deployment against any model and receive structured, streaming, or raw completions.
+- **Execute workflows** — trigger a full Workflow Deployment end-to-end and receive its final output or stream intermediate node results.
+- **Manage documents** — upload, index, and delete documents in a Document Index for semantic search and retrieval.
+- **Query deployments** — list and inspect your Prompt and Workflow Deployments, including their active release tags.
+- **Send actuals / feedback** — report ground-truth outputs or user ratings back to Vellum to power evaluation and fine-tuning pipelines.
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/developers/authentication">
+    Learn how to generate an API key and pass it securely in every request.
+  </Card>
+  <Card title="SDKs" icon="code" href="/developers/sdks">
+    Install and initialize the official Python, TypeScript, or Go SDK client.
+  </Card>
+  <Card title="Execute Prompt API" icon="bolt" href="/developers/api/execute-prompt">
+    Run a Prompt Deployment and receive completions in real time.
+  </Card>
+  <Card title="Execute Workflow API" icon="diagram-project" href="/developers/api/execute-workflow">
+    Trigger a Workflow Deployment and stream or await its output.
+  </Card>
+</CardGroup>
+
+## Base URL
+
+All API requests for Vellum Cloud are made against:
+
+```
+https://api.vellum.ai
+```
+
+If your organization runs Vellum in a **self-hosted or VPC deployment**, your API URL follows the pattern:
+
+```
+https://api.{your-domain}
+```
+
+Replace `{your-domain}` with the custom domain your team configured during setup. Check with your Vellum account team if you're unsure what your base URL is.
+
+## API stability
+
+Vellum endpoints are labeled to indicate their stability level:
+
+| Label | Meaning |
+|-------|---------|
+| **GA** (Generally Available) | Stable. Breaking changes follow a deprecation notice period. |
+| **Beta** | Functional and supported, but the request or response shape may change before GA. |
+| **Alpha** | Early access. Expect changes; not recommended for production use without coordination with Vellum. |
+
+Each endpoint's reference page displays its current stability label. We recommend pinning your SDK version in production and reviewing the changelog before upgrading.
+
+<Note>
+  If you depend on a Beta endpoint in production, watch the [Vellum changelog](https://www.vellum.ai/changelog) or subscribe to API update emails so you're notified before any breaking changes ship.
+</Note>
+
+## Rate limits
+
+Rate limits vary by plan and are applied per API key. If you exceed your limit, the API returns an HTTP `429 Too Many Requests` response with a `Retry-After` header indicating when you can resume.
+
+To review the limits for your plan or to request a higher limit, contact us at [support@vellum.ai](mailto:support@vellum.ai).

@@ -1,0 +1,70 @@
+---
+title: "Prompt Engineering Techniques and Best Practices in Vellum"
+sidebarTitle: "Prompt Engineering"
+description: "Learn how to write effective LLM prompts in Vellum using input variables, structured outputs, test scenarios, and side-by-side model comparisons."
+---
+
+Effective prompt engineering is iterative: write a prompt, test it against representative inputs, refine, and repeat. Vellum's sandbox is designed to make this loop as fast as possible by keeping your prompt, test cases, and outputs in a single view.
+
+## Using input variables
+
+Declare input variables to make your prompt reusable across different inputs. In the sandbox's **Input Variables** panel, add each variable and assign a type.
+
+In your prompt template, reference variables with double-brace syntax:
+
+```
+Classify the following customer message into one of these categories:
+{{categories}}
+
+Message: {{customer_message}}
+
+Respond with only the category name.
+```
+
+When you run the prompt, Vellum substitutes the variable values from the active scenario.
+
+## Managing test scenarios
+
+A **Scenario** is a named set of input values. Add multiple scenarios to your sandbox to test your prompt against varied cases without retyping inputs.
+
+<Steps>
+  <Step title="Open the Scenarios panel">
+    Click the **Scenarios** tab in the left panel of the Prompt Sandbox.
+  </Step>
+  <Step title="Add a new scenario">
+    Click **+ Add Scenario**, give it a name, and fill in values for each input variable.
+  </Step>
+  <Step title="Run all scenarios">
+    Click **Run All** to execute every scenario and see outputs side-by-side. Use this to spot inconsistencies across your test cases.
+  </Step>
+</Steps>
+
+## Comparing models
+
+Use the **Model Comparison** view to run the same prompt and inputs across multiple LLMs simultaneously:
+
+1. Click **+ Add Column** in the sandbox editor.
+2. Select a different model (e.g. add Claude 3.5 Sonnet alongside GPT-4o).
+3. Run your scenarios — outputs from each model appear in parallel columns.
+
+This makes it easy to choose the best model for quality, cost, and latency trade-offs before committing to a deployment.
+
+## Structured output
+
+To constrain the LLM to return valid JSON matching a schema:
+
+1. In the sandbox, click **Output Format → JSON Schema**.
+2. Define your schema (e.g. `{"type": "object", "properties": {"category": {"type": "string"}, "confidence": {"type": "number"}}}`).
+3. Vellum automatically enables the provider's structured-output or function-calling mode.
+
+Structured outputs are strongly recommended for classification, extraction, and any task where downstream code needs to parse the LLM's response.
+
+## Prompt versioning
+
+Every change you save in the sandbox creates a new **version**. The version history panel shows a timestamped list of all changes with a diff view. You can restore any previous version with one click.
+
+<Tip>Use descriptive version messages when saving — they appear in the deployment release history and help collaborators understand what changed.</Tip>
+
+## Collaboration
+
+All members of your workspace can view and edit Prompt Sandboxes. Changes are saved in real time. Use the **Comments** panel to leave feedback on specific prompt versions.

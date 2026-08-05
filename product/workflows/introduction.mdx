@@ -1,0 +1,105 @@
+---
+title: "Build Multi-Step AI Applications with Vellum Workflows"
+sidebarTitle: "Introduction"
+description: "Chain LLM calls, code, search, and API calls visually with versioned deployments — all in Vellum Workflows."
+---
+
+Vellum Workflows let you design, test, and deploy multi-step AI applications using a visual, node-based canvas. Instead of writing orchestration logic by hand, you connect nodes — each representing a discrete operation like an LLM call, a code block, or an HTTP request — and Vellum handles the execution, data-passing, and deployment plumbing for you. This page explains the core concepts behind Workflows, walks you through the canvas UI, and helps you decide when to reach for a Workflow instead of a standalone Prompt.
+
+---
+
+## Core Concepts
+
+Every Workflow is built from a small set of primitives. Understanding them makes the rest of the product click into place.
+
+| Concept | What it is |
+|---|---|
+| **Input Variables** | Named values you pass into a Workflow at runtime (e.g., `user_query`, `document_id`). They appear as typed fields in the sandbox and as parameters in the API. |
+| **Scenarios** | Saved sets of input values used for manual testing. Think of them as named test cases you can replay at any time. |
+| **Nodes** | The building blocks of a Workflow — each node performs one operation (LLM call, code execution, search, etc.). See [Nodes](/product/workflows/nodes) for the full list. |
+| **Edges** | Directed connections between nodes that control execution order and carry data from one node's output to another node's input. |
+| **Final Output Nodes** | Special terminal nodes that expose a value to the API response. A Workflow can have multiple Final Output nodes for different output keys. |
+
+---
+
+## The Workflow Canvas
+
+The canvas is the visual editor where you build your Workflow. Here's how to navigate it:
+
+- **Adding nodes** — Right-click anywhere on the canvas (or click the **+** button in the toolbar) to open the node picker. Select a node type and it appears at your cursor.
+- **Drawing edges** — Hover over the output port of a node (the small circle on its right or bottom edge) until your cursor changes to a crosshair, then drag to the input port of the destination node.
+- **Rearranging the graph** — Drag nodes freely to organise the layout. Edges re-route automatically. Use the minimap in the bottom-right corner to navigate large graphs.
+- **Inspecting a node** — Click any node to open its configuration panel on the right. Here you can set its parameters, reference outputs from upstream nodes using the `{{ node.NodeName.output }}` syntax, and configure adornments like Retry or Try.
+- **Keyboard shortcuts** — Press `Backspace` or `Delete` to remove a selected node or edge. Use `Cmd/Ctrl + Z` to undo.
+
+<Tip>
+  Use **Note nodes** to annotate complex sections of your graph. They render as sticky-note labels directly on the canvas and are ignored during execution.
+</Tip>
+
+---
+
+## Running a Workflow
+
+You can exercise a Workflow in two ways: interactively in the sandbox, or programmatically via a deployed API endpoint.
+
+### Sandbox execution
+
+The sandbox is the fastest feedback loop. Select or create a **Scenario** (a named set of input values), then click **Run**. Vellum streams execution through the graph in real time — each node lights up as it starts and finishes, and you can inspect its inputs and outputs inline.
+
+<Note>
+  Sandbox runs are not billed as API calls. They use your Vellum-managed credentials and are designed for iteration, not production traffic.
+</Note>
+
+### API execution
+
+Once you're happy with a Workflow, deploy it to get a stable API endpoint. Deployed Workflows accept the same input variables you defined in the canvas and return the values from your Final Output nodes.
+
+<Steps>
+  <Step title="Deploy the Workflow">
+    Click **Deploy** in the top-right corner of the canvas. Give the deployment a name — this becomes the `workflow_deployment_name` you'll reference in the SDK.
+  </Step>
+  <Step title="Call the endpoint">
+    Use the Vellum SDK or REST API to execute the deployment, passing input values as a list of typed `WorkflowRequestInputRequest` objects.
+  </Step>
+  <Step title="Handle the response">
+    The response contains an `outputs` array keyed by the names of your Final Output nodes.
+  </Step>
+</Steps>
+
+See [Deployments](/product/workflows/deployments) for SDK examples, streaming, and release management.
+
+---
+
+## When to Use Workflows vs. Prompts
+
+Vellum offers two primary authoring surfaces. Use this table to pick the right one:
+
+| Scenario | Use a Prompt | Use a Workflow |
+|---|---|---|
+| Single LLM call with a static template | ✅ | — |
+| Comparing models or prompt variants (A/B) | ✅ | — |
+| Chaining multiple LLM calls sequentially | — | ✅ |
+| Conditional branching based on LLM output | — | ✅ |
+| Retrieval-Augmented Generation (RAG) | — | ✅ |
+| Calling external APIs as part of a pipeline | — | ✅ |
+| Running custom Python/TypeScript logic | — | ✅ |
+| Autonomous agent with tool-calling loop | — | ✅ |
+| Iterating over a list of items in parallel | — | ✅ |
+
+In general: if your application requires **more than one step**, **decision logic**, or **external I/O**, reach for a Workflow.
+
+---
+
+## Next Steps
+
+<CardGroup cols={3}>
+  <Card title="Nodes" icon="circle-nodes" href="/product/workflows/nodes">
+    Browse every node type available on the canvas and learn what each one does.
+  </Card>
+  <Card title="Deployments" icon="rocket" href="/product/workflows/deployments">
+    Deploy your Workflow to a stable API endpoint and manage releases.
+  </Card>
+  <Card title="Agent Builder" icon="robot" href="/product/workflows/agent-builder">
+    Build autonomous agents that decide which tools to call at runtime.
+  </Card>
+</CardGroup>

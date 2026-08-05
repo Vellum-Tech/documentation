@@ -1,0 +1,86 @@
+---
+title: "Vellum Platform: Key Concepts and Terminology"
+sidebarTitle: "Key Concepts"
+description: "Understand the core building blocks of Vellum: sandboxes, deployments, environments, test suites, metrics, and document indexes."
+---
+
+Vellum is built around a set of core concepts that appear throughout the platform and API. Understanding them helps you navigate the UI and use the API effectively.
+
+## Sandbox
+
+A **Sandbox** is your interactive development environment for a Prompt or Workflow. It is where you experiment, iterate, and validate before shipping to production.
+
+- **Prompt Sandbox** — a split-pane editor showing your prompt template on the left and LLM output on the right, with support for multiple models side-by-side.
+- **Workflow Sandbox** — a visual canvas where you connect Nodes into a directed graph that defines your application's logic.
+
+Sandboxes are not directly callable from external code. To expose a Sandbox to your application, you **Deploy** it.
+
+## Deployment
+
+A **Deployment** is a versioned, API-accessible snapshot of a Prompt or Workflow. When you deploy from a Sandbox, Vellum creates a Deployment with a stable name and increments its release history.
+
+Key properties:
+- **Deployment name** — the stable identifier your code references (e.g. `customer-support-classifier`). This never changes, even as you push new versions.
+- **Release** — a specific version of the Deployment in a given Environment. Each time you redeploy, a new Release is created.
+- **Release tag** — a label (e.g. `LATEST`, `v1.2.3`) that points to a specific Release. Your API calls can reference a tag instead of a hard-coded version.
+
+## Environment
+
+An **Environment** provides complete isolation between deployment stages. Vellum supports multiple Environments per workspace — typically Development, Staging, and Production.
+
+Each Environment has:
+- Its own **API keys** for secure, scoped access
+- An independent **Release history**
+- Isolated execution logs and monitoring data
+
+You promote Releases between Environments rather than redeploying from scratch, which guarantees the exact same artifact runs in Staging as in Production.
+
+## Test Suite
+
+A **Test Suite** is a collection of test cases used to evaluate a Prompt or Workflow. Each test case defines:
+- **Input values** — the variables passed to the Prompt or Workflow
+- **Expected output** (optional) — a reference answer to compare against
+- **Labels** — metadata used to slice results by category or scenario
+
+Test Suites are the foundation of Vellum's [Evaluation](/product/evaluation/overview) system.
+
+## Metric
+
+A **Metric** is a scoring function that grades the output of a Prompt or Workflow. Metrics can be:
+- **Built-in** — pre-built functions like semantic similarity, regex match, or LLM-as-judge scoring
+- **Custom** — user-defined Python or TypeScript functions you write in Vellum's code editor
+
+Metrics produce numeric scores (e.g. 0–1) that you can aggregate across test cases or track over time in production via [Online Evaluations](/product/evaluation/online-evaluations).
+
+## Document Index
+
+A **Document Index** is a searchable vector store you create in Vellum. Upload documents (PDFs, text files, URLs), and Vellum chunks and embeds them automatically.
+
+Indexes power [RAG pipelines](/product/documents/rag-search): a [Search Node](/product/workflows/nodes) inside a Workflow queries an Index at runtime to retrieve relevant context before passing it to an LLM.
+
+## Variable types
+
+Prompts and Workflows accept typed input variables:
+
+| Type | Description |
+|---|---|
+| `STRING` | Plain text |
+| `NUMBER` | Integer or float |
+| `JSON` | Structured JSON object or array |
+| `CHAT_HISTORY` | A list of chat messages (role + content) |
+| `SEARCH_RESULTS` | Results from a Document Index search |
+| `ERROR` | An error payload passed through conditional branches |
+
+<Info>
+  Variable types are enforced at runtime. Passing the wrong type returns a `400 Bad Request` error with a descriptive message about which input is invalid.
+</Info>
+
+## Execution
+
+An **Execution** is a single run of a Deployment triggered by an API call. Every Execution is logged with:
+- Full input/output payloads
+- Per-step latency and token counts
+- Cost estimate
+- Metric scores (if Online Evaluations are configured)
+
+You can inspect any Execution in the **Deployments → Executions** tab.

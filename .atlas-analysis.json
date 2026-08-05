@@ -1,0 +1,126 @@
+{
+  "projectType": "saas",
+  "projectName": "Vellum",
+  "projectDescription": "Vellum is an end-to-end AI development platform for building, testing, deploying, and monitoring LLM-powered applications — combining a visual workflow builder, prompt management, evaluation tools, and developer APIs in one collaborative workspace.",
+  "theme": "luma",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Product",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "product/introduction",
+              "product/quickstart",
+              "product/key-concepts"
+            ]
+          },
+          {
+            "group": "Prompts",
+            "pages": [
+              "product/prompts/overview",
+              "product/prompts/prompt-engineering",
+              "product/prompts/deployments"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "product/workflows/introduction",
+              "product/workflows/nodes",
+              "product/workflows/deployments",
+              "product/workflows/agent-builder"
+            ]
+          },
+          {
+            "group": "Evaluation",
+            "pages": [
+              "product/evaluation/overview",
+              "product/evaluation/test-suites",
+              "product/evaluation/metrics",
+              "product/evaluation/online-evaluations"
+            ]
+          },
+          {
+            "group": "Document Search",
+            "pages": [
+              "product/documents/overview",
+              "product/documents/indexing",
+              "product/documents/rag-search"
+            ]
+          },
+          {
+            "group": "Monitoring",
+            "pages": [
+              "product/monitoring/observability",
+              "product/monitoring/environments"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developers",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "developers/overview",
+              "developers/authentication",
+              "developers/sdks"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "developers/api/execute-prompt",
+              "developers/api/execute-workflow",
+              "developers/api/documents",
+              "developers/api/deployments"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "developers/guides/version-control",
+              "developers/guides/cicd-integration",
+              "developers/guides/self-hosted"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Visual workflow builder for multi-step LLM applications",
+    "Prompt engineering sandbox with versioning and deployments",
+    "Quantitative evaluation with built-in and custom metrics",
+    "Online evaluations for continuous production monitoring",
+    "Document indexing and RAG (retrieval-augmented generation) pipelines",
+    "Multi-environment deployment lifecycle management",
+    "Python, Node/TypeScript, and Go SDK clients",
+    "Agent Builder for autonomous tool-calling workflows",
+    "Collaborative workspace for technical and non-technical teams",
+    "Execution logs, cost tracking, and latency analytics"
+  ],
+  "publicApiSurface": [
+    "POST /v1/execute-prompt",
+    "POST /v1/execute-prompt-stream",
+    "POST /v1/execute-workflow",
+    "POST /v1/execute-workflow-stream",
+    "GET/POST /v1/deployments",
+    "GET/POST /v1/document-indexes",
+    "POST /v1/upload-document",
+    "POST /v1/search",
+    "GET /v1/workflow-deployments",
+    "POST /v1/actuals",
+    "vellum.execute_prompt()",
+    "vellum.execute_workflow()",
+    "vellum.deployments.list()",
+    "vellum.document_indexes.create()",
+    "vellum.search()"
+  ]
+}

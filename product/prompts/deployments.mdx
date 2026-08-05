@@ -1,0 +1,112 @@
+---
+title: "Deploy and Version Prompts with Vellum Deployments"
+sidebarTitle: "Deployments"
+description: "Learn how to deploy a prompt to a stable API endpoint, manage versioned releases with release tags, and promote releases across environments in Vellum."
+---
+
+Deploying a prompt in Vellum gives your application a stable, callable API endpoint. The deployment name stays constant while you push new releases underneath it — your application code never needs to change when you iterate on a prompt.
+
+## Creating a deployment
+
+<Steps>
+  <Step title="Open your Prompt Sandbox">
+    Navigate to **Prompts** in the sidebar and open the sandbox you want to deploy.
+  </Step>
+  <Step title="Click Deploy">
+    Click the **Deploy** button in the top-right corner of the sandbox editor.
+  </Step>
+  <Step title="Configure the deployment">
+    In the deploy dialog:
+    - **Deployment name** — a URL-safe slug (e.g. `customer-support-classifier`). This is the identifier your code uses.
+    - **Environment** — select one or more environments (Development, Staging, Production).
+    - **Release tag** — optionally pin a semantic version tag (e.g. `v1.0.0`). By default, the `LATEST` tag is used.
+    - **Release notes** — optional description of what changed.
+  </Step>
+  <Step title="Confirm">
+    Click **Deploy**. Within seconds, your prompt is live and callable via the [Execute Prompt API](/developers/api/execute-prompt).
+  </Step>
+</Steps>
+
+## Calling a deployment
+
+Call your deployed prompt using the Vellum SDK or REST API:
+
+<CodeGroup>
+```python Python
+import vellum
+
+client = vellum.Vellum(api_key="YOUR_API_KEY")
+
+result = client.execute_prompt(
+    prompt_deployment_name="customer-support-classifier",
+    inputs=[
+        vellum.PromptDeploymentInputRequest(
+            name="customer_message",
+            value="I can't log into my account.",
+            type="STRING",
+        )
+    ],
+)
+
+print(result.outputs[0].value)
+```
+```typescript TypeScript
+import Vellum from "vellum-ai";
+
+const client = new Vellum({ apiKey: "YOUR_API_KEY" });
+
+const result = await client.executePrompt({
+  promptDeploymentName: "customer-support-classifier",
+  inputs: [
+    {
+      name: "customer_message",
+      value: "I can't log into my account.",
+      type: "STRING",
+    },
+  ],
+});
+
+console.log(result.outputs[0].value);
+```
+</CodeGroup>
+
+## Release tags
+
+Release tags let you target a specific version of a deployment without hard-coding a version number.
+
+| Tag | Meaning |
+|---|---|
+| `LATEST` | Always uses the most recently deployed release (default) |
+| Custom (e.g. `v1.2.3`) | Pins to a specific release — useful for A/B testing or staged rollouts |
+
+To use a release tag in an API call, pass `release_tag` in your request:
+
+```python Python
+result = client.execute_prompt(
+    prompt_deployment_name="customer-support-classifier",
+    release_tag="v1.0.0",
+    inputs=[...],
+)
+```
+
+## Promoting releases across environments
+
+After validating a release in Development or Staging, promote it to Production without redeploying:
+
+1. Go to **Deployments** and open the deployment.
+2. Click the **Releases** tab and find the release you want to promote.
+3. Click **Promote**, select the target environment, and confirm.
+
+Promotion is instant and creates an audit trail entry in the target environment's release history.
+
+## Rolling back
+
+To revert a deployment to a previous release:
+
+1. Open the deployment's **Releases** tab.
+2. Find the stable previous release.
+3. Click **Revert**.
+
+No code changes or re-deployments are needed. The revert takes effect immediately.
+
+<Warning>Reverting a Production deployment affects all live API calls immediately. Always verify in Staging first.</Warning>

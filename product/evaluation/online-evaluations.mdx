@@ -1,0 +1,70 @@
+---
+title: "Online Evaluations: Monitor LLM Quality in Production"
+sidebarTitle: "Online Evaluations"
+description: "Automatically score every production execution against configured metrics for continuous LLM quality monitoring across all your Vellum Deployments."
+---
+
+Offline test suites tell you whether a change is safe to ship. Online evaluations tell you whether what you shipped is actually working. Once you configure online evaluations on a Deployment, Vellum automatically scores every execution in production using the metrics you've chosen — giving you a continuous, quantitative view of real-world quality without any manual effort.
+
+## How online evaluations work
+
+Every time a request hits a Prompt or Workflow Deployment that has online evaluations configured, Vellum:
+
+1. Executes the Prompt or Workflow normally and returns the response to your application.
+2. Asynchronously passes the inputs and output to each configured Metric.
+3. Stores the resulting scores alongside the execution record.
+
+Scores appear in the **Executions** tab of your Deployment. You can inspect scores at the individual execution level or look across all recent executions to spot trends, outliers, and gradual quality drift over time.
+
+<Note>
+  Scoring happens asynchronously after the response is returned, so online evaluations add zero latency to your production requests.
+</Note>
+
+## Setting up online evaluations
+
+<Steps>
+  <Step title="Deploy your Prompt or Workflow">
+    Make sure you have an active Deployment. Online evaluations attach to a Deployment, not to a draft or unpublished version. If you haven't deployed yet, see the [Prompts](/product/prompts) or [Workflows](/product/workflows) documentation to create a Deployment first.
+  </Step>
+  <Step title="Open the Deployment's Metrics tab">
+    Navigate to your Deployment in the Vellum sidebar, then click the **Metrics** tab.
+  </Step>
+  <Step title="Add one or more Metrics">
+    Click **Add Metric** and select from the built-in metric library or your saved custom metrics. Configure any required parameters — for example, the rubric text for an LLM-as-Judge metric or the expected substring for a Contains metric. Repeat for each metric you want to apply.
+  </Step>
+  <Step title="Save to activate">
+    Click **Save**. Every future execution of this Deployment will be automatically scored by the metrics you configured.
+  </Step>
+</Steps>
+
+<Warning>
+  Adding or modifying online metrics creates a **new Release** of your Deployment. If you use Release Tags (for example, `production` or `stable`) to control which Release serves traffic, you must update your tags to point to the new Release after saving — otherwise the tags will continue routing to the previous Release, which does not have the updated metrics configuration.
+</Warning>
+
+## Viewing evaluation results
+
+To inspect online evaluation scores:
+
+1. Open the **Executions** tab of your Deployment.
+2. Each row in the executions table shows the timestamp, input summary, output preview, and the aggregate score from your configured metrics.
+3. Click an **execution ID** to open the detail view. Here you'll find:
+   - The full input and output for that request.
+   - A score breakdown showing the value each individual metric assigned.
+   - Any metadata your application passed in with the request (useful for filtering by user segment, environment, or feature flag).
+
+<Tip>
+  Use the date range filter and column sorting in the Executions tab to quickly surface the lowest-scoring executions — these are the most valuable candidates to add to a Test Suite for offline investigation.
+</Tip>
+
+## Choosing the right metrics
+
+Not every metric makes sense for every use case. Here's a practical starting point:
+
+- **Start with LLM-as-Judge** for qualitative checks. Write a rubric that describes what a good response looks like for your application (helpful, accurate, on-brand, appropriately concise, etc.). This gives you a broad quality signal with minimal setup.
+- **Add domain-specific metrics** as you learn where failures occur. If you find that responses are often the wrong length, add a custom word-count metric. If a required phrase must always appear, add a Contains metric.
+- **Use Ragas metrics** if your Deployment is a RAG pipeline. Ragas Answer Relevancy and Ragas Faithfulness are purpose-built for retrieval-augmented workflows and catch failure modes that general metrics miss.
+- **Avoid metric overload.** Running too many metrics on every execution increases evaluation latency and makes results harder to reason about. Start with one or two, establish baselines, and add more as your evaluation practice matures.
+
+<Note>
+  You can reuse the same metric definitions across your online Deployment configuration and your offline Test Suite runs. Consistent metric definitions mean your test suite scores are directly comparable to your production scores.
+</Note>

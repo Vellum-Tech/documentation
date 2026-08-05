@@ -1,0 +1,93 @@
+---
+title: "Create and Run Test Suites in Vellum"
+sidebarTitle: "Test Suites"
+description: "Build test suites, add test cases from multiple sources, and run evaluations to catch regressions before deploying your prompts and workflows."
+---
+
+A Test Suite is a curated collection of input/output pairs that represent the range of scenarios your Prompt or Workflow needs to handle correctly. By running evaluations against a Test Suite, you get a repeatable, quantitative measure of quality — so you know whether a change you made actually improved things, made them worse, or had no effect at all.
+
+## Creating a Test Suite
+
+<Steps>
+  <Step title="Open the Evaluations section">
+    In the Vellum sidebar, navigate to **Evaluations** and click **New Test Suite**.
+  </Step>
+  <Step title="Name and describe your suite">
+    Give your Test Suite a descriptive name (for example, *Customer Support — Edge Cases*) and an optional description so teammates understand its purpose.
+  </Step>
+  <Step title="Add test cases">
+    Add at least one test case to get started. You can add more later. See [Adding test cases](#adding-test-cases) below for all the ways to populate your suite.
+  </Step>
+  <Step title="Assign to a Prompt or Workflow">
+    Link the Test Suite to the Prompt Deployment or Workflow Deployment you want to evaluate. This tells Vellum which execution environment to use when running the suite.
+  </Step>
+</Steps>
+
+## Adding test cases
+
+You have three ways to populate a Test Suite with test cases:
+
+### Manual entry
+
+Click **Add Test Case** inside your Test Suite to open the case editor. Enter the input values (matching the variables defined in your Prompt or Workflow) and, optionally, the expected output. Expected outputs are required for metrics like Exact Match and Semantic Similarity, but optional for metrics like LLM-as-Judge that evaluate the output on its own merits.
+
+### CSV upload
+
+If you already have a dataset in a spreadsheet, export it as a CSV and upload it directly. Map each column to an input variable or to the expected output field. Vellum imports all rows as individual test cases.
+
+### Seed from execution history
+
+<Tip>
+  Seeding from production traffic is one of the fastest ways to build a high-quality test suite. Real inputs from real users surface edge cases you'd never think to write by hand.
+</Tip>
+
+Open the **Executions** tab of your Prompt or Workflow Deployment, select the executions you want to use, and click **Add to Test Suite**. Vellum copies the inputs (and, if available, any human-reviewed outputs) into your chosen suite.
+
+## Running an evaluation
+
+<Steps>
+  <Step title="Open your Test Suite">
+    Navigate to **Evaluations**, select your Test Suite, and click **Run Evaluation**.
+  </Step>
+  <Step title="Select the version to test">
+    Choose the Prompt or Workflow version you want to evaluate. You can select any labeled version or the latest unpublished draft.
+  </Step>
+  <Step title="Choose your metrics">
+    Select one or more metrics to score the outputs. The metrics you pick here apply to every test case in this run. See [Metrics](/product/evaluation/metrics) for a full list of available options.
+  </Step>
+  <Step title="Start the run">
+    Click **Run**. Vellum executes every test case against the selected version and scores each output with your chosen metrics. You'll see a progress indicator as cases complete and results populate in real time.
+  </Step>
+</Steps>
+
+<Note>
+  Long-running Workflow evaluations may take several minutes to complete depending on the number of test cases and the complexity of your Workflow. You can navigate away and return — the run continues in the background.
+</Note>
+
+## Interpreting results
+
+When a run finishes, the results view gives you several lenses for understanding quality:
+
+- **Overall score** — The aggregate score across all test cases and metrics for this run, shown at the top of the results page.
+- **Pass/fail rate** — For binary metrics (Exact Match, Contains, Regex Match), the percentage of test cases that passed.
+- **Score distribution** — A histogram showing how scores are spread across the 0–1 range, useful for spotting a bimodal distribution that might indicate a systematic failure mode.
+- **Per-case drill-down** — Click any test case row to see the full input, the generated output, the expected output (if set), and the score each metric assigned. This is where you diagnose *why* a case failed.
+
+## Comparing versions
+
+To compare two versions side by side:
+
+<Steps>
+  <Step title="Run evaluations for both versions">
+    Run a separate evaluation for each version you want to compare, using the same Test Suite and the same set of metrics.
+  </Step>
+  <Step title="Open the comparison view">
+    From the Test Suite page, select two completed runs and click **Compare**. Vellum displays both sets of results in a side-by-side table.
+  </Step>
+  <Step title="Review per-case deltas">
+    Each test case row shows the score from both runs with a delta indicator (▲ improved / ▼ regressed). Sort by delta to surface the cases where the new version changed behavior most significantly.
+  </Step>
+  <Step title="Promote or iterate">
+    If the new version scores higher overall and no critical cases regressed, promote it to production. If regressions exist, use the per-case detail to understand what changed and iterate before deploying.
+  </Step>
+</Steps>

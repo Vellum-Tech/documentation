@@ -1,0 +1,308 @@
+---
+title: "Deployments API: List and Retrieve Prompt and Workflow Deployments"
+sidebarTitle: "Deployments API"
+description: "List, retrieve, and manage your Vellum prompt and workflow deployments programmatically, and send feedback via the Submit Actuals endpoint."
+---
+
+The Deployments API gives you programmatic access to every prompt and workflow deployment in your Vellum workspace. You can paginate through deployments, retrieve individual deployment details including their declared input variables, and submit ground-truth feedback on past executions to enrich your evaluation data. All endpoints use the base URL `https://api.vellum.ai` and require the `X-API-Key` header.
+
+---
+
+## List Prompt Deployments
+
+```
+GET https://api.vellum.ai/v1/deployments
+```
+
+Returns a paginated list of all prompt deployments in your workspace. Use the query parameters below to page through results, sort them, or filter by status.
+
+### Query Parameters
+
+<ParamField query="limit" type="number">
+  The maximum number of deployments to return per page. Defaults to `10`.
+</ParamField>
+
+<ParamField query="offset" type="number">
+  The number of deployments to skip before returning results. Use in combination with `limit` to paginate through large result sets. Defaults to `0`.
+</ParamField>
+
+<ParamField query="ordering" type="string">
+  The field to sort results by. Prefix the field name with `-` for descending order. For example, `last_deployed_on` sorts ascending and `-last_deployed_on` sorts descending.
+</ParamField>
+
+<ParamField query="status" type="string">
+  Filter deployments by status. Accepted values: `ACTIVE`, `ARCHIVED`.
+</ParamField>
+
+### Response Fields
+
+<ResponseField name="count" type="number">
+  The total number of deployments matching your query, regardless of pagination.
+</ResponseField>
+
+<ResponseField name="results" type="array">
+  An array of deployment objects. Each object contains:
+
+  | Field | Type | Description |
+  |---|---|---|
+  | `id` | string | The unique UUID of the deployment. |
+  | `name` | string | The unique slug name of the deployment. |
+  | `label` | string | The human-readable display label. |
+  | `status` | string | Either `ACTIVE` or `ARCHIVED`. |
+  | `last_deployed_on` | string | ISO 8601 timestamp of the most recent deployment. |
+  | `input_variables` | array | Array of input variable objects declared in the prompt template, each with `name` and `type`. |
+</ResponseField>
+
+### Example
+
+<CodeGroup>
+
+```python Python SDK
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+response = client.deployments.list(
+    limit=20,
+    offset=0,
+    ordering="-last_deployed_on",
+    status="ACTIVE",
+)
+
+print(f"Total deployments: {response.count}")
+for deployment in response.results:
+    print(deployment.name, deployment.last_deployed_on)
+```
+
+```bash cURL
+curl "https://api.vellum.ai/v1/deployments?limit=20&offset=0&ordering=-last_deployed_on&status=ACTIVE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+</CodeGroup>
+
+**Example Response**
+
+```json
+{
+  "count": 5,
+  "results": [
+    {
+      "id": "dep_01hxyz1234abcdef",
+      "name": "customer-support-responder",
+      "label": "Customer Support Responder",
+      "status": "ACTIVE",
+      "last_deployed_on": "2024-10-15T14:32:00Z",
+      "input_variables": [
+        {"name": "user_message", "type": "STRING"},
+        {"name": "conversation_history", "type": "CHAT_HISTORY"}
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## Retrieve a Prompt Deployment
+
+```
+GET https://api.vellum.ai/v1/deployments/{id}
+```
+
+Returns the full details of a single prompt deployment identified by its UUID.
+
+### Path Parameter
+
+<ParamField path="id" type="string" required>
+  The UUID of the prompt deployment to retrieve.
+</ParamField>
+
+### Example
+
+<CodeGroup>
+
+```python Python SDK
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+deployment = client.deployments.retrieve(id="dep_abc123")
+
+print(deployment.name)
+print(deployment.input_variables)
+```
+
+```bash cURL
+curl "https://api.vellum.ai/v1/deployments/dep_abc123" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+</CodeGroup>
+
+**Example Response**
+
+```json
+{
+  "id": "dep_abc123",
+  "name": "customer-support-responder",
+  "label": "Customer Support Responder",
+  "status": "ACTIVE",
+  "last_deployed_on": "2024-10-15T14:32:00Z",
+  "input_variables": [
+    {"name": "user_message", "type": "STRING"},
+    {"name": "conversation_history", "type": "CHAT_HISTORY"}
+  ]
+}
+```
+
+---
+
+## List Workflow Deployments
+
+```
+GET https://api.vellum.ai/v1/workflow-deployments
+```
+
+Returns a paginated list of all workflow deployments in your workspace. The response structure and query parameters mirror those of the prompt deployments list endpoint — you can use `limit`, `offset`, `ordering`, and `status` in the same way.
+
+### Example
+
+<CodeGroup>
+
+```python Python SDK
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+response = client.workflow_deployments.list(
+    limit=20,
+    status="ACTIVE",
+)
+
+for workflow in response.results:
+    print(workflow.name, workflow.id)
+```
+
+```bash cURL
+curl "https://api.vellum.ai/v1/workflow-deployments?status=ACTIVE" \
+  -H "X-API-Key: YOUR_API_KEY"
+```
+
+</CodeGroup>
+
+**Example Response**
+
+```json
+{
+  "count": 2,
+  "results": [
+    {
+      "id": "wfd_01hxyz9999zzzzzz",
+      "name": "document-qa-pipeline",
+      "label": "Document QA Pipeline",
+      "status": "ACTIVE",
+      "last_deployed_on": "2024-11-01T09:15:00Z"
+    }
+  ]
+}
+```
+
+---
+
+## Submit Actuals (Feedback)
+
+```
+POST https://api.vellum.ai/v1/submit-completion-actuals
+```
+
+Send user feedback or ground-truth labels back to Vellum for past prompt executions. Actuals you submit appear in your execution logs in the Vellum dashboard and feed into evaluation datasets — giving you a closed-loop way to track model quality over time. You reference each past execution by the `execution_id` returned from `/v1/execute-prompt`.
+
+Common use cases include:
+- Recording a thumbs-up / thumbs-down signal from your end users.
+- Attaching a numeric quality score from an automated evaluation pipeline.
+- Storing a human-annotated correction to the LLM's output alongside the original execution.
+
+### Request Parameters
+
+<ParamField body="deployment_name" type="string" required>
+  The name of the prompt deployment the actuals belong to.
+</ParamField>
+
+<ParamField body="actuals" type="array" required>
+  An array of actual objects. Each object may contain:
+
+  | Field | Type | Description |
+  |---|---|---|
+  | `id` | string | The `execution_id` of the prompt execution this actual relates to. |
+  | `quality` | number | A quality score between `0.0` (poor) and `1.0` (perfect). |
+  | `text` | string | Optional. The corrected or expected output text for this execution. |
+</ParamField>
+
+### Example
+
+<CodeGroup>
+
+```python Python SDK
+from vellum.client import Vellum
+
+client = Vellum(api_key="YOUR_API_KEY")
+
+client.submit_completion_actuals(
+    deployment_name="customer-support-responder",
+    actuals=[
+        {
+            "id": "exec_01hxyz1234abcdef",
+            "quality": 0.9,
+        },
+        {
+            "id": "exec_01hxyz5678ghijkl",
+            "quality": 0.3,
+            "text": "I'm sorry to hear that. Please contact billing at billing@example.com.",
+        },
+    ],
+)
+```
+
+```bash cURL
+curl -X POST https://api.vellum.ai/v1/submit-completion-actuals \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "deployment_name": "customer-support-responder",
+    "actuals": [
+      {
+        "id": "exec_01hxyz1234abcdef",
+        "quality": 0.9
+      },
+      {
+        "id": "exec_01hxyz5678ghijkl",
+        "quality": 0.3,
+        "text": "I'\''m sorry to hear that. Please contact billing at billing@example.com."
+      }
+    ]
+  }'
+```
+
+</CodeGroup>
+
+**Example Response**
+
+```json
+{
+  "accepted": 2,
+  "rejected": 0
+}
+```
+
+---
+
+## Error Codes
+
+| HTTP Status | Code | Description |
+|---|---|---|
+| `400` | Bad Request | A required parameter is missing or a field value is invalid. |
+| `401` | Unauthorized | The `X-API-Key` header is missing or invalid. |
+| `404` | Not Found | The specified deployment or execution ID does not exist. |
+| `429` | Too Many Requests | You have exceeded the rate limit. Retry after the duration in the `Retry-After` header. |
+| `500` | Internal Server Error | An unexpected error occurred on the Vellum side. Contact support if the issue persists. |

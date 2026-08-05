@@ -1,0 +1,71 @@
+---
+title: "Evaluation Metrics in Vellum: Built-in and Custom Scoring"
+sidebarTitle: "Metrics"
+description: "Use built-in metrics like LLM-as-judge, regex, and semantic similarity — or write custom Python/TypeScript scoring functions — to grade LLM outputs."
+---
+
+Metrics are the scoring functions that turn a raw LLM output into a number you can track and compare. Vellum ships with a library of built-in metrics covering the most common evaluation needs, and you can write custom metrics in Python or TypeScript when your use case calls for domain-specific scoring logic.
+
+<Note>
+  All metrics produce a numeric score in the range **0.0–1.0**. Binary metrics (Exact Match, Contains, Regex Match) return either **0** (fail) or **1** (pass). Continuous metrics return a value anywhere in between.
+</Note>
+
+## Built-in metrics
+
+| Metric Name | Description |
+|---|---|
+| **Exact Match** | Returns 1 if the output matches the expected value exactly (case-sensitive), 0 otherwise. Best for structured outputs where any deviation is incorrect. |
+| **Contains** | Returns 1 if the output contains a specified substring, 0 otherwise. Useful for checking that a required phrase, keyword, or format marker is present. |
+| **Regex Match** | Returns 1 if the output matches a regular expression pattern you define, 0 otherwise. Use this for flexible pattern matching — for example, validating that a response includes a date in a specific format. |
+| **Semantic Similarity** | Computes the cosine similarity between the embeddings of the output and the expected value. Returns a continuous score from 0.0 to 1.0. Useful when exact wording doesn't matter but meaning should be close. |
+| **LLM-as-Judge** | Uses an LLM to evaluate the output against a rubric you define in natural language. Returns a normalized score. Ideal for open-ended outputs where quality is hard to express as a pattern or expected string. |
+| **Ragas Answer Relevancy** | Measures how relevant the generated answer is to the input question using the [Ragas](https://docs.ragas.io) framework. Designed for RAG (retrieval-augmented generation) pipelines. |
+| **Ragas Faithfulness** | Measures the factual consistency of the generated answer with the retrieved context passages using the Ragas framework. Returns a low score if the answer contains claims not supported by the context. |
+
+## Custom metrics
+
+When none of the built-in metrics fit your needs, you can write a custom scoring function directly in Vellum's code editor using Python or TypeScript. Custom metrics receive the generated output and any other variables you expose (such as the expected output or the original input) and must return a numeric score between 0.0 and 1.0.
+
+### Example: Python custom metric
+
+The following example scores an output based on whether it stays within a target word count range:
+
+```python
+def score(output: str, expected: str, inputs: dict) -> float:
+    """
+    Returns 1.0 if the output is between 50 and 150 words,
+    scales linearly down to 0.0 outside that range.
+    """
+    word_count = len(output.split())
+    target_min = 50
+    target_max = 150
+
+    if target_min <= word_count <= target_max:
+        return 1.0
+
+    if word_count < target_min:
+        # Score decreases as word count drops below the minimum
+        return max(0.0, word_count / target_min)
+
+    # Score decreases as word count exceeds the maximum
+    overage = word_count - target_max
+    return max(0.0, 1.0 - (overage / target_max))
+```
+
+The function signature must accept `output` (the generated text), `expected` (the expected output, may be empty), and `inputs` (a dict of the original prompt/workflow input variables). It must return a `float`.
+
+## Using metrics in evaluations
+
+You attach metrics to a Test Suite run at evaluation time — not to the Test Suite itself — so you can mix and match metrics across different runs of the same suite.
+
+When you click **Run Evaluation** on a Test Suite, the run configuration dialog lets you:
+
+1. Select one or more metrics from the built-in library or your saved custom metrics.
+2. Configure any metric-specific parameters (for example, the rubric text for LLM-as-Judge, or the regex pattern for Regex Match).
+3. Start the run. Vellum applies every selected metric to every test case output and records the scores.
+
+You can add multiple metrics to a single run to get a multi-dimensional view of quality — for example, pairing Semantic Similarity with LLM-as-Judge to catch both meaning drift and qualitative degradation at the same time.
+
+## Using metrics for online evaluation
+
+The same metrics you use in offline Test Suite runs are available for online evaluations, which score every production execution automatically. See [Online Evaluations](/product/evaluation/online-evaluations) for instructions on attaching metrics to a Deployment.

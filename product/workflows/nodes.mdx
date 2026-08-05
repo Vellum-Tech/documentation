@@ -1,0 +1,104 @@
+---
+title: "Vellum Workflow Nodes: Complete Node Type Reference"
+sidebarTitle: "Nodes"
+description: "A complete reference for every node type available in Vellum Workflows — from LLM calls and code execution to branching and agent loops."
+---
+
+Nodes are the building blocks of every Vellum Workflow. Each node performs one discrete operation, exposes typed outputs, and connects to other nodes via edges. This page catalogues every available node type, explains how to connect them, and covers the special role of Final Output nodes in API responses.
+
+---
+
+## Node Types
+
+| Node | Description |
+|---|---|
+| **Agent Node** | Streamlines LLM tool-calling with automatic schema handling and built-in loop logic. The agent iterates — calling tools, receiving results, and deciding next steps — until it reaches a stopping condition or the maximum iteration limit. See [Agent Builder](/product/workflows/agent-builder). |
+| **Prompt Node** | Invokes an LLM using an inline prompt template. Supports all major model providers, variable interpolation, and structured output modes. Outputs the model's response as text or a parsed object. |
+| **Prompt Deployment Node** | Executes a [deployed Prompt](/product/prompts) that you've already versioned and released in Vellum. Useful when you want to reuse a centrally managed prompt without copying its template into the Workflow. |
+| **Templating Node** | Applies a [Jinja2](https://jinja.palletsprojects.com/) template to transform data between nodes — string formatting, list manipulation, conditional rendering, and more. Runs without any LLM call or network request. |
+| **Search Node** | Queries a Vellum [Document Index](/product/documents/overview) and returns ranked chunks. The foundation of Retrieval-Augmented Generation (RAG) pipelines. Configure the number of results, similarity threshold, and metadata filters. |
+| **API Node** | Makes an HTTP request to any external endpoint — REST, webhooks, internal microservices, and so on. Supports GET, POST, PUT, PATCH, and DELETE. Set headers, query parameters, and a request body using outputs from upstream nodes. |
+| **Code Execution Node** | Runs a custom Python or TypeScript function inline. Write arbitrary logic, call libraries, parse data, or compute values. The node's return value becomes its output for downstream nodes. |
+| **Subworkflow Node** | Embeds another Workflow as a reusable step inside the current one. Keeps complex logic encapsulated, makes graphs easier to read, and lets multiple Workflows share the same sub-logic without duplication. |
+| **Map Node** | Iterates over an input array and executes a sub-workflow for each element — similar to `Array.map()`. Runs iterations concurrently by default. The output is an array of results in the same order as the input. |
+| **Guardrail Node** | Runs an inline evaluation using a pre-defined Vellum [Metric](/product/evaluation/metrics). Use it to score or gate LLM outputs — for example, checking for hallucinations, toxicity, or format compliance — before passing them downstream. |
+| **Conditional Node** | Branches the execution path based on a boolean or multi-way condition. Each branch is its own edge; only the matching branch executes. Supports comparisons, regex matching, and referencing outputs from any upstream node. |
+| **Merge Node** | Waits for one or multiple incoming branches to complete before continuing. Use it to re-join branches created by a Conditional node, or to synchronise parallel execution paths. |
+| **Final Output Node** | Marks a value as a named output of the Workflow. The value is returned in the API response and displayed as a result in the sandbox. A Workflow can have multiple Final Output nodes with different names and types. |
+| **Error Node** | Immediately stops Workflow execution and raises a structured error with a message you define. Useful for explicit failure paths — for example, when a required input is missing or a validation check fails. |
+| **Note Node** | Displays a text label directly on the canvas to annotate your graph. Note nodes are ignored during execution and have no inputs or outputs. |
+
+---
+
+## Node Adornments
+
+Adornments augment an existing node with additional behaviour without requiring you to restructure your graph. You apply them from the node's configuration panel.
+
+### Retry Adornment
+
+Automatically retries a node if it raises an error. Configure the number of attempts and the delay between them. Useful for transient failures from external APIs or LLM providers.
+
+- **Max attempts** — Total number of times the node will run before propagating the error (including the first attempt).
+- **Delay** — Fixed pause (in milliseconds) between retry attempts.
+
+### Try Adornment
+
+Catches any error the node raises and routes execution to a designated error-handling branch instead of stopping the whole Workflow. The adornment exposes two output ports: **success** and **error**, letting you handle the happy path and failure path independently.
+
+<Note>
+  You can combine the Retry and Try adornments on the same node. Vellum will retry first; if all attempts are exhausted, the Try adornment's error port fires.
+</Note>
+
+---
+
+## Connecting Nodes
+
+Edges carry data from one node's output port to another node's input port. When you configure a node's inputs, you can reference any upstream node's output using the variable picker in the configuration panel, or by typing the expression directly:
+
+```
+{{ node.MyPromptNode.text }}
+{{ node.MySearchNode.results }}
+{{ node.MyCodeNode.output }}
+```
+
+A few rules to keep in mind:
+
+- **Typed outputs** — Each output port has a declared type (string, number, array, JSON object, etc.). Vellum validates types at build time and highlights mismatches in the canvas.
+- **Multiple consumers** — A single output port can feed into as many downstream nodes as you like. Draw multiple edges from the same port.
+- **Execution order** — Nodes execute as soon as all their incoming edges have data. Nodes with no incoming edges start immediately when the Workflow runs.
+- **Parallel paths** — If two nodes share no data dependency, Vellum runs them concurrently to minimise latency.
+
+<Tip>
+  Use a **Templating Node** as a lightweight adapter when you need to reshape or combine the outputs of several nodes before passing them to the next step.
+</Tip>
+
+---
+
+## Final Output Nodes
+
+Final Output nodes serve a special role: they define the public interface of your Workflow.
+
+- **Named outputs** — Each Final Output node has a unique name (e.g., `answer`, `summary`, `citations`). These names become the keys in the API response's `outputs` array.
+- **Typed values** — Declare the output type (string, number, JSON, image, etc.) to ensure downstream consumers receive a predictable shape.
+- **Multiple outputs** — A single Workflow can expose several Final Output nodes. All of them are evaluated and returned in parallel.
+- **Streaming** — When you call a deployed Workflow with the streaming endpoint (`execute_workflow_stream`), string-typed Final Output nodes stream their values token by token as the upstream LLM generates them.
+
+<Note>
+  A Workflow without at least one Final Output node will deploy successfully but its API response will have an empty `outputs` array. Always wire at least one Final Output node before deploying.
+</Note>
+
+---
+
+## Further Reading
+
+<CardGroup cols={3}>
+  <Card title="Agent Builder" icon="robot" href="/product/workflows/agent-builder">
+    Learn how the Agent Node's tool-calling loop works and how to configure tools.
+  </Card>
+  <Card title="Deployments" icon="rocket" href="/product/workflows/deployments">
+    Deploy your Workflow and call it via SDK or REST API.
+  </Card>
+  <Card title="Introduction" icon="map" href="/product/workflows/introduction">
+    Back to the Workflow introduction and core concepts.
+  </Card>
+</CardGroup>

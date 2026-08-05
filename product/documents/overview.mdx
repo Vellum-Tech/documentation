@@ -1,0 +1,66 @@
+---
+title: "Document Search in Vellum: Semantic Search and RAG Pipelines"
+sidebarTitle: "Overview"
+description: "Upload documents to Vellum's vector store, configure chunking and embeddings, and query for relevant context to power RAG pipelines with any LLM workflow."
+---
+
+Vellum's Document Search system lets you build production-grade Retrieval-Augmented Generation (RAG) pipelines without managing your own vector database. You upload documents, Vellum handles chunking and embedding, and you retrieve the most relevant content at query time — all within the same platform where you build and deploy your prompts and workflows. This page explains what Document Indexes are, what you can build with them, and how search works under the hood.
+
+## What is a Document Index?
+
+A **Document Index** is a searchable vector store managed by Vellum. When you add documents to an index, Vellum automatically:
+
+1. **Splits** each document into chunks according to your chosen chunking strategy.
+2. **Embeds** each chunk using the embedding model you configure for the index.
+3. **Stores** the resulting vectors so they can be queried at low latency.
+
+At query time, your application sends a natural-language query string to Vellum. Vellum embeds the query using the same model and returns the chunks whose vectors are most similar — giving you the most contextually relevant passages from your document library.
+
+You can create multiple Document Indexes to keep different knowledge domains separate (for example, a product documentation index and a legal contracts index), and reference them independently from your Workflows or via the API.
+
+<Note>
+  Document Indexes are scoped to a Vellum environment. Make sure you upload documents and run searches against the same environment (Development, Staging, or Production) to get consistent results.
+</Note>
+
+## Use Cases
+
+Document Search is a general-purpose retrieval layer that fits a wide range of AI application patterns:
+
+- **RAG-powered chatbots** — Ground conversational responses in your own knowledge base to reduce hallucinations and keep answers up to date.
+- **Knowledge base Q&A** — Let users ask free-form questions and surface precise answers from internal wikis, runbooks, or help centers.
+- **Document summarization pipelines** — Retrieve the most relevant sections of a large document set before passing them to a summarization prompt, keeping token usage under control.
+- **Customer support automation** — Match incoming support tickets to the most relevant troubleshooting guides or policy documents and generate accurate, grounded replies.
+
+## Supported Document Formats
+
+You can add content to a Document Index in the following formats:
+
+| Format | Notes |
+|---|---|
+| **PDF** | Text is extracted from all pages; scanned PDFs without embedded text are not currently supported. |
+| **DOCX** | Microsoft Word documents; formatting is stripped and plain text is extracted. |
+| **TXT** | Plain text files; uploaded as-is. |
+| **Markdown** | `.md` files; Markdown syntax is preserved during chunking. |
+| **HTML** | HTML files or raw HTML strings; tags are stripped before chunking. |
+| **Plain URLs** | Provide a public URL and Vellum will fetch and index the page content. |
+
+## How Search Works
+
+Vellum uses **semantic similarity search** to match your query against indexed chunks. Rather than looking for exact keyword matches, the search compares the meaning of your query to the meaning of each chunk using the cosine similarity of their embedding vectors.
+
+Each search request returns a ranked list of chunks, from most to least relevant, each accompanied by:
+
+- The **chunk text** — the raw passage Vellum extracted and indexed.
+- The **document label** — a human-readable identifier you assigned when uploading.
+- A **relevance score** — a normalized similarity value you can use to filter out low-confidence results.
+
+You can also apply **keyword filters** on top of semantic search to narrow results to chunks that contain specific terms — useful when users are searching for a known product name, error code, or identifier.
+
+<CardGroup cols={2}>
+  <Card title="Indexing" icon="database" href="/product/documents/indexing">
+    Learn how to create a Document Index, upload files, configure chunking strategies, and manage your documents.
+  </Card>
+  <Card title="RAG Search" icon="magnifying-glass" href="/product/documents/rag-search">
+    Learn how to query a Document Index from a Workflow's Search Node or directly via the Search API.
+  </Card>
+</CardGroup>

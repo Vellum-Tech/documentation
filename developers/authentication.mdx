@@ -1,0 +1,117 @@
+---
+title: "Authenticate with the Vellum API Using API Keys"
+sidebarTitle: "Authentication"
+description: "Get a Vellum API key, pass it in the X-API-Key header, and scope keys to specific environments like Dev, Staging, or Production."
+---
+
+Vellum uses **API keys** to authenticate every request. Each key is tied to a specific environment (Development, Staging, or Production), so the key you use determines which releases and data your calls can access. This page walks you through generating a key, using it in requests, rotating it safely, and following security best practices.
+
+<Warning>
+  Never commit API keys to source control. If a key is accidentally exposed, rotate it immediately by following the [Key rotation](#key-rotation) steps below.
+</Warning>
+
+## Getting an API key
+
+<Steps>
+  <Step title="Sign in to Vellum">
+    Go to [app.vellum.ai](https://app.vellum.ai) and sign in with your account credentials.
+  </Step>
+  <Step title="Open API Keys settings">
+    Click your organization name in the lower-left corner, then navigate to **Settings → API Keys**.
+  </Step>
+  <Step title="Create a new key">
+    Click **New API Key**. Give the key a descriptive name (for example, `backend-prod` or `ci-staging`) and select the **environment** it should be scoped to: **Development**, **Staging**, or **Production**.
+  </Step>
+  <Step title="Copy the key">
+    After the key is created, copy it immediately. **The full key value is shown only once.** Vellum stores only a hashed version and cannot display it again. If you lose it, you'll need to create a new one.
+  </Step>
+</Steps>
+
+## Using your API key
+
+Pass your API key in the **`X-API-Key`** request header on every call. Vellum does not use `Authorization: Bearer` tokens.
+
+<CodeGroup>
+```bash curl
+curl -X POST https://api.vellum.ai/v1/execute-prompt \
+  -H "X-API-Key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "deployment_name": "my-prompt-deployment",
+    "inputs": [
+      { "name": "user_query", "type": "STRING", "value": "Hello!" }
+    ]
+  }'
+```
+
+```python Python SDK
+import vellum
+
+client = vellum.Vellum(api_key="YOUR_API_KEY")
+
+result = client.execute_prompt(
+    deployment_name="my-prompt-deployment",
+    inputs=[
+        vellum.PromptRequestStringInput(
+            name="user_query",
+            value="Hello!",
+        )
+    ],
+)
+print(result.outputs)
+```
+
+```typescript TypeScript SDK
+import Vellum from "vellum-ai";
+
+const client = new Vellum({ apiKey: "YOUR_API_KEY" });
+
+const result = await client.executePrompt({
+  deploymentName: "my-prompt-deployment",
+  inputs: [
+    { name: "user_query", type: "STRING", value: "Hello!" },
+  ],
+});
+
+console.log(result.outputs);
+```
+</CodeGroup>
+
+<Note>
+  In practice, you should never hard-code your key in source code. Pass it through an environment variable such as `VELLUM_API_KEY` and read it at runtime. See [Security best practices](#security-best-practices) below.
+</Note>
+
+## Environment-scoped keys
+
+Every API key in Vellum is bound to exactly one environment:
+
+| Environment | Typical use |
+|-------------|-------------|
+| **Development** | Local development and experimentation |
+| **Staging** | Pre-production integration testing |
+| **Production** | Live, user-facing traffic |
+
+When you make a request with a **Development** key, Vellum routes that call to the active release for the Development environment on that deployment. Using the wrong key in the wrong environment is the most common cause of unexpected model outputs or "deployment not found" errors.
+
+<Note>
+  You can create multiple API keys per environment — for example, one per service or CI job — all sharing the same environment scope.
+</Note>
+
+## Key rotation
+
+You should rotate API keys periodically, and immediately if you suspect a key has been compromised.
+
+1. Go to **Settings → API Keys** in [app.vellum.ai](https://app.vellum.ai).
+2. Create a **New API Key** with the same name and environment as the key you're replacing.
+3. Update all services and environment variables to use the new key.
+4. Once you've confirmed the new key is working, click **Delete** on the old key.
+
+Vellum does not have a built-in key expiry schedule, so rotation cadence is up to your organization's security policy.
+
+## Security best practices
+
+- **Use environment variables.** Read your API key from `os.environ["VELLUM_API_KEY"]` (Python) or `process.env.VELLUM_API_KEY` (Node.js) rather than hard-coding values.
+- **Use separate keys per environment.** Never reuse a Production key for local development or CI pipelines.
+- **Use separate keys per service.** Issuing a unique key to each backend service makes it easier to audit usage and rotate one key without affecting others.
+- **Rotate regularly.** Even if a key hasn't been exposed, rotating every 90 days reduces the blast radius of an undetected leak.
+- **Restrict access.** Only share keys with team members and systems that genuinely need API access.

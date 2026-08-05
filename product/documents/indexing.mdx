@@ -1,0 +1,101 @@
+---
+title: "Index Documents in Vellum for Semantic Search"
+sidebarTitle: "Indexing"
+description: "Create a Vellum Document Index, upload files via UI or SDK, configure chunking strategies, and manage your indexed documents for semantic search."
+---
+
+Before you can run semantic search or build RAG pipelines in Vellum, you need a **Document Index** — a configured vector store that holds your embedded document chunks. This page walks you through creating an index, uploading content, choosing a chunking strategy, and keeping your index up to date.
+
+## Creating a Document Index
+
+<Steps>
+  <Step title="Open Document Indexes">
+    In the Vellum UI, navigate to **Document Indexes** in the left sidebar and click **New Index**.
+  </Step>
+  <Step title="Name your index and choose an embedding model">
+    Give your index a descriptive name (for example, `product-docs` or `support-articles`). Then select the embedding model Vellum will use to vectorize your content. See [Embedding Models](#embedding-models) below for the available options.
+  </Step>
+  <Step title="Configure your chunking strategy">
+    Choose how Vellum should split your documents into chunks. Set the **chunk size** (in tokens) and the **overlap** between adjacent chunks. See [Chunking Strategies](#chunking-strategies) below for guidance on which to choose.
+  </Step>
+  <Step title="Create the index">
+    Click **Create**. Your new Document Index is now ready to receive documents.
+  </Step>
+</Steps>
+
+## Uploading Documents
+
+### Drag and Drop in the UI
+
+Open your Document Index, click **Upload Documents**, and drag one or more files onto the upload area (or click to browse). Vellum will begin processing each file immediately — chunking, embedding, and indexing in the background. A progress indicator shows when indexing is complete.
+
+### Uploading via the SDK
+
+For programmatic uploads — for example, as part of a data pipeline or CI/CD workflow — use the Vellum SDK.
+
+<CodeGroup>
+```python Python
+import vellum
+import os
+
+client = vellum.Vellum(api_key=os.environ["VELLUM_API_KEY"])
+
+with open("product-guide.pdf", "rb") as f:
+    client.upload_document(
+        document_index_name="product-docs",
+        contents=f,
+        label="Product Guide v2.4",
+    )
+```
+
+```typescript TypeScript
+import { VellumClient } from "vellum-ai";
+import * as fs from "fs";
+
+const client = new VellumClient({ apiKey: process.env.VELLUM_API_KEY });
+
+const fileStream = fs.createReadStream("product-guide.pdf");
+
+await client.uploadDocument({
+  documentIndexName: "product-docs",
+  contents: fileStream,
+  label: "Product Guide v2.4",
+});
+```
+</CodeGroup>
+
+The `label` field is a human-readable identifier that appears in search results alongside the matching chunk text. Use something descriptive enough to tell you which source document the result came from.
+
+## Chunking Strategies
+
+The chunking strategy determines how Vellum splits each document into the passages that get embedded and stored. The right choice depends on your content type and how users are likely to phrase their queries.
+
+| Strategy | How it works | Best for |
+|---|---|---|
+| **Fixed Size** | Splits text into chunks of exactly N tokens, with an optional overlap of M tokens between adjacent chunks. | Uniform prose content where passages don't have natural structural boundaries. |
+| **Sentence** | Splits at sentence boundaries, grouping sentences until the chunk size limit is reached. | Content where individual sentences are meaningful units, such as FAQs or product descriptions. |
+| **Paragraph** | Splits at paragraph boundaries (blank lines or heading transitions). | Long-form documents like articles, documentation, or reports where each paragraph covers a distinct idea. |
+
+**Chunk overlap** lets adjacent chunks share a window of tokens, reducing the risk of a relevant sentence being split across a chunk boundary. An overlap of 10–20% of your chunk size is a common starting point.
+
+## Managing Documents
+
+Inside a Document Index you can:
+
+- **View documents** — The **Documents** tab lists every file you have uploaded, its label, upload date, and indexing status.
+- **Delete a document** — Click the trash icon next to any document to remove it and all of its chunks from the index. Deletion takes effect immediately.
+- **Re-index a document** — To update a document's content, delete the old version and upload the new one. Vellum will chunk and embed the new file using the index's current configuration.
+
+## Embedding Models
+
+When you create a Document Index, you choose an embedding model that Vellum uses to vectorize both your document chunks and your search queries. The available models are:
+
+| Model | Provider | Dimensions | Notes |
+|---|---|---|---|
+| `text-embedding-3-small` | OpenAI | 1 536 | Fast and cost-effective; good general-purpose choice. |
+| `text-embedding-3-large` | OpenAI | 3 072 | Higher accuracy at increased cost; recommended for precision-sensitive use cases. |
+| `embed-english-v3.0` | Cohere | 1 024 | Optimized for English retrieval tasks; competitive accuracy with lower dimensionality. |
+
+<Note>
+  The embedding model is fixed at index creation time. If you need to switch models, you must create a new Document Index and re-upload your documents. Queries and chunks must always be embedded with the same model, so mixing models within an index is not supported.
+</Note>

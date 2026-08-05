@@ -1,0 +1,269 @@
+---
+title: "Integrate Vellum into Your CI/CD Pipeline"
+sidebarTitle: "CI/CD Integration"
+description: "Automate Vellum evaluations and deployments in your CI/CD pipeline using the Vellum API and environment-scoped API keys for safe, repeatable releases."
+---
+
+Treating your prompts and workflows as first-class software artifacts means they deserve the same automated quality gates as your application code. By integrating Vellum into your CI/CD pipeline, you can automatically evaluate every change against your test suite, enforce quality thresholds, and promote releases to production — all without manual intervention.
+
+## Overview of the CI/CD pattern
+
+The core loop is straightforward:
+
+1. **A change is proposed** — a developer updates a prompt or workflow in the Vellum Sandbox and opens a pull request.
+2. **CI runs evaluations** — the pipeline triggers a Vellum Test Suite run against the candidate release.
+3. **Metrics are checked** — if all scores meet your defined thresholds, the build passes.
+4. **Promotion happens automatically** — the CI job calls the Vellum Deployments API to promote the release to the next environment.
+5. **The build fails safely** — if any metric falls below the threshold, the pipeline blocks promotion and notifies the team.
+
+This pattern ensures that only evaluated, validated releases reach production.
+
+## Environment-scoped API keys in CI
+
+Vellum supports multiple environments (Dev, Staging, Production), each with its own API key. Store each key as a separate secret in your CI system — never share a single key across environments.
+
+| Environment | Secret name (recommended)    | Used for                                      |
+|-------------|------------------------------|-----------------------------------------------|
+| Dev         | `VELLUM_API_KEY_DEV`         | Running evaluations against candidate changes |
+| Staging     | `VELLUM_API_KEY_STAGING`     | Promotion validation and integration tests    |
+| Production  | `VELLUM_API_KEY_PRODUCTION`  | Final promotion after staging passes          |
+
+<Warning>
+  Never commit API keys to source control. Always inject them as encrypted CI secrets or environment variables through your CI provider's secret management system.
+</Warning>
+
+## Running evaluations in CI
+
+Trigger a Test Suite run via the Vellum API, poll until it completes, and inspect the results programmatically.
+
+<Steps>
+  <Step title="Start a Test Suite run">
+    `POST /v1/test-suite-runs` with the test suite ID and the release you want to evaluate:
+
+    ```python
+    import os, time, requests
+
+    BASE_URL = "https://api.vellum.ai"
+    HEADERS = {
+        "X-API-KEY": os.environ["VELLUM_API_KEY_STAGING"],
+        "Content-Type": "application/json",
+    }
+
+    # 1. Start the run
+    response = requests.post(
+        f"{BASE_URL}/v1/test-suite-runs",
+        headers=HEADERS,
+        json={
+            "test_suite_id": "<your-test-suite-id>",
+            "deployment_release_tag": "v2.1.0",
+        },
+    )
+    response.raise_for_status()
+    run_id = response.json()["id"]
+    print(f"Started test suite run: {run_id}")
+    ```
+  </Step>
+  <Step title="Poll until the run completes">
+    `GET /v1/test-suite-runs/{id}` and wait for `status == "COMPLETE"`:
+
+    ```python
+    # 2. Poll for completion
+    while True:
+        poll = requests.get(
+            f"{BASE_URL}/v1/test-suite-runs/{run_id}",
+            headers=HEADERS,
+        )
+        poll.raise_for_status()
+        status = poll.json()["state"]
+        print(f"Run status: {status}")
+
+        if status == "COMPLETE":
+            break
+        elif status in ("FAILED", "CANCELLED"):
+            print("Test suite run did not complete successfully.")
+            raise SystemExit(1)
+
+        time.sleep(10)
+    ```
+  </Step>
+  <Step title="Check metric scores against your threshold">
+    Parse the execution results and verify that average scores meet your acceptance criteria:
+
+    ```python
+    # 3. Inspect metric results
+    PASSING_THRESHOLD = 0.85  # require 85% average score
+
+    executions = poll.json().get("executions", [])
+    scores = [
+        metric["value"]
+        for execution in executions
+        for metric in execution.get("metric_results", [])
+        if metric.get("metric_name") == "correctness"
+    ]
+
+    if not scores:
+        print("No metric results found — check your test suite configuration.")
+        raise SystemExit(1)
+
+    average_score = sum(scores) / len(scores)
+    print(f"Average correctness score: {average_score:.2%}")
+    ```
+  </Step>
+  <Step title="Fail the build if the threshold is not met">
+    Exit with a non-zero code so your CI provider marks the job as failed:
+
+    ```python
+    # 4. Gate on threshold
+    if average_score < PASSING_THRESHOLD:
+        print(
+            f"Quality gate failed: {average_score:.2%} < {PASSING_THRESHOLD:.2%}. "
+            "Blocking promotion."
+        )
+        raise SystemExit(1)
+
+    print("Quality gate passed. Proceeding to promotion.")
+    ```
+  </Step>
+</Steps>
+
+<Tip>
+  Pin your CI evaluation runs to a specific release tag (e.g. `release_tag="v2.1.0"`) rather than `LATEST`. This ensures that your evaluation and your subsequent promotion operate on exactly the same artifact, making results fully reproducible even if someone saves new changes to the sandbox mid-run.
+</Tip>
+
+## Automated promotion
+
+Once evaluations pass, call the Deployments API to move the release tag to the next environment's deployment:
+
+```python
+import os, requests
+
+def promote_release(deployment_name: str, tag: str, api_key: str) -> None:
+    """Assign `tag` to the most recent release of `deployment_name`."""
+    response = requests.post(
+        f"https://api.vellum.ai/v1/deployments/{deployment_name}/release-tags/{tag}",
+        headers={
+            "X-API-KEY": api_key,
+            "Content-Type": "application/json",
+        },
+        json={"source": "LATEST"},  # promote whatever LATEST currently points to
+    )
+    response.raise_for_status()
+    print(f"Promoted '{deployment_name}' tag '{tag}' successfully.")
+
+# After quality gate passes:
+promote_release(
+    deployment_name="classifier",
+    tag="v2.1.0",
+    api_key=os.environ["VELLUM_API_KEY_PRODUCTION"],
+)
+```
+
+## GitHub Actions example
+
+The following workflow ties everything together: it installs the Vellum SDK, evaluates the staging deployment, and promotes to production only when the quality gate passes.
+
+<CodeGroup>
+
+```yaml .github/workflows/vellum-promote.yml
+name: Vellum Evaluation & Promotion
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Vellum release tag to evaluate and promote"
+        required: true
+        default: "LATEST"
+
+jobs:
+  evaluate-and-promote:
+    name: Evaluate on Staging → Promote to Production
+    runs-on: ubuntu-latest
+
+    env:
+      RELEASE_TAG: ${{ github.event.inputs.release_tag || 'LATEST' }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Vellum SDK
+        run: pip install vellum-ai
+
+      - name: Run Vellum evaluation on Staging
+        env:
+          VELLUM_API_KEY: ${{ secrets.VELLUM_API_KEY_STAGING }}
+          TEST_SUITE_ID: ${{ vars.VELLUM_TEST_SUITE_ID }}
+        run: python scripts/vellum_evaluate.py
+
+      - name: Promote to Production
+        if: success()
+        env:
+          VELLUM_API_KEY: ${{ secrets.VELLUM_API_KEY_PRODUCTION }}
+        run: python scripts/vellum_promote.py
+```
+
+```python scripts/vellum_evaluate.py
+"""
+Trigger a Vellum Test Suite run, poll for completion,
+and exit non-zero if scores fall below the threshold.
+"""
+import os, time, sys, requests
+
+BASE_URL = "https://api.vellum.ai"
+HEADERS = {
+    "X-API-KEY": os.environ["VELLUM_API_KEY"],
+    "Content-Type": "application/json",
+}
+RELEASE_TAG = os.environ.get("RELEASE_TAG", "LATEST")
+TEST_SUITE_ID = os.environ["TEST_SUITE_ID"]
+THRESHOLD = 0.85
+
+# Start run
+r = requests.post(
+    f"{BASE_URL}/v1/test-suite-runs",
+    headers=HEADERS,
+    json={"test_suite_id": TEST_SUITE_ID, "deployment_release_tag": RELEASE_TAG},
+)
+r.raise_for_status()
+run_id = r.json()["id"]
+print(f"Started run {run_id} for tag '{RELEASE_TAG}'")
+
+# Poll
+while True:
+    r = requests.get(f"{BASE_URL}/v1/test-suite-runs/{run_id}", headers=HEADERS)
+    r.raise_for_status()
+    data = r.json()
+    if data["state"] == "COMPLETE":
+        break
+    if data["state"] in ("FAILED", "CANCELLED"):
+        print("Run did not complete."); sys.exit(1)
+    time.sleep(10)
+
+# Check scores
+scores = [
+    m["value"]
+    for ex in data.get("executions", [])
+    for m in ex.get("metric_results", [])
+    if m.get("metric_name") == "correctness"
+]
+avg = sum(scores) / len(scores) if scores else 0
+print(f"Average correctness: {avg:.2%} (threshold: {THRESHOLD:.2%})")
+if avg < THRESHOLD:
+    print("Quality gate FAILED — blocking promotion."); sys.exit(1)
+print("Quality gate PASSED.")
+```
+
+</CodeGroup>
+
+<Warning>
+  Make sure `VELLUM_API_KEY_STAGING` and `VELLUM_API_KEY_PRODUCTION` are stored as **encrypted secrets** in your GitHub repository settings (`Settings → Secrets and variables → Actions`), not as plain-text environment variables or in your repository files.
+</Warning>
