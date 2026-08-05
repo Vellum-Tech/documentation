@@ -1,5 +1,5 @@
 ---
-title: "Document Indexes and Search API Reference"
+title: "Vellum Document Upload, Index, and Search API Reference"
 sidebarTitle: "Documents API"
 description: "Upload documents, manage document indexes, and run semantic search queries against your knowledge base using the Vellum Documents API."
 ---
@@ -18,11 +18,11 @@ POST https://documents.vellum.ai/v1/upload-document
   Note that document uploads use a **different base URL** — `https://documents.vellum.ai` — rather than `https://api.vellum.ai`. Make sure your HTTP client or SDK is pointed at the correct host for this endpoint.
 </Tip>
 
-This endpoint accepts a `multipart/form-data` request containing the file and associated metadata. After a successful upload, the document is processed asynchronously and added to each index listed in `document_index_names`.
+This endpoint accepts a `multipart/form-data` request containing the file and associated metadata. After a successful upload, the document is processed asynchronously and added to each index listed in `add_to_index_names`.
 
 ### Request Parameters
 
-<ParamField body="document_index_names" type="array" required>
+<ParamField body="add_to_index_names" type="array" required>
   An array of document index name strings. The uploaded document will be added to each named index. You must have already created these indexes via the Vellum dashboard or the API.
 </ParamField>
 
@@ -60,7 +60,7 @@ with open("report.pdf", "rb") as f:
 curl -X POST https://documents.vellum.ai/v1/upload-document \
   -H "X-API-Key: YOUR_API_KEY" \
   -F "label=Q3 Report" \
-  -F "document_index_names[]=my-knowledge-base" \
+  -F "add_to_index_names[]=my-knowledge-base" \
   -F "contents=@report.pdf;type=application/pdf" \
   -F 'metadata={"source": "finance-team", "quarter": "Q3-2024"}'
 ```

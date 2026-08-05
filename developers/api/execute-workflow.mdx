@@ -1,7 +1,7 @@
 ---
-title: "Execute Workflow API: POST /v1/execute-workflow"
+title: "Execute Workflow API Reference: POST /v1/execute-workflow"
 sidebarTitle: "Execute Workflow"
-description: "Invoke a deployed Vellum workflow with input variables and stream outputs from Final Output nodes as server-sent events."
+description: "Invoke a deployed Vellum workflow with input variables and receive outputs from Final Output nodes, plus a unique execution and run ID."
 ---
 
 The Execute Workflow endpoint runs a fully deployed Vellum workflow end-to-end and returns the values produced by its Final Output nodes. You can call the synchronous endpoint to wait for all outputs at once, or use the streaming variant to receive node execution events in real time — ideal for long-running workflows or progressive UI updates.

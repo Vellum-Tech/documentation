@@ -1,7 +1,7 @@
 ---
 title: "Build Autonomous AI Agents with Vellum Agent Builder"
 sidebarTitle: "Agent Builder"
-description: "Use the Vellum Agent Node to build autonomous agents that call tools, process results, and iterate until the task is complete."
+description: "Use the Vellum Agent Node to build autonomous AI agents that select and call tools, process results, and iterate until a task is complete."
 ---
 
 Agent Builder is the part of Vellum Workflows designed for building autonomous AI agents — applications where an LLM decides at runtime which tools to call, processes the results, and repeats until the task is done. Rather than you hard-coding a fixed sequence of steps, the agent figures out the sequence on its own. This page explains how the Agent Node works, how to define tools for it to call, how the iteration loop operates, and patterns for common agent use-cases.
@@ -43,7 +43,7 @@ Tools are the functions the agent can call. You define them by connecting **Code
   <Step title="Give the tool a name and description">
     In the Code Execution node's configuration panel, fill in the **Tool Name** and **Tool Description** fields. The LLM uses the name and description to decide when to call this tool — write clear, specific descriptions.
 
-    ```
+    ```text
     Name:        search_web
     Description: Search the internet for up-to-date information on a topic.
                  Use this when the user asks about recent events or facts
@@ -130,7 +130,7 @@ Set **Max Iterations** in the Agent Node's configuration panel. This is the maxi
 
 Add the **Try adornment** to the Agent Node to catch errors — including max-iteration exhaustion — without stopping the entire Workflow. Wire the **error** output port to a graceful fallback path (e.g., a Final Output node that returns a "I wasn't able to complete this task" message).
 
-```
+```text
 Agent Node (Try)
 ├── success → Final Output Node ("answer")
 └── error   → Templating Node → Final Output Node ("answer")

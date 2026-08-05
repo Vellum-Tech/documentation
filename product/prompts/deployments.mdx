@@ -85,7 +85,13 @@ To use a release tag in an API call, pass `release_tag` in your request:
 result = client.execute_prompt(
     prompt_deployment_name="customer-support-classifier",
     release_tag="v1.0.0",
-    inputs=[...],
+    inputs=[
+        vellum.PromptDeploymentInputRequest(
+            name="customer_message",
+            value="I can't log into my account.",
+            type="STRING",
+        )
+    ],
 )
 ```
 

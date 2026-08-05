@@ -1,7 +1,7 @@
 ---
-title: "Execute Prompt API: POST /v1/execute-prompt"
+title: "Execute Prompt API Reference: POST /v1/execute-prompt"
 sidebarTitle: "Execute Prompt"
-description: "Invoke a deployed Vellum prompt with input variables and receive the LLM-generated output, metadata, and a unique execution ID."
+description: "Invoke a deployed Vellum prompt with input variables and receive the LLM-generated output, token usage metadata, and a unique execution ID."
 ---
 
 The Execute Prompt endpoint lets you run a deployed prompt against any supported LLM and retrieve the generated output. You reference your deployment by name or UUID, supply values for all declared input variables, and optionally request extra metadata such as token usage and cost. Use the streaming variant when you want to display tokens incrementally in your UI.
@@ -28,7 +28,7 @@ Every request must include your Vellum API key as a request header.
   The unique name of the prompt deployment to execute. Required when `prompt_deployment_id` is not provided.
 </ParamField>
 
-<ParamField body="prompt_deployment_id" type="string" required>
+<ParamField body="prompt_deployment_id" type="string">
   The UUID of the prompt deployment to execute. Required when `prompt_deployment_name` is not provided. Provide either the name or the ID — not both.
 </ParamField>
 

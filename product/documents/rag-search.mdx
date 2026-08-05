@@ -1,5 +1,5 @@
 ---
-title: "RAG Search in Vellum Workflows and the Search API"
+title: "RAG Search via Vellum Workflows and the Search API"
 sidebarTitle: "RAG Search"
 description: "Use Vellum's Search Node in Workflows and the REST search API to retrieve ranked document chunks for grounding LLM prompts in your RAG pipelines."
 ---
@@ -23,7 +23,7 @@ The Search Node is a first-class node type in the Vellum Workflow editor. It let
   <Step title="Connect results to a Prompt Node">
     Draw an edge from the Search Node's output to the Prompt Node that will use the retrieved context. In the Prompt Node's template, reference the search results using the output variable — for example, include a system message like:
 
-    ```
+    ```text
     Use the following context to answer the user's question:
     {{search_results.text}}
     ```

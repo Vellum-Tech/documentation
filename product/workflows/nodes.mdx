@@ -55,7 +55,7 @@ Catches any error the node raises and routes execution to a designated error-han
 
 Edges carry data from one node's output port to another node's input port. When you configure a node's inputs, you can reference any upstream node's output using the variable picker in the configuration panel, or by typing the expression directly:
 
-```
+```jinja
 {{ node.MyPromptNode.text }}
 {{ node.MySearchNode.results }}
 {{ node.MyCodeNode.output }}

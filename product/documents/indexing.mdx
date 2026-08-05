@@ -1,5 +1,5 @@
 ---
-title: "Index Documents in Vellum for Semantic Search"
+title: "How to Index Documents in Vellum for Semantic Search"
 sidebarTitle: "Indexing"
 description: "Create a Vellum Document Index, upload files via UI or SDK, configure chunking strategies, and manage your indexed documents for semantic search."
 ---
@@ -42,7 +42,7 @@ client = vellum.Vellum(api_key=os.environ["VELLUM_API_KEY"])
 
 with open("product-guide.pdf", "rb") as f:
     client.upload_document(
-        document_index_name="product-docs",
+        add_to_index_names=["product-docs"],
         contents=f,
         label="Product Guide v2.4",
     )
@@ -57,7 +57,7 @@ const client = new VellumClient({ apiKey: process.env.VELLUM_API_KEY });
 const fileStream = fs.createReadStream("product-guide.pdf");
 
 await client.uploadDocument({
-  documentIndexName: "product-docs",
+  addToIndexNames: ["product-docs"],
   contents: fileStream,
   label: "Product Guide v2.4",
 });
