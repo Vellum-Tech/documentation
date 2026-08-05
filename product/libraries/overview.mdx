@@ -1,0 +1,71 @@
+---
+title: "Libraries overview"
+sidebarTitle: "Overview"
+description: "The firm's reusable knowledge — factors, methodologies, activities, beneficiaries, outcomes and surveys — shared across every organisation and project."
+---
+
+Everything in **Libraries** belongs to your firm rather than to any one client. A factor you source today can be used on a report for a different organisation next year; a survey template you write once can be reused by any colleague on any project. Nothing here is scoped to a single engagement, and nothing here carries a client's own numbers.
+
+That is the whole idea. Your firm's judgement — which reference values you trust, how you value an outcome, the words you use for an activity — is an asset. The libraries are where it lives, so it stops being re-invented in every spreadsheet and starts being something you can point an auditor at.
+
+## The rule that shapes everything here
+
+<Note>
+  No person ever types a dollar figure onto a report in Vellum. Numbers come from one of two places: a **factor**, which is a sourced reference value with a citation attached, or the client's own measured data. The libraries are how those two things stay honest — a factor without a source can't be trusted, and a formula without declared units can't be checked.
+</Note>
+
+You'll notice the consequence throughout: the libraries hold *structure and evidence*, never a figure you invented on the day.
+
+## The seven libraries
+
+Open **Libraries** from the sidebar and you'll see a card for each one, with a live count of what it holds. Click a card to open that library's list.
+
+<CardGroup cols={2}>
+  <Card title="Factor library" icon="scale-balanced" href="/product/libraries/factors">
+    Sourced reference values — the price of a meal, the social value of a volunteer hour, the cost a hospital avoids when someone doesn't present at emergency. Each factor has a name, a unit, a number, and — crucially — a citation saying where the number came from and how authoritative that source is. When a factor's value changes, you add a new version rather than overwriting the old one, so a report published last year still traces to the number that was true then.
+  </Card>
+  <Card title="Methodology library" icon="calculator" href="/product/libraries/methodologies">
+    Your firm's valuation formulas. A methodology says *how* an outcome is valued — meals delivered multiplied by the replacement cost of a meal, for instance. It names each input it needs (an **operand**) and gives it a unit, then reconciles the whole formula so the result can only ever come out in dollars. It deliberately holds no values at all: where each input comes from is decided later, per valuation, in the Workbench.
+  </Card>
+  <Card title="Reporting methodology library" icon="file-lines" href="/product/libraries/reporting-methodologies">
+    Six fixed, report-level protocols — SROI, Cost-Benefit Analysis, Impact Weighted Accounting and three others. This is the *style* of report you're writing, chosen for a project before any outcome is valued. It's not a formula and produces no numbers of its own; it sets the pathway, the evidence you'll be expected to show, and how a reader should weigh what you publish.
+  </Card>
+  <Card title="Activity library" icon="person-running" href="/product/libraries/activities">
+    The catalogue of things organisations actually do — food rescue and redistribution, mentoring sessions, home energy retrofits. Governed phrases, tidied and agreed once, so that ten consultants describing the same programme use the same words. Each entry can carry an impact domain, SDG tags and hints about who typically benefits.
+  </Card>
+  <Card title="Beneficiary library" icon="users" href="/product/libraries/beneficiaries">
+    The people and groups who benefit — students, carers, patients, and less obvious ones like the environment or a public system. Alongside the label, each entry records how directly the group benefits and whether it's sensitive, in which case a safeguard note travels with it so nobody puts it in a report without seeing the consent caveat first.
+  </Card>
+  <Card title="Outcome library" icon="bullseye" href="/product/libraries/outcomes">
+    The changes those activities create — improved mental wellbeing, reduced isolation, avoided landfill. Short, governed phrases with SDG tags. Outcomes are what a project's impact model is built out of, and what your valuation methodologies ultimately put a value against.
+  </Card>
+  <Card title="Survey library" icon="clipboard-question" href="/product/libraries/surveys">
+    Governed survey templates that turn a gap in your evidence into actual evidence. Each template holds its questions, when it should be asked, and the approved consent and privacy wording. A template can't be marked as **Curated** until it carries consent text — the platform simply won't allow it.
+  </Card>
+</CardGroup>
+
+## How they fit together
+
+Think of a project's build in three passes.
+
+First you choose the **reporting methodology** — what kind of report this is. Then you build the impact model out of the **activity**, **beneficiary** and **outcome** catalogues: who did what, for whom, and what changed. Where you don't yet have evidence for a change, a **survey** template goes out to gather it.
+
+Finally, in the Workbench, you value each outcome. That's where a **methodology** gets picked and its empty, labelled inputs get filled — some from the client's own measured data, some from a **factor** in your library. The engine does the arithmetic and the audit trail comes along for free.
+
+## Getting around a library
+
+All seven behave the same way once you're inside one.
+
+The header shows the library name and how many entries it holds — and if you've searched or filtered, it tells you honestly that you're looking at, say, twelve of two hundred. Below that sits a toolbar with a search box, filter chips for things like status or source, and a **View options** panel where you can set **Grouping**, **Ordering** and which **Display properties** (columns) you want to see. Your view settings stick, so the way you like to work is the way it opens next time.
+
+The create button sits at the right of the toolbar — **New factor**, **New methodology**, **New activity** and so on. Click any row to open its record.
+
+In every library except Factors and the two methodology libraries, you can tick several rows and use **Archive**. Archiving is soft and reversible: the entries stay in the library, marked **Archived**, and can be restored.
+
+## A note on editing
+
+Most records are edited in place. Each card on a record has an **Edit** button; click it, change what you need, then **Save** or **Cancel**. Changes save immediately and appear straight away.
+
+<Warning>
+  Two libraries are deliberately different. The **Reporting methodology library** is read-only — those six protocols ship with Vellum and don't change. The **Methodology library** is read-only after creation too: a formula that reports have already relied on shouldn't quietly change underneath them. Editing a methodology by superseding it with a new version is coming; for now, a correction means creating a new methodology.
+</Warning>
