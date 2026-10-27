@@ -1,0 +1,197 @@
+---
+title: "The Workbench"
+description: "The project worksheet where every impact value is modelled, explained and totalled."
+---
+
+The Workbench is the project's chart of impact accounts: one worksheet with a
+row for each combination of an activity, who benefits from it, and the outcome
+they get. Every dollar on the sheet is computed by Vellum's calculation engine
+from the evidence behind it. Nobody types a dollar figure into the Workbench,
+and the AI assistant never produces one; you change a value by changing the
+data it is built from, and the engine recomputes.
+
+![The Workbench worksheet with two rows, one for each activity, showing the activity, beneficiary and outcome columns](/images/workbench/worksheet.jpg)
+
+## Reading a row
+
+A row reads left to right as a sentence: the activity, what went into it, who
+benefits and by how much, the outcome, how that outcome is valued, and the
+value the engine computed. The main columns are:
+
+| Column | What it shows |
+| --- | --- |
+| **Activity** | The program or service, with its description and recorded inputs beside it. |
+| **Activity input** and **Activity output value** | The money and resources in, and what they produced. Both merge across the activity's rows. |
+| **Beneficiary** and **Beneficiary %** | Who benefits, and their share of the activity. |
+| **Outcome** and **Outcome %** | The change they experience, and its weighting. |
+| **Valuation method** | The method valuing the outcome, with its version. |
+| **Valued from** | Whether the row is valued from outcome data or from a share of the activity's direct cost. |
+| **Outcome formula** | The recipe in words, with each data point named: for example Saving (D-02 · 250) × Households (D-01 · 100). Numbers never hide in this cell; it names where they come from. |
+| **SDGs** and **SDG %** | The Sustainable Development Goals the outcome serves, and the split between them. |
+| **Status** | The row's evidence status (see below). |
+| **Outcome value** | The engine's computed value for the row. |
+| **Policies** | Small count columns beside the activity, beneficiary, outcome and SDG families, showing how many policy links name that subject. |
+| **Comments** | The row's conversation state. |
+
+![The right half of the worksheet showing the valuation method, formula, SDGs, status and outcome value columns](/images/workbench/worksheet-right.jpg)
+
+Hover over an **Outcome value** cell and a small lock appears: the figure is
+the engine's own output and never takes a typed value. Clicking it shows how
+the value was computed and how it is attributed across goals.
+
+The **Status** column is a pick, chosen on each row:
+
+| Status | Meaning |
+| --- | --- |
+| **Measured** | The value rests on measured data. |
+| **Estimated** | The value rests on an estimate. |
+| **Proxy** | A stand-in measure is used. |
+| **Placeholder** | A temporary figure to be replaced. |
+| **Future survey needed** | Evidence is planned but not collected yet. |
+
+A thin bar on each row's left edge carries the row's working state: amber for
+waiting on the client, green for a new response to review. Click **Key** at
+the top left of the sheet for the legend.
+
+<Tip>
+Use the **Columns** button to show or hide any column (the ID column is hidden
+by default), and drag a column header to reorder. **Show all** and **Reset to
+defaults** live in the same popover.
+</Tip>
+
+## Opening a row's calculation
+
+Click a row's **Outcome formula** cell to open the calculation drawer for that
+activity. The first screen shows the activity's chain: **Input**, **Output**
+and **Value**, each the engine's figure, plus where the value comes from and
+which reports use it.
+
+![The calculation drawer showing the input, output and value chain for an activity and the reports that use it](/images/workbench/calculation-chain.jpg)
+
+Drill into the outcome's line and you see the full working:
+
+![The outcome line screen with the valuation method, the operands it needs and the computed result](/images/workbench/calculation-line.jpg)
+
+- **Valuation method** names the formula and its version (for example v1).
+  **Edit method** changes it, and **Open in Library** shows it in the
+  [valuation methodology library](/libraries/valuation-methodologies).
+- **What it needs** lists the formula's operands, one row each, with the data
+  point feeding it: a registry row such as D-01 · Households audited · 100.
+  Each operand is bound to real data; you can pick a data point the project
+  holds, pull one from a document in the [data room](/projects/data-room), or
+  type a new value, which is recorded as a registry row of its own rather than
+  disappearing into the cell.
+- The footer shows the formula with its operands and the engine's result, and
+  **Update line** rewrites this outcome's own line.
+
+Nothing in the drawer does arithmetic in your browser. It sends the bindings
+to the engine and shows the engine's answer.
+
+## Comments on a row
+
+The **Comments** column carries each row's conversation state, such as a
+pending question or an unread reply, and opens the row's comment panel, where
+questions to the client are asked and answered beside the row they concern.
+On workspaces where the comment stream is not available yet, the panel says
+so; the column stays quiet until it arrives.
+
+## The totals panel
+
+Click the **Total impact** figure in the sheet header to open the totals
+panel. It shows the project total and the same figure rolled up three ways:
+**By SDG**, **By outcome** and **By beneficiary**, each with a **Chart** and
+**Table** view. Every bar, dollar and share is served by the engine; the
+panel sums nothing itself. It stays open while you edit weightings, so the
+totals move beside the cells that move them.
+
+![The totals panel showing total impact broken down by SDG, by outcome and by beneficiary](/images/workbench/totals-panel.jpg)
+
+## Open gaps
+
+Beside the header buttons sits the open-gap count, for example **3 open
+gaps**, or **No open gaps** when the register is clear. It links to the Gaps
+sheet in the project's [data room](/projects/data-room), where missing data is
+recorded and resolved. Open gaps are left out of the totals by design, so the
+sheet never carries a number that is still being chased.
+
+## The Policy alignment sub-sheet
+
+Click **Policy alignment** in the sheet header to swap the worksheet for the
+policy sheet (click it again to go back). It records how the project's work
+aligns with government and international policy: one row per link between a
+subject on the Workbench and a policy from the
+[policy library](/libraries/policies).
+
+![The policy alignment sheet with five links, each naming a subject, a policy, a provision, a claim and a rationale](/images/workbench/policy-sheet.jpg)
+
+| Column | What it holds |
+| --- | --- |
+| **Subject** | An activity, beneficiary, outcome or SDG from this project. |
+| **Policy** | The policy the subject aligns with. |
+| **Provision** | The section or priority within the policy, as text. |
+| **Claim** | **Aligns with** or **Supported by**. |
+| **Quantity** | An optional measurable the policy names. |
+| **Rationale** | One or two sentences of why, in your words. |
+| **Proposed by** | Analyst, or the agent for pending proposals. |
+| **Approved** | The approval date, or the **Approve** and **Dismiss** actions on a pending proposal. |
+
+To add a link:
+
+<Steps>
+  <Step title="Click Add a link">
+    A blank row lands at the bottom of the sheet.
+  </Step>
+  <Step title="Fill the row">
+    **Subject**, **Policy** and **Claim** are typed lookups; **Provision** and
+    **Rationale** are text. The row saves as soon as it has a subject, a
+    policy, a claim and a rationale.
+  </Step>
+</Steps>
+
+Two kinds of wording are refused on save, with the reason shown on the row and
+your text kept for editing: a rationale that quotes a figure (a policy's words
+never carry a number; figures come from the engine), and compliance wording
+such as "complies with" (alignment is your assessment, never a finding of
+compliance). Duplicates of an existing link are refused too. A saved row's
+subject and policy are its identity; remove the row and add a new one to
+change them.
+
+**Suggest links** asks the assistant to propose links in chat; proposals land
+on the sheet as pending rows for a person to **Approve** or **Dismiss**. The
+**Dismissed** toggle lists dismissals, each with **Restore**. The per-subject
+**Policies** counts on the worksheet open this sheet filtered to that subject.
+
+## Exporting the Workbench
+
+The **Actions** menu in the sheet header holds two exports:
+
+- **Export .xlsx** downloads the whole model as an Excel workbook: a
+  **Workbench** sheet mirroring the worksheet, a **Totals** sheet with the
+  three rollups, **Registry** and **Formulas** reference sheets (plus
+  bindings and comments sheets where the project has them), and a
+  **Metadata** sheet recording when and what was exported. Where a row has a
+  stored formula, the workbook places a live Excel translation of it beside
+  the engine's figure, never instead of it, so the numbers can be checked in
+  Excel without ever replacing them.
+- **Send request** builds a small Data request workbook of the registry rows
+  still asked of the client, with the columns ID, Parameter, Unit, Scope,
+  What we need, Owner and Notes, ready to send on. It is available once at
+  least one row is waiting on the client; until then it reads "nothing
+  asked".
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The data room" href="/projects/data-room">
+    Evidence documents, extracted data points and the gaps register.
+  </Card>
+  <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
+    The approval ladder and the project's report documents.
+  </Card>
+  <Card title="The report builder" href="/projects/report-builder">
+    Write the report on top of the Workbench's figures.
+  </Card>
+  <Card title="Factor library" href="/libraries/factors">
+    The versioned factors calculations can draw on.
+  </Card>
+</CardGroup>

@@ -1,0 +1,75 @@
+---
+title: "Roles and permissions"
+description: "A reference for who can see and change what: staff, organisation roles, project roles, and curator grants."
+---
+
+Vellum has a small set of roles, each scoped to one level: the whole workspace, one organisation, one project, or one conversation. This page is the reference for all of them.
+
+## Staff and client members
+
+There are two kinds of people in Vellum:
+
+- **Vellum staff**: the advisory firm's own team. Staff see every organisation and every project without being added to anything.
+- **Client members**: people at a client organisation. They see only their own organisation, and inside it only the projects they have been added to.
+
+Staff accounts are managed on the [Team page](/admin/team), where each person is an **Admin** or a **Member**. Admins can manage the team (invite, change roles, deactivate); everything else is the same for both.
+
+## Organisation roles
+
+A client member has a role in their organisation:
+
+| Role | What it means |
+|------|---------------|
+| **Admin** | Invites and removes colleagues |
+| **Member** | Opens the projects they are added to |
+
+An organisation admin manages who belongs to the organisation; see [Organisation people](/organisations/people). Belonging to the organisation does not open its projects by itself: each project grants access separately.
+
+## Project roles
+
+Every project keeps its own member list, managed from the project's **Share** dialog:
+
+| Role | What it means |
+|------|---------------|
+| **Owner** | Shares the project and can change everything |
+| **Editor** | Can read and change the project |
+| **Viewer** | Can read everything, change nothing |
+
+Each project has one owner, and only the owner (or Vellum staff) can share the project, change roles, or remove people. Ownership moves by transfer, not removal.
+
+![The project share dialog, with a person picker, a role picker, and the list of people with access](/images/admin/project-share-dialog.jpg)
+
+If a project is ever left without an owner (for example, the owner left the firm), only Vellum staff can change who it is shared with, and the Share dialog then offers staff an **Assign an owner** control until someone takes it over.
+
+### What viewers see
+
+A viewer reads everything an editor reads: every tab, every figure, every document. The difference is writing. A viewer's project header shows a **View only** badge, editing controls are hidden or disabled, and any write that does slip through is refused by the server with the message: "You can view this project but not change it." To start editing, ask the project's owner to make you an editor.
+
+## Not found, not forbidden
+
+Anything outside your access responds as **Not found**, exactly as if it did not exist. Vellum deliberately never answers "you cannot open this", because that would confirm the thing exists. If a link a colleague sent you shows Not found, the likely reason is that you have not been added to that project or organisation.
+
+## Library curator
+
+Activating, retiring, and editing active entries in the [Policy library](/libraries/policies) needs a separate **Library curator** grant, switched on per person by an admin on the [Team page](/admin/team). It is independent of every other role.
+
+## Conversation roles
+
+Chat conversations have their own small role set (**Owner**, **Collaborator**, **Viewer**), separate from project roles. See [Sharing and files](/chat/sharing-and-files).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Managing your team" href="/admin/team">
+    Invite, deactivate, and grant curator rights.
+  </Card>
+  <Card title="Project sharing and access" href="/projects/sharing-and-access">
+    Sharing a project step by step.
+  </Card>
+  <Card title="Organisation people" href="/organisations/people">
+    A client organisation's own member list.
+  </Card>
+  <Card title="Chat sharing and files" href="/chat/sharing-and-files">
+    Roles inside a shared conversation.
+  </Card>
+</CardGroup>

@@ -1,0 +1,84 @@
+---
+title: "Publishing and exports"
+description: "Freeze a report as a numbered version that never changes, or export it as a Word or PDF file."
+---
+
+A draft report becomes something you can hand over in two ways. Publishing
+freezes it inside Vellum as a numbered, read-only version. Exporting renders
+the draft as a Word or PDF file to send on. Both carry the engine's figures
+exactly as the paper shows them.
+
+## Publishing a version
+
+Click **Publish** in the builder's top bar. The dialog states what publishing
+does and checks the two gates before the button is enabled:
+
+![The publish dialog showing the blocking gaps and the sign-off step as blockers, with the published by and version name fields](/images/workbench/publish-dialog.jpg)
+
+- **No blocking gaps.** Every blocking entry in the builder's gaps panel must
+  be resolved first; the dialog counts what is left and points at the panel.
+- **Sign-off at Report-ready draft.** The project's
+  [sign-off ladder](/projects/sign-off-and-reports) must have reached
+  **Report-ready draft** or later. Publishing never moves the ladder itself;
+  move it on the project's **Report** tab, where each step needs a named
+  person's approval.
+
+**Published by** must name the person of record (never the assistant), and
+**Version name** is an optional label such as Board review. Confirming saves
+any unsaved changes, publishes at exactly that revision, and opens the new
+version. The server re-runs both gates on the exact content it freezes, so the
+dialog's reading is a preview, never the decision.
+
+## What a published version is
+
+A published version is the report as it read at that moment: the text and
+every figure, table, list and source, frozen. It lives at its own read-only
+page, badged **Published v1**, **Published v2** and so on (with the version
+name beside it, when one was given), and carries a provenance line naming who
+published it and when, with the words "This version does not change". The
+draft stays editable for the next version, and nothing you change in it, or
+on the Workbench, ever reaches an already published version. The document's
+**State** on the Report tab shows the newest version, and the builder's header
+links to it.
+
+## Exporting a file
+
+**Export**, beside **Publish**, renders the draft as a file:
+
+![The export menu with the Export as Word and Export as PDF options](/images/workbench/export-menu.jpg)
+
+- **Export as Word** downloads a .docx: a branded cover page with the report
+  title, the organisation, the reporting period, who prepared it and the
+  export date, then the body with the same engine figures the paper shows.
+  Tables and charts export as tables of their data, and citations become real
+  Word footnotes.
+- **Export as PDF** renders the same content as an A4 PDF with its own cover
+  and branding.
+
+Exports carry the organisation's report branding (colours, fonts and logo)
+where it is set, and Vellum's house style otherwise. An export is a picture of
+the draft as it reads now; unlike a published version, nothing stops the draft
+changing afterwards, so when the file needs to match a permanent record,
+publish a version at the same time.
+
+<Note>
+Exporting does not require sign-off or a clean gaps panel, so a working draft
+can be shared for review before it is publishable.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The report builder" href="/projects/report-builder">
+    The draft the publish dialog freezes, and its gaps panel.
+  </Card>
+  <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
+    Moving the ladder to Report-ready draft.
+  </Card>
+  <Card title="The Workbench" href="/projects/workbench">
+    The calculation every version and export reads from.
+  </Card>
+  <Card title="Audit trail" href="/projects/audit-trail">
+    The project's recorded history, including publishes.
+  </Card>
+</CardGroup>

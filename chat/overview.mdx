@@ -1,0 +1,86 @@
+---
+title: "Chat assistant"
+description: "Meet the Vellum assistant: where it lives, what it can see, and how conversations work."
+icon: "message-circle"
+---
+
+The Vellum assistant is an AI agent that works across your whole workspace. Ask it about organisations, projects, factors, and reports, and it can look things up, draft content, and propose changes for you to approve.
+
+One rule shapes everything it does: **the assistant never calculates your impact figures**. Every dollar value comes from Vellum's deterministic calculation engine. The assistant can explain a figure, point at the inputs behind it, and propose changes to those inputs, but the numbers themselves are always computed by the engine, the same way every time.
+
+![The chat page showing a conversation about preparing a report, with the composer at the bottom](/images/chat/thread-harbourlight.jpg)
+
+## Where to find it
+
+The assistant is one conversation surface in two places:
+
+- **The Chat page.** Click **Chat** in the sidebar for a full-page view. This is the most comfortable place for longer sessions.
+- **The chat drawer.** The round **Open chat** button in the bottom right corner of every page opens the assistant in a resizable drawer, so you can keep working while you talk. Drag its edge to make it wider or narrower.
+
+Both show the same conversation. A reply that starts streaming in the drawer keeps streaming when you switch to the Chat page, and the other way around.
+
+## What the assistant can see
+
+At the top of the drawer, a row of small chips shows the scope of the conversation: the organisation or project you are on, the tab you have open, and anything you have selected. That context rides along with your next message, so on a project page you can ask "what is still missing here?" without naming the project.
+
+![The chat drawer open beside a project page, with scope chips showing the project, its organisation, and the open tab](/images/chat/drawer-project.jpg)
+
+The composer placeholder follows the scope too: on the Chat page it reads **Ask the agent anything about your workspace**, and inside a project it becomes **Ask about** the project's name. When no page scope applies, the chip row shows **Everywhere**.
+
+## Conversations
+
+The pill at the top left of the chat (it reads **New chat** until a conversation has a title) opens the conversation switcher. Type to search by title; each row shows how long ago the conversation was last active.
+
+![The conversation switcher open on the chat page, listing recent conversations with a search box](/images/chat/conversation-switcher.jpg)
+
+### Start a new conversation
+
+<Steps>
+  <Step title="Open the switcher">
+    Click the conversation pill at the top of the chat.
+  </Step>
+  <Step title="Choose New conversation">
+    Click **New conversation**. The chat greets you and offers a few suggested prompts until you send your first message.
+  </Step>
+</Steps>
+
+### Rename a conversation
+
+<Steps>
+  <Step title="Open the switcher">
+    Click the conversation pill while the conversation you want to rename is open.
+  </Step>
+  <Step title="Choose Rename conversation">
+    Click **Rename conversation**, type the new name, and click **Save**.
+  </Step>
+</Steps>
+
+In a shared conversation, the owner and collaborators can rename; viewers cannot.
+
+### Delete or archive a conversation
+
+Hover over a conversation in the switcher and click the bin icon. What happens depends on whether anyone else is on the conversation:
+
+- A conversation only you can see is deleted: it is removed from your list and its working machine is stopped.
+- A conversation you have shared shows **Archive for everyone** instead. It is removed for every person it is shared with, any running turn stops, and its files leave the conversation's library.
+
+<Warning>
+**Archive for everyone** affects every member of the conversation at once, and the conversation does not come back. Only the owner can do it.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Working with the agent" href="/chat/working-with-the-agent">
+    Asking questions, approvals, and the composer's shortcuts.
+  </Card>
+  <Card title="Sharing and files" href="/chat/sharing-and-files">
+    Bring colleagues into a conversation and manage its files.
+  </Card>
+  <Card title="Finding your way around" href="/get-started/navigation">
+    The sidebar, search, and the rest of the workspace.
+  </Card>
+  <Card title="Projects" href="/projects/overview">
+    The project workspace the assistant most often helps with.
+  </Card>
+</CardGroup>

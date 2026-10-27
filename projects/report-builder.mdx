@@ -1,0 +1,128 @@
+---
+title: "The report builder"
+description: "A full page editor where the report's words are yours and every number is the engine's."
+---
+
+Open a report document from the **Report** tab and it fills the page: the
+paper in the middle, a contents and gaps rail on the left, and the report's
+settings on the right. You write the prose; every figure, table and chart is a
+live reference to the engine's calculation. There is no way to type a dollar
+onto the page, and the assistant never supplies one.
+
+![The report builder with a drafted report, the contents outline and the gaps panel on the left](/images/workbench/report-builder.jpg)
+
+## The outline rail
+
+**Contents** lists the report's structure: each Heading 1 with its Heading 2s
+nested beneath. Click an entry to scroll to it. To restructure the report:
+
+- Drag an entry to a new place in the rail. The whole section moves: the
+  heading and every block beneath it, up to the next Heading 1.
+- Or put the cursor in a heading and press `Alt+ArrowUp` or `Alt+ArrowDown`.
+- One `Cmd+Z` undoes a whole section move.
+
+## Writing with live figures
+
+Type on the paper as in any editor. Headings, lists and quotes have the usual
+markdown shortcuts (`#` for a heading, `-` for a bullet list), and selecting
+text shows bold, italic, underline, strikethrough and code.
+
+A number from the model is inserted as a **figure**: type `{` (or pick
+**Figure** from the `/` menu), search the catalogue, and press Enter. The
+figure lands as a pill in your sentence:
+
+![A paragraph with a figure pill showing the total impact resolved to a dollar amount](/images/workbench/figure-pill.jpg)
+
+A pill is not text. It stores a reference to a metric, and the engine resolves
+it every time the report is read, so it is always today's figure. If the model
+changes under a published number the pill shows the change and offers
+**Accept**; a figure that can no longer resolve shows a dash, never a zero.
+**Cite a source** works the same way for referencing documents, producing real
+footnotes.
+
+## Blocks from the slash menu
+
+Press `/` on an empty line for the block menu. Above the text blocks sit
+presets that draw straight from the calculation:
+
+![The slash menu open on the paper with figure, text and heading entries](/images/workbench/slash-menu.jpg)
+
+| Block | What it inserts |
+| --- | --- |
+| **Table of outcomes** (also activities, SDGs, beneficiaries) | A table of impact values and shares, one row per entry. |
+| **Top 3 outcomes** (also SDGs, beneficiaries) | The same table, limited to the top three. |
+| **Bar chart of outcomes** (also activities, SDGs, beneficiaries) | Sorted bars with a **Chart** and **Table** toggle. |
+| **Evidence status chart** | Accounts by evidence status. |
+| **KPI strip** | Total impact with activity, outcome and SDG counts. |
+| **SDG impact donut** | Share of impact by SDG. |
+| **Impact flow diagram** | Activities flowing to outcomes and SDGs. |
+| **Open data gaps**, **Sign-off trail**, **Data points appendix**, **Sources appendix** | Data lists read from the project's registers. |
+| **Policy alignment by level** (also by theme, by subject) | The project's policy links with their aligned values, grouped. |
+
+Every cell, bar and dollar in these blocks is resolved by the engine like any
+figure pill. The policy alignment block always prints what alignment means (an
+assessment, not a finding of compliance) and how much of the total impact
+aligns with at least one policy shown.
+
+The same menu also inserts reusable text sections such as **Background**,
+**Methodology notes**, **Limitations** and **Disclaimer**: project text that
+can be shared by every report on the project or written for this report only.
+
+## Report settings
+
+Click **Report** in the top bar to open the settings rail:
+
+![The report settings rail with the jurisdictions field and the lead policy picker](/images/workbench/report-settings.jpg)
+
+- **Jurisdictions** sets where this report will be read, as codes such as
+  AU-NSW. The policy alignment block then shows policies for those places,
+  their countries and international ones.
+- **Lead policy** names one policy to print first in the policy alignment
+  block, with a line saying the report is framed against it.
+
+## Saving and conflicts
+
+The report saves itself as you type. The top bar shows **Saved**, **Unsaved
+changes** while a save is pending, or **Not saved** with the reason when a
+save was refused (your text is kept on the page either way). If the same
+draft was changed in another tab or by someone else, a banner says the report
+changed elsewhere, nothing you typed was saved over it, and offers **Reload**
+to pick up the latest version.
+
+## The gaps panel
+
+**Gaps** under the outline lists what stands between this draft and
+publishing, blocking items first, then a **To review** list of advisories.
+Clicking an entry scrolls to the block it concerns, and the same message
+appears as a callout beside that block on the paper. Typical blocking gaps:
+
+- A figure, table or chart whose data points name no evidence document or
+  URL. The callout links to the [Workbench](/projects/workbench) and the
+  registry to bind the evidence.
+- A missing **Methodology notes** or **Limitations** section, inserted from
+  the `/` menu.
+- Compliance wording in prose: writing that the work "complies with" a policy
+  is flagged for rewording, because alignment is your assessment and never a
+  finding of compliance. This gap has no dismiss; the words must change
+  before the report can be published.
+
+The panel's list is exactly what publishing checks, so there are no surprises
+in the publish dialog; see
+[Publishing and exports](/projects/publishing-and-exports).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Publishing and exports" href="/projects/publishing-and-exports">
+    Freeze a version of the draft, or export it as a file.
+  </Card>
+  <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
+    The document list and the approval ladder behind publishing.
+  </Card>
+  <Card title="The Workbench" href="/projects/workbench">
+    Where every figure on the paper is computed.
+  </Card>
+  <Card title="Policy library" href="/libraries/policies">
+    The policies the alignment block draws on.
+  </Card>
+</CardGroup>

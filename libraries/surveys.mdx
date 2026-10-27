@@ -1,169 +1,107 @@
 ---
 title: "Survey library"
-description: "Governed survey templates that turn a gap in your evidence into evidence, with consent and privacy wording that travels with every template."
+description: "Governed survey templates that turn outcome gaps into evidence, with consent wording that travels with every template."
 ---
 
-A **survey template** is a reusable set of questions for gathering evidence from beneficiaries: a post-programme wellbeing check-in, a follow-up on employment six months later, a baseline before an intervention starts.
+A survey template is governed wording for collecting evidence from
+beneficiaries: the questions, the timing, and, first class on every template,
+the approved consent text shown before anyone answers. When an outcome lacks
+data, a curated template is how the gap becomes evidence the engine can use.
 
-The Survey library is where those templates live. Write one well, and every project that needs the same evidence can reuse it instead of drafting questions from scratch, and, more importantly, instead of drafting consent wording from scratch.
+## The survey list
 
-## Why it exists
+Open **Libraries → Survey library**.
 
-A valuation needs evidence. When an outcome has none, someone has to go and ask. Doing that well requires question wording that's been thought about, timing that makes sense, and, non-negotiably, approved consent and privacy wording.
+![The survey library list with one curated template showing timing, question count and consent](/images/libraries/surveys-list.jpg)
 
-<Warning>
-  That last part is why this library treats consent as first-class rather than as an attachment. **Consent text travels with the template**, and a template cannot be marked **Curated** until it has some. Vellum simply won't allow the promotion. You'll see the option greyed out in the status menu with the reason attached, *Add consent text first*, rather than discovering the rule as an error after you click.
-</Warning>
+| Column | Meaning |
+|---|---|
+| Title | The template's name |
+| Outcome | The outcome the survey evidences |
+| Segment | The beneficiary segment the survey addresses |
+| Timing | Pre, Post or Follow-up, relative to the intervention |
+| Questions | How many questions the template holds |
+| Consent | Whether approved consent text is set |
+| Status | Draft, Curated or Archived |
 
-## The template list
+Search by title, outcome or segment, and filter by **Timing** or **Status**.
+A template without consent text reads **No consent text** in the list: that
+is an unmet obligation, not a blank. Bulk archive is available from the
+list's checkboxes.
 
-Open **Libraries > Survey library**.
+## The survey record
 
-Each row shows:
+Click a row to open the template.
 
-| Column | What it shows |
-| --- | --- |
-| **Title** | The template's name. |
-| **Outcome** | The outcome hint: which change this survey is meant to evidence. |
-| **Segment** | The beneficiary segment it addresses. |
-| **Timing** | **Pre**, **Post** or **Follow-up**. |
-| **Questions** | How many prompts it carries. |
-| **Consent** | Either **Consent set** or **No consent text**. A blank here is an unmet obligation, not a missing detail, so it's shown plainly. |
-| **Status** | **Draft**, **Curated** or **Archived**. |
+![A survey template record with consent and privacy, details and questions cards](/images/libraries/survey-record.jpg)
 
-Search matches the title, outcome hint and segment. The **Timing** and **Status** filter chips narrow the list, and **View options > Grouping** clusters by either.
+- **Consent & privacy** leads the record: the approved consent wording shown
+  before a beneficiary answers, and the privacy rule describing how responses
+  may be used and aggregated. A banner calls out a missing consent text.
+- **Survey details**: title, outcome hint, beneficiary segment and timing.
+- **Questions**: the ordered prompts, each with a kind: **Scale**, **Text**
+  or **Yes / No**.
+- **Notes**: context or caveats.
 
-## The template record
+### The consent gate
 
-Click a row. The title is the heading, with a status pill and a consent marker beside it, either **Consent ready** or **Consent needed**. That marker follows the template everywhere it appears.
+The status pill next to the title promotes a template from **Draft** to
+**Curated**, and the promotion is gated on consent: a template without
+consent text cannot be curated, and the menu says why (**Add consent text
+first**) rather than letting the attempt fail. A curated template therefore
+always carries approved consent wording.
 
-**Consent & privacy** leads the record, ahead of everything else. It holds the **Consent text**, the approved wording shown to a beneficiary before they answer, and the **Privacy rule**, which says how responses may be used and aggregated. If there's no consent text yet, a warning panel says so and explains that a curated template must carry it.
+## Create a template
 
-**Survey details** holds the **Title**, the **Outcome hint**, the **Beneficiary segment** and the **Timing**.
-
-**Questions** lists the prompts in order, each with a chip showing its kind.
-
-**Notes** is free text for context, caveats or wording decisions.
-
-### Question kinds
-
-Three shapes:
-
-- **Scale** is a rating, for measuring change in degree.
-- **Text** is an open response, for the words a number can't carry.
-- **Yes / No** is a binary, for things that either happened or didn't.
-
-### Timing
-
-- **Pre** is before the intervention. This is your baseline, and without it a "post" score is a number without a comparison.
-- **Post** is immediately after.
-- **Follow-up** is later, to see whether the change held.
-
-## How to add a survey template
+<Note>
+Creating and editing survey templates is staff only. The **New template**
+button does not appear for client organisation members.
+</Note>
 
 <Steps>
-  <Step title="Start a new template">
-    Open **Libraries > Survey library** and click **New template**.
+  <Step title="Open the dialog">
+    In **Libraries → Survey library**, click **New template**.
   </Step>
-  <Step title="Give it a title">
-    Write a **Title** that says what it's for: "Post-programme wellbeing check-in".
+  <Step title="Describe the survey">
+    Enter the title and, optionally, the outcome it evidences, the
+    beneficiary segment it addresses, and its timing (**Pre**, **Post** or
+    **Follow-up**).
   </Step>
-  <Step title="Add the outcome hint">
-    Add the **Outcome hint**: the outcome this survey evidences.
+  <Step title="Write the questions">
+    Add each prompt and pick its kind: **Scale**, **Text** or **Yes / No**.
+    Use **Add question** for more rows; empty prompts are dropped on save.
   </Step>
-  <Step title="Add the segment">
-    Add the **Beneficiary segment**: who the survey addresses.
+  <Step title="Set consent and privacy">
+    Write the consent text a beneficiary sees before answering, and the
+    privacy rule for how responses are used and aggregated.
   </Step>
-  <Step title="Set the timing">
-    Set the **Timing** to **Pre**, **Post** or **Follow-up**.
-  </Step>
-  <Step title="Build the questions">
-    Click **Add question**, type the prompt, and pick its kind from the dropdown beside it. Add as many as you need. The bin icon removes a row. Empty prompts are dropped when you save, and a template can start with no questions at all.
-  </Step>
-  <Step title="Write the consent text">
-    Write the **Consent text**: the approved wording a beneficiary sees before answering.
-  </Step>
-  <Step title="Write the privacy rule">
-    Write the **Privacy rule**: how responses may be used and aggregated.
-  </Step>
-  <Step title="Add notes">
-    Add **Notes** if there's context worth carrying.
-  </Step>
-  <Step title="Add the template">
-    Click **Add template**. Vellum opens the new record.
+  <Step title="Add it">
+    Click **Add template**. It lands as a draft; once the consent text is in
+    place you can promote it to **Curated** from its record.
   </Step>
 </Steps>
 
-New templates land as **Draft**.
+## How templates relate to gaps and evidence
 
-## How to edit a template
+The template's outcome hint names the outcome it evidences, and its timing
+says when it is put to beneficiaries relative to the intervention. When a
+project's outcome has no data yet, the governed template gives the project
+approved wording, with consent built in, for gathering that evidence, so the
+numbers the engine later computes rest on properly collected responses.
 
-<Steps>
-  <Step title="Find the card">
-    Open the template and find the card you want to change.
-  </Step>
-  <Step title="Click Edit">
-    Click **Edit** on that card.
-  </Step>
-  <Step title="Make your changes">
-    On the **Questions** card you can edit prompts, change a question's kind, remove rows with the bin icon, or click **Add question** for another.
-  </Step>
-  <Step title="Save">
-    Click **Save**, or **Cancel** to discard.
-  </Step>
-</Steps>
+## Related
 
-A template always needs a title. Clearing it and saving won't work. Vellum keeps the card open and tells you.
-
-## How to curate a template
-
-<Steps>
-  <Step title="Check the consent text">
-    Open the template and make sure the **Consent text** is present and correct. This is required.
-  </Step>
-  <Step title="Check the rest">
-    Check the questions, timing and segment.
-  </Step>
-  <Step title="Click the status pill">
-    Click the status pill beside the heading.
-  </Step>
-  <Step title="Choose Curated">
-    Choose **Curated**.
-  </Step>
-</Steps>
-
-If **Curated** is greyed out, the reason is shown right there: add consent text first. This gate is enforced by the platform, not just by the interface, so there's no route around it.
-
-## How to archive templates
-
-<Steps>
-  <Step title="Select the rows">
-    In the list, tick the rows you want to archive.
-  </Step>
-  <Step title="Click Archive">
-    Click **Archive** on the bar that appears at the bottom.
-  </Step>
-  <Step title="Confirm">
-    Confirm.
-  </Step>
-</Steps>
-
-Archived templates stay in the library, marked **Archived**, and can be restored from the record.
-
-## Tips and gotchas
-
-**Write the consent text before the questions.** It's tempting to leave it to the end, and it's the field most likely to be forgotten. Writing it first also clarifies what you're actually allowed to ask.
-
-<Tip>
-  **A baseline you didn't collect can't be reconstructed.** If an outcome needs a before-and-after comparison, the **Pre** template has to go out before the programme starts. This is the single most common evidence gap in impact work.
-</Tip>
-
-**Match questions to the outcome, not to curiosity.** Every extra question lowers your response rate. Ask what you need to evidence the change and stop.
-
-**Scale questions measure change; text questions explain it.** A report usually wants both: the number for the finding, the quotes for the narrative.
-
-**The privacy rule is what an analyst reads before aggregating.** Say plainly what may be published and at what level of aggregation.
-
-**Reuse rather than re-draft.** The point of the library is that a well-worded, properly consented template gets used again. If an existing template is nearly right, consider whether "nearly" is good enough before creating a near-duplicate.
-
-**Archive rather than delete.** Responses were gathered against these questions, and the wording is part of the evidence trail.
+<CardGroup cols={2}>
+  <Card title="Outcome library" href="/libraries/outcomes">
+    The outcomes survey templates evidence.
+  </Card>
+  <Card title="Beneficiary library" href="/libraries/beneficiaries">
+    Consent safeguards on the groups surveys address.
+  </Card>
+  <Card title="Data room" href="/projects/data-room">
+    Where a project's evidence lives.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Where evidence becomes valued outcomes.
+  </Card>
+</CardGroup>

@@ -1,0 +1,129 @@
+---
+title: "The project record"
+description: "The tabs, lifecycle controls and overview cards on a single project."
+---
+
+The project record is where one engagement lives. The header carries a breadcrumb back to **Projects**, the tab bar, the stage control and the **Share** button; the **Overview** tab below it collects the project's settings as a column of cards.
+
+![The project overview with the hero card, details, time, investment, methodology and purpose cards](/images/projects/record-overview.jpg)
+
+## The tabs
+
+The tabs run in workflow order: gather the evidence, build and value the model, produce the deliverable, then check the history.
+
+| Tab | What it holds |
+| --- | --- |
+| Overview | The project's identity, lifecycle and settings cards (this page) |
+| Data room | The evidence: files, the Registry, gaps and the model's registers. See [Data room](/projects/data-room) |
+| Workbench | The working surface where the model is built and valued. See [Workbench](/projects/workbench) |
+| Report | The project's report documents, opened in the report builder. See [Report builder](/projects/report-builder) |
+| Audit trail | Every recorded change to the project. See [Audit trail](/projects/audit-trail) |
+
+## How a report comes together
+
+The help icon next to the stage control opens a short orientation dialog, **How a report comes together**. It lists the six steps of a report in order, and clicking a step jumps straight to the tab where that step happens:
+
+1. **Gather the evidence**: upload the client's documents in the Data room.
+2. **Build the model**: compose the chart of impact accounts in the Workbench.
+3. **Record the numbers**: enter the client's measured KPIs, never dollars.
+4. **Value it in the Workbench**: bind each formula operand so the engine computes the dollars.
+5. **Confirm the Registry**: review every number a formula used, with its owner, status and evidence.
+6. **Generate the report**: write the report in the builder, every figure live from the calculation.
+
+![The How a report comes together dialog listing six numbered steps](/images/projects/workflow-help.jpg)
+
+## Changing the stage
+
+The coloured pill in the header shows the current stage. Click it to pick any of the ten stages; the hero card's progress bar moves with it. The stage is a signal you control, and you can move backwards as well as forwards. The full list is on [Projects overview](/projects/overview).
+
+<Note>
+If you were added to the project as a viewer, the stage control is hidden and a **View only** badge appears in its place. See [Sharing and access](/projects/sharing-and-access).
+</Note>
+
+## The hero card
+
+The card at the top of the Overview shows the project's identity and lifecycle in one place: the title (click it to rename inline), a link to the owning organisation, the reporting period and locale, and a progress bar across the ten stages with the current stage pinned at its right. Below the cards, a footer suggests the next step for the project, with a button that jumps to the right tab.
+
+## Details
+
+The **Details** card holds the basic facts. Click **Edit** to change any of them.
+
+| Field | What it is |
+| --- | --- |
+| Name | The project's title |
+| Period start and Period end | The reporting period the project covers |
+| Report type | The kind of report the project produces |
+| Locale | The locale used for language and formatting, for example en-AU |
+| Description | What this project measures and reports |
+
+## Time
+
+The **Time** card controls how the project's span is cut into periods and which of them count as actuals.
+
+![The Time card with the period list, the actuals through date and the discounting mode](/images/projects/time-card.jpg)
+
+- **Single or Yearly**: the switch in the card header cuts the span into one period, or one period per year. Each period is listed with its label and dates; a period shorter than twelve months is marked **Short**, and on a yearly project each period is badged **Actual** or **Forecast**.
+- **Actuals through**: periods ending on or before this date are actual, the rest are forecast. A sensible default is derived for you; set a date by hand and a **Reset to default** button appears.
+- **Discounting**: **Auto**, **On** or **Off**. Off shows undiscounted figures only. On shows present value beside each undiscounted figure, never added to it. Auto turns discounting on once the project has five or more periods, and the card says plainly whether it is active. When discounting is active you can set the base year, and the real discount rates (central, low and high sensitivity) appear as links to their rows in the project's [Registry](/projects/data-room), where each rate is edited with its source.
+
+If a re-cut leaves dated values outside every period, they are listed on the card as stranded values: they stop counting until they are re-dated in the Registry, and are never moved or deleted for you.
+
+## Investment
+
+The **Investment** card records what went into the programme: grants, expenditure, donations, in-kind support, volunteer time and other kinds. Each entry has a kind, a source, a spender and an amount, and lands as a row in the Registry so it carries evidence like any other number.
+
+![The Investment card with a grant entry, the total and the return per dollar](/images/projects/investment-card.jpg)
+
+The total investment is what the return ratio is built on: the project's total impact value divided by the money put in, shown as a plain figure such as $1.25 per $1. Add entries with **Add**; on a locked project the card is read-only.
+
+## Reporting methodology
+
+The **Reporting methodology** card records which methodology the report follows, and makes that choice a governed decision: versioned, explained and attributed to a named person.
+
+![The Reporting methodology card showing the methodology, version, rationale and who chose it](/images/projects/methodology-card.jpg)
+
+| Field | What it records |
+| --- | --- |
+| Methodology | The chosen methodology. Pick from the library's list or type your own |
+| Version / standard | The exact version or standard the report follows |
+| Rationale | Why this methodology suits this project; required before locking |
+| Chosen by | The named person who made the choice, with the date |
+
+Choosing a methodology sets the report pathway before outcome valuation begins. Library methodologies come with guidance on what each is best used for; see [Reporting methodologies](/libraries/reporting-methodologies).
+
+### Locking the methodology
+
+Once the version is pinned and the rationale recorded, **Lock methodology** freezes the choice for this report. The lock is recorded against your name, and sign-off cannot pass its method check until the methodology is locked.
+
+![The lock dialog asking for your name and optional role before freezing the methodology](/images/projects/methodology-lock-dialog.jpg)
+
+Unlocking is an override: it asks for your name and a reason, and both are recorded in the override log.
+
+<Note>
+The lock is always recorded against a named person. It is never an automated or AI approval.
+</Note>
+
+## Purpose and audiences
+
+The **Purpose & audiences** card links the project to the organisation's canonical lists of reporting purposes and audiences: what this project is reporting for, and who receives it.
+
+![The Purpose and audiences card with one linked purpose and two ordered audiences](/images/projects/purpose-audiences-card.jpg)
+
+Each list is ordered, and order sets priority: the top entry is the primary one. Drag rows (or use the arrows) to reorder. Adding an entry that does not exist yet saves it to the [organisation record](/organisations/profile-and-goals) first and then links it, so the organisation's list stays the single source of truth; removing a row only unlinks it from this project.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Data room" href="/projects/data-room">
+    Files, the Registry, gaps and the model's registers.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Where the model is built and valued.
+  </Card>
+  <Card title="Sharing and access" href="/projects/sharing-and-access">
+    Who can open a project and what each role can do.
+  </Card>
+  <Card title="Audit trail" href="/projects/audit-trail">
+    Every recorded change, who made it and when.
+  </Card>
+</CardGroup>

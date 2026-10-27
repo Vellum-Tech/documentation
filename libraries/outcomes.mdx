@@ -1,134 +1,99 @@
 ---
 title: "Outcome library"
-description: "The governed catalogue of changes: the outcome phrases your firm uses when building impact models and valuing impact."
+description: "Governed aligned-outcome phrases that seed impact accounts, each with SDG alignment, notes and a curation status."
 ---
 
-An **outcome** is the change an activity creates: improved mental wellbeing, reduced social isolation, avoided landfill, sustained employment. The Outcome library is your firm's agreed catalogue of those phrases.
+An outcome is a governed phrase describing a change beneficiaries experience,
+worded once and reused everywhere: "Household energy costs are reduced", not
+five slightly different ways of saying the same thing. Projects draw on these
+phrases when building their impact accounts, so the same outcome reads the
+same way across clients and reports.
 
-Outcomes are the smallest of the catalogue libraries by design: a label, some SDG tags and a note. That's all a governed phrase needs to be.
-
-## Why it exists
-
-Outcomes are the hinge of the whole model. A project's impact model is built out of them, and a valuation puts a value against one. If the same change is described three different ways across three projects, you can't compare, you can't aggregate, and your portfolio view is fiction.
-
-Agreeing the wording once fixes that. It also makes valuation easier: when an outcome phrase is stable, the [methodology](/libraries/methodologies) your firm uses to value it can be stable too.
-
-Like the other catalogue libraries, an outcome carries no monetary value. It's a phrase. The value comes later, from the engine.
+An outcome entry is a phrase, not a figure. The values attached to outcomes
+live in the [Factor library](/libraries/factors) and
+[Formula library](/libraries/formulas), and the engine computes them.
 
 ## The outcome list
 
-Open **Libraries > Outcome library**.
+Open **Libraries → Outcome library**.
 
-Each row shows:
+![The outcome library list with three outcome phrases, SDG badges and statuses](/images/libraries/outcomes-list.jpg)
 
-| Column | What it shows |
-| --- | --- |
-| **Outcome** | The phrase itself. |
-| **SDGs** | The goals it's tagged with. |
-| **Observed** | How often the phrase recurred in the source material the library was built from. A signal for ranking suggestions, not a project count, and never part of any calculation. |
-| **Status** | **Draft**, **Curated** or **Archived**. |
+| Column | Meaning |
+|---|---|
+| Outcome | The governed phrase |
+| SDGs | The Sustainable Development Goals the outcome aligns with |
+| Observed | How many times the phrase has been observed in project work |
+| Status | The curation status |
 
-Search matches the outcome phrase. The **Status** filter chip narrows the list, and **View options > Grouping** lets you cluster by status.
+Search by phrase and filter by **Status**. Hover a phrase and click the
+pencil to rename it in place; press `Enter` to save or `Escape` to cancel.
+Select rows with the checkboxes to archive outcomes in bulk.
+
+| Status | Meaning |
+|---|---|
+| Draft | Suggested wording, not yet vetted |
+| Curated | Tidied and approved as the governed phrasing |
+| Archived | Retired from use |
 
 ## The outcome record
 
-Click a row. The phrase is the heading with a status pill beside it. Click the pill to change status, and it saves immediately.
+Click a row to open the outcome.
 
-**Outcome details** holds the **Outcome** phrase and its **SDGs**.
+![An outcome record showing the phrase, its SDG alignment and notes](/images/libraries/outcome-record.jpg)
 
-**Notes** is free text: context, caveats, or a note on how the phrase is worded and why. This is the field to use when an outcome sounds simple but isn't. When "improved wellbeing" means something specific to your firm, say so here.
+- The status pill next to the title is the curation control: click it to
+  promote a tidied phrase from **Draft** to **Curated**, or to archive it.
+- **Outcome details** holds the phrase and its SDG alignment, editable with
+  **Edit** on the card.
+- **Notes** records context, caveats, or how the outcome is worded.
+- A footer shows when the outcome was added and by whom.
 
-At the foot of the record is a quiet line showing when the outcome was added and by whom.
+## Create an outcome
 
-## How to add an outcome
+<Note>
+Creating and editing outcomes is staff only. The **New outcome** button does
+not appear for client organisation members.
+</Note>
 
 <Steps>
-  <Step title="Start a new outcome">
-    Open **Libraries > Outcome library** and click **New outcome**.
+  <Step title="Open the dialog">
+    In **Libraries → Outcome library**, click **New outcome**.
   </Step>
   <Step title="Write the phrase">
-    Type the **Outcome** phrase. Write it as a change, not an activity: "Improved mental wellbeing", not "Counselling sessions delivered".
+    Enter the outcome phrase. Word it as the change the beneficiary
+    experiences, not as an activity.
   </Step>
-  <Step title="Tag the SDGs">
-    Tag any **SDGs** it relates to.
-  </Step>
-  <Step title="Add notes">
-    Add **Notes** if there's context worth carrying.
+  <Step title="Align and annotate">
+    Optionally pick the SDGs the outcome aligns with and add notes.
   </Step>
   <Step title="Add it">
-    Click **Add outcome**. Vellum opens the new record.
+    Click **Add outcome**. It lands as a draft; promote it to **Curated**
+    from its record once the wording is settled.
   </Step>
 </Steps>
 
-New outcomes land as **Draft**.
+## How a project picks an outcome
 
-## How to edit an outcome
+When a project builds its impact account chains, it draws on the curated
+phrases in this library so its outcomes align with the firm's governed
+wording, and the **Observed** count on the list reflects how often a phrase
+appears in project work. See [Workbench](/projects/workbench) for where
+outcomes carry value in a project.
 
-<Steps>
-  <Step title="Find the card">
-    Open the outcome and find the card you want to change.
-  </Step>
-  <Step title="Click Edit">
-    Click **Edit** on that card.
-  </Step>
-  <Step title="Make your changes">
-    Change the phrase, the SDG tags or the notes.
-  </Step>
-  <Step title="Save">
-    Click **Save**, or **Cancel** to discard.
-  </Step>
-</Steps>
+## Related
 
-An outcome always needs a label. Clearing it and saving won't work, and Vellum will tell you so and keep the card open.
-
-## How to curate an outcome
-
-<Steps>
-  <Step title="Check the entry">
-    Open the outcome and check the wording and SDG tags.
-  </Step>
-  <Step title="Click the status pill">
-    Click the status pill beside the heading.
-  </Step>
-  <Step title="Choose Curated">
-    Choose **Curated**.
-  </Step>
-</Steps>
-
-**Curated** is your firm saying "this is the phrase we use". **Draft** means it arrived in the flow of work and hasn't been reviewed.
-
-## How to archive outcomes
-
-<Steps>
-  <Step title="Select the rows">
-    In the list, tick the rows you want to archive.
-  </Step>
-  <Step title="Click Archive">
-    Click **Archive** on the bar that appears at the bottom.
-  </Step>
-  <Step title="Confirm">
-    Confirm.
-  </Step>
-</Steps>
-
-Archived outcomes stay in the library, marked **Archived**, and can be restored from the record.
-
-## How outcomes are used
-
-Every row of a project's impact model names an outcome, alongside an activity and a beneficiary. The outcome picker offers this library, and someone typing a phrase that isn't in it is offered a tick box, *Add this outcome to the Outcome Library so it can be reused*, ticked by default.
-
-Later, in the Workbench, each outcome is valued: a methodology is chosen, its operands are filled from client data or from [factors](/libraries/factors), and the engine produces the figure. Where the evidence for an outcome is missing, a [survey template](/libraries/surveys) is how you go and get it.
-
-## Tips and gotchas
-
-**Write a change, not an action.** "Sessions delivered" is an output and belongs to the activity. "Reduced social isolation" is an outcome. Getting this right is the difference between a report that measures effort and one that measures impact.
-
-**Keep the phrase short and general.** It should read sensibly for any client running a similar programme. Client-specific detail belongs in the project, not in the shared library.
-
-**Use the notes for the definition.** Wellbeing, resilience and inclusion mean different things to different readers. If your firm has a working definition, this is where it lives, and it's what stops the phrase drifting.
-
-**SDG tags are worth the minute they cost.** They're how a reader finds the outcomes relevant to a goal they care about, across every report you produce.
-
-**Search before adding.** Near-duplicate outcome phrases are the fastest way to make a portfolio view meaningless.
-
-**Archive rather than delete.** Published reports referenced these phrases.
+<CardGroup cols={2}>
+  <Card title="Activity library" href="/libraries/activities">
+    The governed activity phrases that pair with outcomes.
+  </Card>
+  <Card title="Beneficiary library" href="/libraries/beneficiaries">
+    The governed groups outcomes are experienced by.
+  </Card>
+  <Card title="Survey library" href="/libraries/surveys">
+    Templates that turn outcome gaps into evidence.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Where outcomes are valued in a project.
+  </Card>
+</CardGroup>

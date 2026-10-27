@@ -1,150 +1,100 @@
 ---
 title: "Beneficiary library"
-description: "The governed catalogue of who benefits, with directness, SDG tags, and the consent safeguards that travel with sensitive groups."
+description: "Governed beneficiary groups with consent safeguards: directness, a sensitive flag, and the caveat an analyst must see before a group lands in a report."
 ---
 
-A **beneficiary** is a group that benefits from an activity: students, carers, patients, people experiencing homelessness. It can also be something less obvious, like a public system that carries less load, or the environment itself.
-
-The Beneficiary library is your firm's agreed catalogue of those groups. Like the other catalogue libraries it holds phrases, never figures.
-
-## Why it exists
-
-Partly for the same reason as the [Activity library](/libraries/activities): consistent wording makes reports comparable, and re-inventing "families and carers" on every engagement is wasted effort.
-
-But beneficiaries carry something the other libraries don't. Some of these groups are people in vulnerable circumstances, and describing them in a public report is not a neutral act. So this library treats consent and privacy as first-class: an entry can be flagged **Sensitive**, and when it is, a safeguard note travels with it everywhere it appears. An analyst about to put that group in a report sees the caveat first, not after publication.
+A beneficiary entry is a governed name for a group a programme serves, such
+as "Low income households in private rental". Alongside the wording, each
+entry carries a directness classification and, where the group needs
+protecting, explicit consent safeguards.
 
 ## The beneficiary list
 
-Open **Libraries > Beneficiary library**.
+Open **Libraries → Beneficiary library**.
 
-Each row shows:
+![The beneficiary library list with three groups, their directness and statuses, one marked with a sensitive shield](/images/libraries/beneficiaries-list.jpg)
 
-| Column | What it shows |
-| --- | --- |
-| **Beneficiary** | The group's label, with a sensitivity marker where the group is flagged. |
-| **Directness** | How directly the group benefits. |
-| **SDGs** | The goals it's tagged with. |
-| **Observed** | How often the phrase recurred in the source material. A ranking signal for suggestions only, not a project count, and never part of a calculation. |
-| **Status** | **Draft**, **Curated** or **Archived**. |
+| Column | Meaning |
+|---|---|
+| Beneficiary group | The governed name, with a shield icon when the group is sensitive |
+| Directness | Direct, Indirect, System or Environment |
+| SDGs | The Sustainable Development Goals the group relates to |
+| Observed | How many times the group has been observed in project work |
+| Status | Draft, Curated or Archived |
 
-Search matches the label. The **Directness** and **Status** filter chips narrow the list, and **View options > Grouping** clusters by either.
+Search by name and filter by **Directness** or **Status**. Directness keeps
+different kinds of claim distinguishable: a **Direct** group is served by the
+work itself, an **Indirect** group benefits downstream, **System** covers
+changes to a system rather than people, and **Environment** covers claims
+about the natural environment.
 
-### Directness
+## Consent safeguards
 
-Four classifications, and they're descriptions rather than judgements:
+The consent safeguards are two fields on every beneficiary entry:
 
-- **Direct** is the group the activity is aimed at. The young person in the mentoring programme.
-- **Indirect** is the group that benefits because the direct group did. Their family, their employer.
-- **System** is a service or public system that carries less load. A hospital, a housing waiting list.
-- **Environment** is the natural environment as the beneficiary.
+- **Sensitive**: a flag marking that consent, privacy controls and careful
+  aggregation apply before anything about this group is displayed publicly.
+- **Safeguard / permission note**: the caveat an analyst must see before the
+  group lands in a report, for example that only aggregated, de-identified
+  responses may be used.
 
-Recording this keeps different kinds of claim distinguishable in a report. "We helped 400 young people" and "we relieved pressure on the local health service" are both true and should never be added together as though they were the same thing.
+On a sensitive group's record, the safeguard note is shown as a warning
+banner at the top, above everything else, and the list marks the group with
+a shield icon, so the caveat is in front of the analyst before the group is
+used anywhere.
+
+![A sensitive beneficiary record with the safeguard banner, details and safeguards cards](/images/libraries/beneficiary-record.jpg)
 
 ## The beneficiary record
 
-Click a row. The label is the heading, with a status pill beside it and, where the group is flagged, a **Sensitive group** marker.
+- **Beneficiary details**: the group name, directness and SDGs.
+- **Safeguards**: the sensitive flag and the safeguard or permission note,
+  editable with **Edit** on the card.
+- **Authoring hints**: example activities and common outcomes for this group.
+  These are suggestions surfaced when a project builds its accounts; they are
+  never applied automatically.
+- **Notes**: context, caveats, or how the group is worded.
 
-If the group is sensitive and has a safeguard note, that note is shown in a highlighted panel immediately below the heading, before anything else on the record. It's positioned there on purpose.
+The status pill next to the title promotes a tidied group from **Draft** to
+**Curated**, or archives it.
 
-**Beneficiary details** holds the **Beneficiary group** label, its **Directness** and its **SDGs**.
-
-**Safeguards** holds the **Sensitive** flag and the **Safeguard / permission note**, the caveat an analyst must see before this group lands in a report.
-
-**Authoring hints** holds **Example activities** (activities that typically serve this group) and **Common outcomes** (changes this group commonly realises). Suggestions offered when someone builds a model, never applied automatically.
-
-**Notes** is free text for context, caveats or wording decisions.
-
-At the foot of the record is a quiet line showing when the entry was added and by whom.
-
-## How to add a beneficiary
-
-<Steps>
-  <Step title="Start a new beneficiary">
-    Open **Libraries > Beneficiary library** and click **New beneficiary**.
-  </Step>
-  <Step title="Write the label">
-    Type the **Beneficiary group** label: "Families and carers", "People with disability".
-  </Step>
-  <Step title="File it">
-    Optionally set the **Directness** and tag any **SDGs**.
-  </Step>
-  <Step title="Set the privacy posture">
-    If this is a group requiring care, tick **Sensitive group**. A **Safeguard note** field appears. Write the consent or aggregation caveat that anyone using this group needs to see.
-  </Step>
-  <Step title="Add it">
-    Click **Add beneficiary**. Vellum opens the new record.
-  </Step>
-</Steps>
-
-New entries land as **Draft**.
+## Create a beneficiary group
 
 <Note>
-  The sensitivity flag and safeguard note are offered here, at the point of creation, rather than only on the record. The privacy posture should be captured when the group is first described, not retrofitted once someone notices.
+Creating and editing beneficiary groups is staff only. The **New
+beneficiary** button does not appear for client organisation members.
 </Note>
 
-## How to edit a beneficiary
-
 <Steps>
-  <Step title="Find the card">
-    Open the beneficiary and find the card you want to change.
+  <Step title="Open the dialog">
+    In **Libraries → Beneficiary library**, click **New beneficiary**.
   </Step>
-  <Step title="Click Edit">
-    Click **Edit** on that card.
+  <Step title="Name the group">
+    Enter the group's name and, optionally, its directness and SDGs.
   </Step>
-  <Step title="Make your changes">
-    This includes ticking or unticking **Sensitive** and updating the **Safeguard / permission note** on the **Safeguards** card.
+  <Step title="Set the safeguards">
+    If the group is sensitive, tick **Sensitive** and write the safeguard
+    note an analyst must read before using the group in a report.
   </Step>
-  <Step title="Save">
-    Click **Save**, or **Cancel** to discard.
+  <Step title="Add it">
+    Click **Add beneficiary**. It lands as a draft; promote it to
+    **Curated** from its record once settled.
   </Step>
 </Steps>
 
-## How to curate a beneficiary
+## Related
 
-<Steps>
-  <Step title="Check the entry">
-    Open the entry and check the label, directness, SDGs and safeguard posture.
-  </Step>
-  <Step title="Click the status pill">
-    Click the status pill beside the heading.
-  </Step>
-  <Step title="Choose Curated">
-    Choose **Curated**.
-  </Step>
-</Steps>
-
-## How to archive beneficiaries
-
-<Steps>
-  <Step title="Select the rows">
-    In the list, tick the rows you want to archive.
-  </Step>
-  <Step title="Click Archive">
-    Click **Archive** on the bar that appears at the bottom.
-  </Step>
-  <Step title="Confirm">
-    Confirm.
-  </Step>
-</Steps>
-
-Archived entries stay in the library, marked **Archived**, and can be restored from the record.
-
-## How beneficiaries are used
-
-Each row of a project's impact model pairs an activity, a beneficiary and an outcome. The beneficiary picker offers this library. If someone types a group that isn't in it, they're offered a tick box, *Add this beneficiary to the Beneficiary Library so it can be reused*, ticked by default.
-
-That's how the library grows, and it means new entries arrive as drafts that need occasional tidying.
-
-## Tips and gotchas
-
-**Write the sensitivity note as an instruction, not a label.** "Consent obtained for aggregate reporting only. Do not publish figures below groups of ten" is useful. "Sensitive" on its own tells the reader nothing they can act on.
-
-**Flag sensitivity when you create the entry.** It's much harder to retrofit once the group is already in three reports.
-
-**Directness stops double-counting.** If a system-level beneficiary and the direct beneficiaries both appear in your model, keeping the classification straight is what stops the same benefit being counted twice.
-
-**The environment can be a beneficiary.** If the change is ecological, say so with **Environment** rather than stretching a human group to cover it.
-
-**Search before adding.** "Carers", "Family carers" and "Families and carers" as three entries is the problem, not the solution.
-
-**Archive rather than delete.** Published reports referenced these phrases, so keep them retrievable.
+<CardGroup cols={2}>
+  <Card title="Survey library" href="/libraries/surveys">
+    Consent wording also travels with survey templates.
+  </Card>
+  <Card title="Outcome library" href="/libraries/outcomes">
+    The governed changes these groups experience.
+  </Card>
+  <Card title="Activity library" href="/libraries/activities">
+    The governed work that serves these groups.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Where beneficiary reach feeds valuations.
+  </Card>
+</CardGroup>

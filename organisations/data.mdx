@@ -1,0 +1,71 @@
+---
+title: "Data"
+description: "The organisation's data room: uploaded files, written documents, and the numbers extracted from them."
+---
+
+The **Data** tab is the organisation's data room. Everything the client has shared or you have written down lives here: uploaded files, written documents, and the values Vellum has extracted from them.
+
+![The data tab showing a table of uploaded PDF files with type, added by, and updated columns](/images/organisations/data-tab.jpg)
+
+Each row is a **File** (something uploaded) or a **Note** (a document written in Vellum). Use **Search data…** and the **Type** filter to narrow the table. Rows show who added the item and when it last changed.
+
+## Adding files and documents
+
+There are three ways to add to the data room:
+
+- Click **Add** in the record header and choose **File** to upload, or **Document** to start writing a note.
+- Click the **+** button at the right of the Data tab's toolbar to upload.
+- Drag files from your desktop anywhere onto the record; they land in the organisation's data room.
+
+Uploaded files are processed automatically: Vellum reads the document, writes a short summary, and pulls out the numbers it finds.
+
+Documents you write open in a floating panel with a title and a rich-text body. From a note's row menu you can **Pin** it to keep it at the top of the table, or **Delete** it.
+
+<Warning>
+Deleting a file or note from the Data tab is permanent. Unlike moving an organisation to trash, there is no restore.
+</Warning>
+
+## Opening a file
+
+Click a file's row to open it in the file panel: the document itself on the left, and what Vellum has read from it on the right.
+
+![The file panel showing a sample PDF on the left and its summary, extractions, and datapoints on the right](/images/organisations/file-panel.jpg)
+
+The right side shows:
+
+- **Summary**: a short AI-written description of the document. Verify it before relying on it.
+- **Used in reports**: every report figure or citation that draws on this document.
+- **Extractions**: the individual numbers Vellum pulled from the text, each with what it measures.
+- **Datapoints**: values read from tables in the document, with their period.
+
+## Where datapoints come from
+
+When an uploaded document contains tables of results, Vellum turns each figure into a datapoint: a candidate number waiting for an analyst to accept it. Nothing is used in a valuation automatically. Under each extracted value or datapoint, **Add to Registry** places it into a project's Registry, either as a new row or as the next version of an existing row, with the source document attached as evidence.
+
+The Registry and the deeper evidence workflow belong to projects; see [The project data room](/projects/data-room).
+
+## Organisation documents and project documents
+
+Documents can sit at two levels:
+
+- **Organisation level** (this tab): material about the client as a whole, such as policies, strategies, and annual reports. The agent uses these when drafting the organisation summary.
+- **Project level**: evidence for one engagement, held in that project's own data room.
+
+If a document matters to one engagement's numbers, put it in the project. If it describes the organisation generally, put it here.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Project data room" href="/projects/data-room">
+    Evidence, the Registry, and promoting datapoints in a project.
+  </Card>
+  <Card title="Profile and goals" href="/organisations/profile-and-goals">
+    The organisation summary the agent drafts from these documents.
+  </Card>
+  <Card title="Working with the agent" href="/chat/working-with-the-agent">
+    Ask Vellum about a document or a specific figure in it.
+  </Card>
+  <Card title="Policies library" href="/libraries/policies">
+    The firm-wide policy documents that organisation copies mirror.
+  </Card>
+</CardGroup>
