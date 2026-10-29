@@ -1,16 +1,16 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "luma",
-  "name": "Vellum",
+  "name": "Vellum Help Center",
   "colors": {
-    "primary": "#0e3f34",
-    "light": "#d3f2ca",
-    "dark": "#0a2e26"
+    "primary": "#0f3b2e",
+    "light": "#46ecd5",
+    "dark": "#005f5a"
   },
   "background": {
     "color": {
-      "light": "#fffbf6",
-      "dark": "#1a1a1a"
+      "light": "#fafafa",
+      "dark": "#0a0a0a"
     }
   },
   "favicon": "/favicon.svg",
@@ -18,23 +18,44 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "seo": {
+    "metatags": {
+      "robots": "noindex, nofollow"
+    }
+  },
   "navigation": {
     "groups": [
       {
         "group": "Get started",
         "pages": [
           "index",
-          "getting-started"
+          "get-started/quickstart",
+          "get-started/navigation",
+          "get-started/account-and-appearance"
         ]
       },
       {
-        "group": "Guides",
+        "group": "Organisations",
         "pages": [
-          "guides/organisations",
-          "guides/projects",
-          "guides/workbench-and-valuations",
-          "guides/data-room-and-documents",
-          "guides/chat-assistant"
+          "organisations/overview",
+          "organisations/profile-and-goals",
+          "organisations/people",
+          "organisations/data",
+          "organisations/archive-and-trash"
+        ]
+      },
+      {
+        "group": "Projects",
+        "pages": [
+          "projects/overview",
+          "projects/project-record",
+          "projects/sharing-and-access",
+          "projects/data-room",
+          "projects/workbench",
+          "projects/sign-off-and-reports",
+          "projects/report-builder",
+          "projects/publishing-and-exports",
+          "projects/audit-trail"
         ]
       },
       {
@@ -42,12 +63,36 @@
         "pages": [
           "libraries/overview",
           "libraries/factors",
-          "libraries/methodologies",
+          "libraries/formulas",
+          "libraries/valuation-methodologies",
           "libraries/reporting-methodologies",
+          "libraries/outcomes",
           "libraries/activities",
           "libraries/beneficiaries",
-          "libraries/outcomes",
-          "libraries/surveys"
+          "libraries/surveys",
+          "libraries/policies"
+        ]
+      },
+      {
+        "group": "Chat assistant",
+        "pages": [
+          "chat/overview",
+          "chat/working-with-the-agent",
+          "chat/sharing-and-files"
+        ]
+      },
+      {
+        "group": "Administration",
+        "pages": [
+          "admin/team",
+          "admin/roles-and-permissions"
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          "glossary",
+          "faq"
         ]
       }
     ]
@@ -58,12 +103,7 @@
         "label": "Website",
         "href": "https://vellum.com.au"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Sign in",
-      "href": "https://app.vellum.com.au"
-    }
+    ]
   },
   "footer": {
     "links": [
@@ -72,10 +112,6 @@
           {
             "label": "Website",
             "href": "https://vellum.com.au"
-          },
-          {
-            "label": "Sign in",
-            "href": "https://app.vellum.com.au"
           }
         ]
       }

@@ -1,0 +1,74 @@
+---
+title: "FAQ"
+description: "Quick answers to the questions people ask most."
+---
+
+## Numbers and the engine
+
+<AccordionGroup>
+  <Accordion title="Why can't I just type a dollar figure into the report?">
+    By design. Every number in a Vellum report is computed by the deterministic engine from inputs that trace to a source: measured data in the Registry, or a cited, versioned factor. That is what makes the report defensible under audit. In the report builder you insert a live figure instead; it always shows the engine's current value. See [the report builder](/projects/report-builder).
+  </Accordion>
+  <Accordion title="Does the AI assistant calculate my impact value?">
+    No. The assistant can propose operands, draft text and explain where a number came from, but it never produces a number. The engine does all arithmetic. See [the chat assistant](/chat/overview).
+  </Accordion>
+  <Accordion title="What happens when a factor's value changes?">
+    Factors are versioned: a new value becomes a new version rather than overwriting the old one. Work that used the old version keeps it, so a report signed off last year still traces to the number that was true then. See [the Factor library](/libraries/factors).
+  </Accordion>
+  <Accordion title="How do uploaded documents become numbers?">
+    Vellum parses each upload, writes a summary, and extracts figures it finds in tables as datapoints. A person then promotes a datapoint into the project's Registry, where it carries an owner, a status and its evidence, and only then can a formula use it. See [the data room](/projects/data-room).
+  </Accordion>
+</AccordionGroup>
+
+## Access and visibility
+
+<AccordionGroup>
+  <Accordion title="Who can see a project?">
+    Vellum staff see every organisation and project. People from the client organisation see only the projects they have been added to, as Owner, Editor or Viewer. Anything outside someone's access simply does not appear (a direct link shows "not found" rather than "no permission"). See [Roles and permissions](/admin/roles-and-permissions).
+  </Accordion>
+  <Accordion title="How do people from a client organisation get access?">
+    Invite them from the organisation's **People** tab as an Admin or Member, then add them to specific projects from each project's **Share** dialog. See [People](/organisations/people) and [Sharing and access](/projects/sharing-and-access).
+  </Accordion>
+  <Accordion title="What can a Viewer do?">
+    Read everything, change nothing. The project shows them a read-only badge, and any attempted change is refused with an explanation.
+  </Accordion>
+</AccordionGroup>
+
+## Changing and undoing things
+
+<AccordionGroup>
+  <Accordion title="Can I undo a change?">
+    Most records can simply be edited back, and every change is recorded in the [audit trail](/projects/audit-trail). Two things are deliberately one-way: audit entries themselves cannot be edited or removed, and a published report version stays frozen forever. Deleting a file from an organisation's Data tab is also permanent.
+  </Accordion>
+  <Accordion title="What does archiving an organisation do? Is trash permanent?">
+    Archiving hides an organisation from day-to-day lists and can be undone at any time. Moving to trash is stronger but still reversible: staff can restore from the Trash page. See [Archive and trash](/organisations/archive-and-trash).
+  </Accordion>
+  <Accordion title="I published a report and then fixed the draft. Did the published copy change?">
+    No. A published version is a frozen, read-only record. Your fixes live in the draft until you publish the next version. See [Publishing and exports](/projects/publishing-and-exports).
+  </Accordion>
+</AccordionGroup>
+
+## Reports
+
+<AccordionGroup>
+  <Accordion title="Why won't Vellum let me publish yet?">
+    The publish dialog lists exactly what is blocking: open gaps in the report and any sign-off step not yet reached. Resolve or dismiss the gaps and work through sign-off, and the dialog unblocks. See [Sign-off and reports](/projects/sign-off-and-reports).
+  </Accordion>
+  <Accordion title="Can I get the report out of Vellum?">
+    Yes: export the draft or a published version as a Word document or a PDF from the report builder's export menu, and export the full Workbench workbook as a spreadsheet. See [Publishing and exports](/projects/publishing-and-exports).
+  </Accordion>
+  <Accordion title="What is the difference between an Impact report and an Impact forecast?">
+    Both are report documents built the same way; a report tells the story of measured impact for the period, while a forecast presents expected impact. The document list shows each one's kind. See [Sign-off and reports](/projects/sign-off-and-reports).
+  </Accordion>
+</AccordionGroup>
+
+## Getting help
+
+<AccordionGroup>
+  <Accordion title="Where do I get support?">
+    Use **Support** at the bottom of the sidebar, which starts an email to the Vellum team. For how-to questions, the [chat assistant](/chat/overview) can explain any screen or number you are looking at.
+  </Accordion>
+  <Accordion title="Something in these docs doesn't match my screen.">
+    Some capabilities arrive gradually (for example, named external reporting frameworks appear only when curation is enabled for your workspace). If a control described here is missing, it may not be enabled for you yet; ask via Support.
+  </Accordion>
+</AccordionGroup>

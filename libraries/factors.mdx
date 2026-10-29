@@ -1,171 +1,150 @@
 ---
 title: "Factor library"
-description: "Sourced reference values with citations, source tiers and full version history: the numbers your valuations are allowed to use."
+description: "Published reference values such as prices, rates and wages, each with a source, a citation and a version history, reused across clients."
 ---
 
-A **factor** is a number your firm has sourced from somewhere reputable and is prepared to stand behind: the replacement cost of a meal, the wellbeing value of a volunteer hour, the public cost avoided when someone doesn't present at an emergency department.
-
-Every factor has four things that matter: a **name**, a **unit**, a **value**, and a **source citation**. The first three make it usable. The fourth makes it defensible.
-
-## Why it exists
-
-Vellum will not let anyone type a dollar figure onto a report. Every number in a valuation comes either from the client's own measured data or from a factor in this library, which means the question "where did this number come from?" always has an answer, and that answer is a citation you can hand to a reviewer.
-
-The library also stops the same number being re-sourced, re-argued and slightly re-invented on every engagement. Source it once, cite it properly, and every project after that inherits your work.
-
-There's one more reason, and it's the quiet one: **versioning**. A factor's value changes over time, because prices move and statistics get revised. When that happens you add a new version rather than overwriting the old one. A report signed off last year still traces to the number that was true when you signed it, and you can show exactly when and why the value moved.
+A factor is a published reference value: a price, a rate, a wage, an emissions
+intensity. Factors carry the evidence a defensible valuation needs, a source
+citation, a source tier and a version history, and the engine reads them when
+it computes report figures. Curate a value once and every project that binds
+it uses the same number with the same citation.
 
 ## The factor list
 
-Open **Libraries > Factor library** and you'll see every factor your firm holds.
+Open **Libraries → Factor library** to see every factor.
 
-Each row leads with the factor's **Name**, with a small external-link icon if the source has a URL. Click it to open the source in a new tab. Underneath sits a quiet context line: the factor's category (or its type if there's no category), its unit, and a note like "3 versions" when the factor has history.
+![The factor library list with two factors showing values, units and source tiers](/images/libraries/factors-list.jpg)
 
-The columns to the right are:
+Each row shows:
 
-| Column | What it shows |
-| --- | --- |
-| **Value** | The current version's number. |
-| **Unit** | What the number is per: *per meal*, *per hour*, *per tonne CO2e*. |
-| **Source** | A coloured pill showing the source tier, from **Govt statistic** down to **Other**. |
-| **Locale** | Where the factor applies, where that's recorded. |
-| **Used in** | How many projects currently apply this factor. A blank here means nobody's used it yet. |
-| **Year** | The period the value relates to. |
+| Column | Meaning |
+|---|---|
+| Name | The factor's name, with its category and unit beneath, a link icon when a source URL is recorded, and a version count when there is more than one |
+| Value | The current numeric value |
+| Unit | The unit the value is expressed in |
+| Source | The source tier pill |
+| Locale | The locale the value applies to, when recorded |
+| Used in | How many projects apply the factor |
+| Year | The period year of the current value |
 
-Use the search box to find a factor by name, unit, locale or source tier. The **Source** filter chip narrows to particular tiers, and **View options** lets you group the list by source tier, which is a fast way to see how much of your library rests on government statistics versus internal assumption.
+Search by name, unit, locale or source tier, and filter by **Source**. The
+view options button (the sliders icon) lets you group the list by source
+tier, change the ordering and toggle columns.
+
+Source tiers rank how authoritative the evidence is:
+
+| Tier | Typical source |
+|---|---|
+| Govt statistic | A national statistics office or government register |
+| Peer reviewed | Published academic research |
+| Industry report | A sector body or commercial research report |
+| Firm internal | Your firm's own analysis |
+| Other | Anything else |
 
 ## The factor record
 
-Click a row to open the factor. The title carries a status pill you can click to change status directly: **Draft**, **In review**, **Approved**, **Deprecated** or **Archived**. Picking a new status saves it straight away.
+Click a row to open the factor.
 
-Below that are four cards.
+![A factor record showing details, value and source cards with an Approved status](/images/libraries/factor-record.jpg)
 
-**Factor details** holds the definition: **Name**, **Unit**, **Factor type**, **Impact domain**, **Category** and **Priority SDGs**. None of this is versioned. It's how the factor is described and filed, not what it asserts.
+The record is organised into cards:
 
-**Value & source** holds everything that *is* versioned: the **Current value**, its **Value type**, the **Version** number, the **Source tier**, **Review status**, the effective period, **Base year**, **Geography**, and the **Source** citation with its link. Editing this card records a new version. The button even says **Save new version**, so there's no way to change a value by accident.
+- **Factor details**: name, unit, factor type (such as Monetary proxy,
+  Conversion factor, Benchmark or Assumption), impact domain, category and
+  priority SDGs. Click **Edit** on the card to change these in place; they
+  are metadata and do not create a new version.
+- **Value & source**: the current value, value type, version number, source
+  tier, review status, effective period, base year, geography, and the source
+  citation with a link when a URL is recorded.
+- **Methodology notes**: free text on how the factor is derived, caveats and
+  refresh cadence.
+- **Version history**: every version with its effective period, value, who
+  changed it and the change note.
+- **Usage**: the projects that apply this factor, with the client, the
+  activity, the version each valuation pinned and the applied value.
 
-**Methodology notes** is free text: how the factor was derived, what caveats apply, how often it should be refreshed. Worth filling in. It's the field that saves a colleague from misusing your factor two years from now.
+### Factor status
 
-**Version history** lists every version the factor has ever had: version number, effective period, value, who changed it, and the change note. The current version is marked **current**. Superseded ones are dimmed but never deleted.
+The pill next to the factor's name is its status. Click it to change status
+directly.
 
-**Usage** shows which projects apply this factor, with the client, the activity, the version they pinned, and the value that was actually applied. If a factor turns out to be wrong, this card tells you immediately who is affected.
+![The factor status menu open showing Draft, In review, Approved, Deprecated and Archived](/images/libraries/factor-status-menu.jpg)
 
-## Field reference
+| Status | Meaning |
+|---|---|
+| Draft | Being drafted; not yet vetted |
+| In review | Submitted for checking |
+| Approved | Vetted and ready to use |
+| Deprecated | Still visible, but new work should not bind it |
+| Archived | Retired from use |
 
-**Source tier** is how authoritative the source is, from most to least: **Govt statistic**, **Peer reviewed**, **Industry report**, **Firm internal**, **Other**. This is the single most useful signal about a factor's quality, and it's what the list groups and filters by.
+Each version also carries its own review status (Candidate, Needs source, In
+review, Approved, Rejected or Superseded), which tracks the evidence check
+for that specific value.
 
-**Factor type** is what kind of number this is: **Monetary proxy**, **Conversion factor**, **Activity input**, **Rate or allocation**, **Formula parameter**, **Benchmark** or **Assumption**.
+## Create a factor
 
-**Impact domain** is one of **Environment**, **Social**, **Economic**, **Governance** or **Mixed**.
-
-**Status** is where the factor sits in your firm's curation: **Draft**, **In review**, **Approved**, **Deprecated**, **Archived**. Use **Deprecated** for a factor you no longer want applied to new work but must keep visible because old reports depend on it.
-
-**Review status** is where this particular *version* sits in review: **Candidate**, **Needs source**, **In review**, **Approved**, **Rejected**, **Superseded**. Status describes the factor. Review status describes the version's evidence.
-
-**Value type** is one of **Point value**, **Range (min to max)**, **Text** or **Formula**. The value box records a single number, so **Point value** is what you'll use when adding factors by hand. The other types appear on factors that arrived from an import and display their range or text in the version history.
-
-**Currency** is AUD, USD, GBP, EUR, NZD, JPY or CNY. Note that currency lives here, not in the unit, so a unit stays a clean denominator like *per meal* rather than doubling up as "$ per meal".
-
-**Base year** and **Period year** are the year the value is expressed in, and the year it describes. They're often the same. When they aren't, both matter for comparability.
-
-**Geography** is where the value applies, as free text: "NSW, AU", "United Kingdom", "National".
-
-## How to add a factor
+<Note>
+Creating and editing factors is staff only. The **New factor** button does
+not appear for client organisation members.
+</Note>
 
 <Steps>
   <Step title="Start a new factor">
-    Open **Libraries > Factor library** and click **New factor**.
+    In **Libraries → Factor library**, click **New factor**.
   </Step>
-  <Step title="Name it">
-    Under **Definition**, give it a **Name** that will read clearly to someone who didn't source it: "Social value of volunteering" rather than "vol_val_2". Add a **Description** if the name doesn't carry enough.
+  <Step title="Define the factor">
+    Give it a name and, if you wish, a description, factor type, impact
+    domain, category, status and priority SDGs.
+
+    ![The new factor form with the definition section filled in](/images/libraries/factor-new-form.jpg)
   </Step>
-  <Step title="File it">
-    Set the **Factor type**, **Impact domain**, **Category** and **Status**. All optional, all worth doing. They're what make the library searchable when it holds four hundred factors instead of forty.
-  </Step>
-  <Step title="Tag the SDGs">
-    Tag any **Priority SDGs** the factor relates to.
-  </Step>
-  <Step title="Enter the value and unit">
-    Under **Current value**, enter the **Value** and pick the **Unit**. The unit picker searches your firm's existing units. If what you need isn't there, type it and choose the **Add** option to create it.
-  </Step>
-  <Step title="Describe the value">
-    Set the **Value type**, **Currency**, **Base year**, **Period year** and **Geography** as they apply.
+  <Step title="Enter the current value">
+    Enter the value and pick its unit from the unit registry. You can also
+    set the value type, currency, base year, period year and geography.
   </Step>
   <Step title="Cite the source">
-    Under **Source**, enter the **Source citation**. This is required. Write it as you'd write it in a footnote: "HACT Social Value Bank 2022", not "HACT".
-  </Step>
-  <Step title="Rate the source">
-    Add the **Source URL** if there is one, then set the **Source tier** and **Review status**.
-  </Step>
-  <Step title="Save">
-    Click **Save factor**. Vellum opens the new factor's record.
-  </Step>
-</Steps>
-
-<Warning>
-  **Name**, **Unit**, **Value** and **Source citation** are all required. If you're missing the citation, you're not ready to add the factor.
-</Warning>
-
-## How to edit a factor's details
-
-<Steps>
-  <Step title="Open the details card">
-    Open the factor and find the **Factor details** card.
-  </Step>
-  <Step title="Click Edit">
-    Click **Edit**.
-  </Step>
-  <Step title="Change what you need">
-    Change the **Name**, **Unit**, **Factor type**, **Impact domain**, **Category** or **Priority SDGs**.
+    Enter the source citation (required), a source URL, the source tier and
+    the review status. A factor without a citation cannot be saved: the
+    citation is what makes the value defensible in a report.
   </Step>
   <Step title="Save">
-    Click **Save**.
+    Click **Save factor**. The factor opens on its own record as version 1.
   </Step>
 </Steps>
 
-These edits don't create a version. You're changing how the factor is described, not what it claims. The same applies to **Methodology notes** and to the status pill.
+## Versioning: new values never overwrite old ones
 
-## How to add a new version
+Editing the **Value & source** card (or using **Edit** from the factor's
+record) records a new version rather than changing the old one. Add a change
+note so the history explains itself.
 
-Do this whenever the *value* or the *source* changes.
+This is deliberate: a valuation pins the factor version it used, so a report
+produced last year keeps citing last year's value even after you publish this
+year's update. The version history shows every value the factor has ever
+held, and the usage card shows which version each project is on.
 
-<Steps>
-  <Step title="Open the value card">
-    Open the factor and find the **Value & source** card.
-  </Step>
-  <Step title="Click Edit">
-    Click **Edit**.
-  </Step>
-  <Step title="Update the value and evidence">
-    Update the **Value**, and update the **Source citation**, **Source URL**, **Source tier** or **Review status** if the evidence has moved too.
-  </Step>
-  <Step title="Update the period and place">
-    Adjust **Base year**, **Period year** and **Geography** so they describe the new value rather than the old one.
-  </Step>
-  <Step title="Write a change note">
-    Write a **Change note**, a sentence saying what changed and why. It's optional and you should write it anyway. It's what makes the version history readable.
-  </Step>
-  <Step title="Save the new version">
-    Click **Save new version**.
-  </Step>
-</Steps>
+## Where factors appear in projects
 
-The previous version is kept, marked as superseded, and stays visible in **Version history**. Projects that already pinned the old version keep it. Check the **Usage** card to see who they are.
+In a project's Workbench, a formula's operands are bound to factors. When the
+engine computes a valuation line, it resolves each bound operand to the
+factor version current at the time, records it, and the report's figures
+trace back to the factor's citation. See
+[Workbench](/projects/workbench).
 
-## Tips and gotchas
+## Related
 
-**Write the citation for a stranger.** The person who reads it in three years won't be you, and they won't have your browser tabs open. Include the publisher, the title and the year.
-
-**Source tier is a judgement, so make it honestly.** Marking a firm assumption as an industry report doesn't strengthen the report. It just moves the weakness somewhere harder to find. **Firm internal** and **Other** are legitimate tiers. The point of the ladder is that a reader can see where you stand.
-
-<Warning>
-  **Never edit a value to "fix" it.** Add a version. The old number is what old reports used, and pretending otherwise breaks the audit trail that makes Vellum worth using.
-</Warning>
-
-**The unit is a plug, not a description.** It's what lets Vellum safely connect this factor to a methodology's input in the Workbench. A factor measured *per meal* can fill an input that expects *per meal*, and nothing else. Pick the unit that will match, not the one that reads most nicely.
-
-**Currency belongs in the currency field.** Keep the unit as the denominator only.
-
-**Check Usage before you deprecate.** If projects are relying on a factor, deprecating it without telling anyone will surface as a surprise at review time.
-
-**Factors can't be bulk-archived.** Unlike the catalogue libraries, factors have no bulk archive. Use the status pill on the record instead, so the change is deliberate and one factor at a time.
+<CardGroup cols={2}>
+  <Card title="Formula library" href="/libraries/formulas">
+    The calculations whose operands bind to factors.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Bind factors to operands and run valuations.
+  </Card>
+  <Card title="Valuation methodologies" href="/libraries/valuation-methodologies">
+    The curated methods that sit above the formulas.
+  </Card>
+  <Card title="Libraries overview" href="/libraries/overview">
+    How the nine libraries fit together.
+  </Card>
+</CardGroup>

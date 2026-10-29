@@ -1,0 +1,110 @@
+---
+title: "Formula library"
+description: "The actual calculations: engine-governed formulas with labelled operands and versions, freely growable by staff."
+---
+
+A formula is one concrete calculation the engine can run, for example
+`quantity donated x fair value per unit`. Formulas are where your firm's
+valuation know-how becomes something computable: each one declares labelled
+operands, the expression that combines them, and the unit of the result. The
+engine owns the catalogue and computes every figure; no one ever types a
+dollar figure into a valuation.
+
+Unlike the two curated methodology libraries, the formula catalogue is freely
+growable: staff add formulas as the practice develops.
+
+## The formula list
+
+Open **Libraries → Formula library**.
+
+![The formula library list with two formulas, their families, slugs, versions and expressions](/images/libraries/formulas-list.jpg)
+
+| Column | Meaning |
+|---|---|
+| Formula | The formula's name |
+| Family | Output value, Activity cost or Activity output |
+| Slug | The stable identifier the engine knows it by |
+| Version | The current version number |
+| Operands | How many inputs the formula demands |
+| Expression | The stored expression, shown verbatim |
+
+Search by name, slug, description or expression, and filter or group by
+**Family**. The family is the engine's own classification: an **Output
+value** formula values an outcome, an **Activity cost** formula prices the
+delivery of an activity, and an **Activity output** formula values what the
+money mobilised, such as volunteer hours or in-kind donations.
+
+## The formula record
+
+Click a row to open the formula.
+
+![A formula record showing details, the rendered formula and its operands](/images/libraries/formula-record.jpg)
+
+- **Formula details**: name, family, slug, version and description.
+- **Formula**: the expression rendered readably with its result unit, with
+  the stored form available under **As stored**.
+- **Operands**: each labelled input the formula demands, with its unit and
+  where its value must come from. An operand's source is either client data
+  (a value measured by the client), a reference factor (a sourced value from
+  the [Factor library](/libraries/factors)), or bound per valuation, meaning
+  the choice between the two is made when the formula is applied.
+- **Versions**: every version stored, who created it, whether it is current
+  or superseded, and how many valuation lines sit on each.
+
+A line under the title says how many valuation lines across how many projects
+are on the current version, so you can see the blast radius before editing.
+
+## The Workbench binds operands
+
+A formula carries no values of its own. In a project's Workbench, each
+operand is bound to a library factor or to the client's own data, and the
+engine computes the line from those bindings. The result is a figure that
+traces to cited, versioned inputs rather than a number someone typed. See
+[Workbench](/projects/workbench).
+
+## Create a formula
+
+<Note>
+Creating and editing formulas is staff only. The **New formula** button does
+not appear for client organisation members.
+</Note>
+
+<Steps>
+  <Step title="Open the authoring sheet">
+    In **Libraries → Formula library**, click **New formula**.
+  </Step>
+  <Step title="Name the operands">
+    Add each input the calculation needs and pick its unit.
+  </Step>
+  <Step title="Write the expression">
+    Build the expression from the operands. The sheet reconciles units live,
+    so you can see the result unit as you write.
+  </Step>
+  <Step title="Create it">
+    Save, and the formula opens on its own record at version 1.
+  </Step>
+</Steps>
+
+## Editing creates a version
+
+Editing a formula authors the next version; stored versions are never
+changed, because every valuation line pins the version that produced its
+figure. Lines already computed stay on their version, and new work picks up
+the new one. The record's versions table shows exactly which lines sit where.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Factor library" href="/libraries/factors">
+    The sourced reference values operands bind to.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Where operands are bound and valuations run.
+  </Card>
+  <Card title="Valuation methodologies" href="/libraries/valuation-methodologies">
+    The curated methods formulas implement.
+  </Card>
+  <Card title="Reporting methodologies" href="/libraries/reporting-methodologies">
+    The report-level layer above both.
+  </Card>
+</CardGroup>

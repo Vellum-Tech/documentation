@@ -1,0 +1,106 @@
+---
+title: "Profile and goals"
+description: "Work with the organisation record: the overview, profile fields, goals, and contacts."
+---
+
+Open an organisation from the list to see its record. The record gathers everything about the client in one place, organised into tabs.
+
+![An organisation record showing the overview tab with an impact chart, cumulative impact value, and goals](/images/organisations/record-overview.jpg)
+
+## Finding your way around
+
+The tab bar at the top of the record has eight tabs: **Overview**, **Profile**, **Projects**, **People**, **Data**, **Goals**, **Contacts**, and **Audit trail**. On a narrow window the trailing tabs fold into a **+N** button; click it to reach the hidden tabs.
+
+To the right of the tabs sit three controls:
+
+- The **status pill** shows the organisation's current status. Click it to switch between **Prospect**, **Active client**, and **Self-serve**. Archived is not on this menu; it is set through the Archive action instead.
+- The **Add** button creates something under this organisation: a **File** (uploads into the Data tab), a **Document** (a written note in the Data tab), a **Goal**, or a **Project**.
+- The **Organisation actions** menu (the three dots) holds **Archive** (or **Unarchive**) and **Move to trash**. See [Archive and trash](/organisations/archive-and-trash).
+
+## Overview tab
+
+The overview opens with the organisation's identity: its logo, name, and a line of key facts such as the type, primary contact, and operating regions. Below that:
+
+- **Impact over time** charts the organisation's impact value by period, rolled up from its projects.
+- **Cumulative impact value** totals the impact measured across all projects.
+- **Goals** previews the first goals with a **See all** link to the Goals tab.
+
+## Profile tab
+
+The Profile tab starts with the **Organisation summary** card: a short written profile of the client that the Vellum agent drafts from the documents in the data room.
+
+![The profile tab showing the organisation summary card and the identity and registration fields](/images/organisations/profile-summary.jpg)
+
+When a new document lands after the summary was last confirmed, a banner on the card says the summary may be out of date. Click **Confirm re-draft** to accept the agent's updated draft, or **Dismiss** to keep reading the current one. A confirmed summary shows who confirmed it and when.
+
+Below the summary, the organisation's details are grouped into cards, each with its own **Edit** button:
+
+| Card | What it holds |
+| --- | --- |
+| Identity & registration | Names, aliases, type, jurisdiction, registration number, sector, website, operating regions |
+| Mission & profile | Mission, what they do, maturity, size, headcount, revenue band, claims, targets, theory of change |
+| Impact profile | Priority SDGs, methodology, currency, base year, impact thesis |
+| Commercial | Account owner, methodology lead, engagement model, contract status, pipeline stage, renewal dates |
+| Governance | Assurance level and related governance details |
+| Branding | Logo and brand colours used in reports |
+| Purpose & audiences | Why the organisation measures impact and who it reports to |
+
+## Goals tab
+
+Goals capture what the organisation is trying to achieve, so progress can be tracked across projects.
+
+![The goals tab listing a metric goal with a progress bar and a milestone goal with a status pill](/images/organisations/goals-tab.jpg)
+
+There are two kinds of goal:
+
+- A **metric goal** names a measure and a target value, for example 250 households reached. Its current value rolls up from the organisation's projects; you never type progress in by hand.
+- A **milestone goal** has no number. You track it with a status instead.
+
+| Milestone status | Meaning |
+| --- | --- |
+| Not started | Work has not begun |
+| On track | Progressing as planned |
+| At risk | In danger of being missed |
+| Met | Achieved |
+
+<Steps>
+  <Step title="Click Add, then Goal">
+    Use the **Add** button in the record header. If the organisation has no goals yet, you can also click the empty goal tile on the Goals tab.
+  </Step>
+  <Step title="Describe the goal">
+    Write the **Goal statement**, pick the **Goal type**, and fill in the target details: what is measured, the target value, and the target date for a metric goal, or a status for a milestone goal. You can also link SDGs by number.
+
+    ![The add goal dialog with statement, goal type, measure, target value, target date, and SDG fields](/images/organisations/add-goal-dialog.jpg)
+  </Step>
+  <Step title="Click Add goal">
+    The goal appears in the list. Click any goal later to edit it; the edit dialog also holds the **Delete** action, which asks you to confirm.
+  </Step>
+</Steps>
+
+## Contacts tab
+
+Contacts are the people at the client organisation your practice deals with: sponsors, data providers, report sign-offs. They are a record of who is who; a contact cannot sign in to Vellum unless you also invite them on the [People tab](/organisations/people).
+
+Click **Add contact** and fill in the person's name, role, job title, email, and phone. Two switches matter:
+
+- **Primary contact** shows the person on the organisation header and in the list page's Primary contact column. Only one contact can be primary; ticking it moves the flag from whoever held it.
+- **Route elicitation questions** marks the person as the one who answers data questions sent to the client.
+
+Click a contact to edit or remove them. Removing a contact asks you to confirm and cannot be undone.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Organisations overview" href="/organisations/overview">
+    The list page, statuses, and creating an organisation.
+  </Card>
+  <Card title="Data" href="/organisations/data">
+    Files, documents, and extractions on the Data tab.
+  </Card>
+  <Card title="People" href="/organisations/people">
+    Give people at the client access to Vellum.
+  </Card>
+  <Card title="Project record" href="/projects/project-record">
+    The projects you run under this organisation.
+  </Card>
+</CardGroup>

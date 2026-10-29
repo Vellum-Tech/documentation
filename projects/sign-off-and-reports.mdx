@@ -1,0 +1,118 @@
+---
+title: "Sign-off and reports"
+description: "The approval ladder that governs the calculation, and the project's report documents."
+---
+
+The **Report** tab holds two things: the sign-off card, which records who has
+approved the project's numbers and how far they have progressed, and the list
+of report documents written on top of them. The sign-off sits above the list
+because it is what unlocks publishing.
+
+![The Report tab with the sign-off card at step one of seven and the report document list below it](/images/workbench/report-tab.jpg)
+
+## The sign-off ladder
+
+A project walks seven steps from a working draft to an auditable export
+bundle. Each step names the role accountable for it:
+
+| Step | What it means | Owner |
+| --- | --- | --- |
+| **Draft only** | A working draft only, nothing is confirmed. | AI / analyst |
+| **Ready for client query / internal review** | Ready to put in front of the client, or for internal review. | Advisor |
+| **Client-confirmed input** | The client has confirmed the inputs are theirs and correct. | Client data owner |
+| **Method-approved calculation** | The methodology lead has approved the calculation method. | Methodology lead |
+| **Report-ready draft** | The written report draft is ready to circulate. | Report writer |
+| **Locked final package** | The final package is locked; the calculation can no longer change. | Authorised approver |
+| **Auditable export bundle** | The auditable export bundle has been produced. | System |
+
+Every move is made by a named person and recorded in an append-only history,
+shown at the bottom of the card. The assistant is never the approver: a step
+cannot be advanced automatically or by AI.
+
+## Advancing a step
+
+<Steps>
+  <Step title="Click Advance">
+    The button names the next step, for example **Advance to Ready for
+    query**.
+  </Step>
+  <Step title="Confirm who is approving">
+    The dialog states what the step means and which role you are approving it
+    as. Enter your name (filled in for you), optionally your role and a note,
+    then click **Confirm approval**.
+  </Step>
+</Steps>
+
+![The advance dialog asking for your name, an optional role and a note before recording the approval](/images/workbench/signoff-advance-dialog.jpg)
+
+**Step back** moves the ladder down one step and requires a reason, which is
+recorded in the history alongside the move.
+
+Some steps are gated, and the card explains any block beside a button that
+starts the fix. Valuation lines written by the assistant must be reviewed by a
+person before the ladder can advance at all. Reaching **Method-approved calculation** also
+needs every registry row confirmed, every evidence document approved in the
+[data room](/projects/data-room), and the reporting methodology locked on the
+project's Overview. Open data gaps never block sign-off; they are left out of
+the totals by design, and the card says so.
+
+## Locking the calculation
+
+The step into **Locked final package** requires the engine's calculation to be
+locked first. When the project is at **Report-ready draft** and the
+calculation is still open, the card offers **Lock the calculation**: a dialog
+asks for your name and confirms with **Lock it**. Once locked, no number on
+the project can change. Unlocking is not on screen yet; only the assistant can
+do it, so treat locking as final.
+
+<Warning>
+Lock the calculation only when the numbers are final. Every value on the
+[Workbench](/projects/workbench) becomes read-only once the project is locked.
+</Warning>
+
+## Report documents
+
+Below the sign-off card sits the project's report documents. Each row shows:
+
+| Column | What it shows |
+| --- | --- |
+| **Title** | The document's name; click it (or **Open**) to open the builder. |
+| **Kind** | **Impact report** or **Impact forecast**. |
+| **State** | **Draft**, or **Published vN** once a version has been published. |
+| **Updated** | When the draft last changed. |
+
+**New report** asks Vellum to write a first draft from the default template,
+with every section drawn from the Workbench, then opens it in the
+[report builder](/projects/report-builder). Archived documents stay out of the
+list.
+
+However many documents a project has, there is only ever one calculation
+behind them. Every figure in every document resolves against the same engine
+totals, so two reports can never disagree about a number. Publishing a
+document never moves the sign-off ladder, and the ladder applies to the whole
+project, not to one document; see
+[Publishing and exports](/projects/publishing-and-exports) for how the two
+meet.
+
+<Note>
+A report can be published once the project reaches **Report-ready draft**.
+Until then the publish dialog shows the sign-off as a blocker and points back
+to this tab.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The report builder" href="/projects/report-builder">
+    Write the report with live figures, tables and charts.
+  </Card>
+  <Card title="Publishing and exports" href="/projects/publishing-and-exports">
+    Freeze a version, or export Word and PDF files.
+  </Card>
+  <Card title="The Workbench" href="/projects/workbench">
+    The worksheet the sign-off governs.
+  </Card>
+  <Card title="Audit trail" href="/projects/audit-trail">
+    Every recorded change on the project.
+  </Card>
+</CardGroup>

@@ -1,0 +1,70 @@
+---
+title: "Managing your team"
+description: "Invite colleagues, change roles, and deactivate or reactivate people on the Team page."
+---
+
+The Team page lists everyone with a Vellum account at your firm, together with invitations that have not been accepted yet. Open it from **Settings → Team**.
+
+![The Team page listing each person with their email, role, curator switch, status, and last seen time](/images/admin/team-page.jpg)
+
+<Note>
+The Team page is Vellum staff's own list; client organisations manage their people from the organisation's [People tab](/organisations/people) instead. On the Team page, only people with the **Admin** role can make changes. Members see the same table read-only.
+</Note>
+
+Each row shows the person's name, email, role, whether they are a library curator, their status (**Active**, **Inactive**, or **Invited**), and when they were last seen.
+
+## Inviting someone
+
+<Steps>
+  <Step title="Open the invite dialog">
+    Click **Invite** at the top right of the Team page.
+  </Step>
+  <Step title="Enter their details">
+    Type their **Email** and choose a **Role**: **Member** or **Admin**. Admins can manage the team; everything else is the same for both.
+  </Step>
+  <Step title="Send it">
+    Click **Send invitation**. They receive an email with a sign-up link and appear in the table once they have signed in.
+  </Step>
+</Steps>
+
+![The invite dialog with an email field, a role picker, and a send invitation button](/images/admin/invite-dialog.jpg)
+
+Until the person signs in, their row shows as **Invited** with a **Revoke** button. Revoking cancels the invitation; you can always invite the same address again later. An email that already has an account cannot be invited.
+
+## Changing someone's role
+
+Admins change a person's role with the **Role** dropdown on their row, between **Admin** and **Member**. The change applies immediately.
+
+## Deactivating and reactivating
+
+Click **Deactivate** on a person's row to take their access away. They can no longer sign in or use Vellum, but nothing they created is removed. Click **Reactivate** later and they get back exactly what they had.
+
+A few rules protect you from locking the firm out:
+
+- You cannot deactivate yourself.
+- The last active admin cannot be deactivated, and cannot be demoted to member. Make someone else an admin first.
+
+<Note>
+Deactivation deletes nothing. Projects, conversations, and records the person created stay exactly where they are, attributed to them.
+</Note>
+
+## Library curators
+
+The **Curator** switch on each row grants or removes the right to activate, retire, and edit active entries in the [Policy library](/libraries/policies). Only admins see this column. The grant is separate from the Admin role: a member can be a curator, and an admin is not one automatically.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Roles and permissions" href="/admin/roles-and-permissions">
+    What each role can see and do across Vellum.
+  </Card>
+  <Card title="Policy library" href="/libraries/policies">
+    What library curators look after.
+  </Card>
+  <Card title="Organisation people" href="/organisations/people">
+    Managing a client organisation's own members.
+  </Card>
+  <Card title="Project sharing and access" href="/projects/sharing-and-access">
+    Who can open and change each project.
+  </Card>
+</CardGroup>

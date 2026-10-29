@@ -1,0 +1,136 @@
+---
+title: "Policy library"
+description: "Government acts, policies, strategies and grant programmes a project's work can align with, each with an archived copy of its official source."
+---
+
+The policy library is the firm-wide list of public policy a project's work
+can align with: acts, instruments, policies, strategies and grant programmes.
+An entry records the policy's public facts only, its words, codes and dates,
+never a figure, and every active entry keeps an archived copy of its official
+source so a report's citation still opens years later.
+
+## The policy list
+
+Open **Libraries → Policy library**. The list is grouped by level by default.
+
+![The policy library grouped by level with four active entries and one draft](/images/libraries/policies-list.jpg)
+
+| Column | Meaning |
+|---|---|
+| Policy | The title, with the issuer beneath |
+| Kind | Act, Instrument, Policy, Strategy or Grant programme |
+| Applies to | The jurisdiction the policy applies to |
+| Theme | The policy's theme, such as Climate and energy |
+| Archived copy | Whether a copy of the source is kept |
+| Status | Draft, Active or Retired |
+
+Search by title, issuer or register id, and filter by **Kind** or **Status**.
+Every entry is listed whatever its status, so a curator can find a draft to
+activate.
+
+## The policy record
+
+Click an entry to open it.
+
+![A policy record showing the policy facts and its archived copy](/images/libraries/policy-record.jpg)
+
+- **Policy**: the issuer, what it does, the official page, kind, the level
+  and jurisdiction it applies to, theme, register id, the dates it is in
+  force, and the SDGs the policy itself targets. For a grant programme, the
+  record also shows what it gives (cash, land, a tax concession or in kind)
+  and its opening and closing dates.
+- **Archived copy**: the kept copy of the current version's source, with how
+  it was kept (fetched from the official page, or uploaded by a person), the
+  address it came from, the file type and size, and its SHA-256 fingerprint.
+  A report's footnote opens this copy, so an entry is activated only once it
+  has one.
+- **Versions**: every version of the entry's words, newest first. Superseded
+  versions stay readable because a report's footnote points at the version it
+  read.
+
+## The lifecycle: propose, activate, retire
+
+Anyone can propose a policy. It lands as a draft, and only a library curator
+can activate or retire it.
+
+<Steps>
+  <Step title="Propose">
+    In **Libraries → Policy library**, click **Propose policy** and describe
+    the public policy: its title, issuer, what it does, the official page,
+    kind, theme, level and jurisdiction, dates, source language, the register
+    that lists it and its register id, and the goals the policy itself
+    targets. Why a project aligns with it is written on the project's link,
+    never here.
+
+    ![The propose a policy dialog filled in for a sample grant programme](/images/libraries/policy-propose-dialog.jpg)
+  </Step>
+  <Step title="Draft">
+    Click **Propose**. The entry lands as a **Draft** at version 1 with no
+    archived copy yet. A draft can be linked in the project it was proposed
+    in, but a curator must archive its source and activate it before any
+    other project can use it.
+  </Step>
+  <Step title="Keep a copy">
+    On the entry's record, keep a copy of the official page. Vellum can fetch
+    it, or, where an issuer refuses automated fetches, you can save the page
+    or PDF yourself and upload it; an uploaded copy is as good as a fetched
+    one. Whoever proposed a draft may keep its copy; once an entry is active,
+    keeping a new version's copy is a curator's job.
+  </Step>
+  <Step title="Activate">
+    A curator clicks **Activate** on the record. Activation requires the
+    archived copy, because reports cite it.
+  </Step>
+  <Step title="Retire, eventually">
+    When a policy lapses or is repealed, a curator clicks **Retire**. The
+    entry, its versions and its archived copies remain readable; existing
+    report citations keep working.
+  </Step>
+</Steps>
+
+### Editing an active entry
+
+Editing an entry's words appends a new version rather than changing the old
+one. On a draft the new version is current at once; on an active entry it is
+pending until a curator keeps its own archived copy, and until then every
+report keeps citing the previous version.
+
+## Who curators are
+
+Library curator is a per-person grant, separate from the admin role. An admin
+turns it on or off with the **Library curator** switch beside each person's
+role on the Team page; see [Team](/admin/team). Curators may activate and
+retire policy entries and edit active entries' words. Everything else about
+the library, including proposing drafts, needs no special grant.
+
+<Note>
+If you act without the curator grant, the action is refused with a message
+saying a curator is required; nothing is hidden behind silently disabled
+buttons.
+</Note>
+
+## How policies connect to projects
+
+A project links the policies its work aligns with, and writes the reason for
+each alignment on the project's link. The Workbench's policy alignment sheet
+is where links are made and maintained, and the report's policy block renders
+them with footnotes that open the archived source copies. See
+[Workbench](/projects/workbench) and
+[Report builder](/projects/report-builder).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Team" href="/admin/team">
+    Grant or revoke the library curator switch.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    The policy alignment sheet on a project.
+  </Card>
+  <Card title="Report builder" href="/projects/report-builder">
+    The policy alignment block in reports.
+  </Card>
+  <Card title="Libraries overview" href="/libraries/overview">
+    How the nine libraries fit together.
+  </Card>
+</CardGroup>

@@ -1,0 +1,79 @@
+---
+title: "Valuation methodologies"
+description: "The curated catalogue of valuation methods, split cleanly between impact values and accounting measures, never blended."
+---
+
+A valuation methodology describes how an outcome or asset is valued: avoided
+cost, market value, fair value, quality-adjusted life years. It is the layer
+between the report-level
+[reporting methodologies](/libraries/reporting-methodologies) and the
+concrete calculations in the [Formula library](/libraries/formulas): the
+method says how a value is derived, a formula is one calculation inside such
+a method, and every figure is computed by the engine. No monetary value
+appears anywhere in this library.
+
+The catalogue is curated: it ships with the app and is browse-only, so every
+firm works from the same vetted set of methods.
+
+## Impact values and accounting measures, never blended
+
+Every method carries a recognition badge saying which kind of value it
+produces:
+
+- **Impact value**: a value reported and labelled as impact, outside the
+  financial balance sheet.
+- **Accounting measure**: a value that belongs in accounting records only
+  when it passes the IAS/IFRS recognition gateway (identifiable or
+  controlled, expected benefit, reliable measurement).
+
+The fence between the two is absolute: accounting measures and impact values
+are never mixed in one figure. The badge rides every list row and every
+method page so the distinction is impossible to miss.
+
+## The method list
+
+Open **Libraries → Valuation methodology library**. The list is grouped by
+recognition by default.
+
+![The valuation methodology library grouped into accounting measures and impact values](/images/libraries/valuation-methodologies-list.jpg)
+
+| Column | Meaning |
+|---|---|
+| Method | The method's name, with a quiet "Not yet practised" pill on methods the team has not yet used on a real engagement |
+| Recognition | Impact value or Accounting measure |
+| What it values | What the method puts a value on |
+| Formula pattern | The structure of the calculation, never a computed figure |
+
+Search across names, outcomes, patterns and best-fit methodologies, and
+filter by **Recognition**.
+
+## The method page
+
+Click a method to open it. The page is read-only and holds:
+
+- **Method**: what it values, the outcomes it typically suits, the data
+  points needed, its family, the best-fit reporting methodologies, and
+  cautions on when to be careful with it.
+- **Formula pattern**: the calculation's structure. The actual formulas live
+  in the [Formula library](/libraries/formulas), and the engine computes
+  every figure.
+- **Recognition**: which side of the fence the method's values sit on, in
+  full sentences.
+- **Sources**: the published references behind the method, with links.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Formula library" href="/libraries/formulas">
+    The concrete calculations inside each method.
+  </Card>
+  <Card title="Reporting methodologies" href="/libraries/reporting-methodologies">
+    The report-level layer chosen before valuation.
+  </Card>
+  <Card title="Factor library" href="/libraries/factors">
+    The sourced values the calculations consume.
+  </Card>
+  <Card title="Workbench" href="/projects/workbench">
+    Where methods meet a project's evidence.
+  </Card>
+</CardGroup>

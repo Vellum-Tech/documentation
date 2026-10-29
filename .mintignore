@@ -5,3 +5,9 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Build tooling and internal notes (not site content)
+STYLE-GUIDE.md
+tools/
+plans/
+images/_smoke/

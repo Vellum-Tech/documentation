@@ -1,0 +1,78 @@
+---
+title: "Sharing and files"
+description: "Share a conversation with colleagues, manage who can do what, and work with the conversation's files."
+---
+
+A conversation starts private to you. You can share it with colleagues so they can follow along or join in, and every conversation keeps a library of the files attached to it and the files the agent produces.
+
+## Sharing a conversation
+
+<Steps>
+  <Step title="Open the Share dialog">
+    With the conversation open, click **Share** at the top right of the chat.
+  </Step>
+  <Step title="Add a person">
+    Click **Add a person** and pick a colleague from your team. Only registered, active teammates can be added; there is no shareable link.
+  </Step>
+  <Step title="Choose their role">
+    Pick **Collaborator** or **Viewer** next to their name, then click **Add**.
+  </Step>
+</Steps>
+
+![The share dialog for a conversation, with a person picker, a role picker, and the list of people with access](/images/chat/share-dialog.jpg)
+
+People you add see the whole conversation, including what was said before they joined.
+
+### Conversation roles
+
+| Role | What they can do |
+|------|------------------|
+| **Owner** | Manages who has access. The owner is the person who started the conversation, and only the owner adds, removes, or re-roles people. |
+| **Collaborator** | Can read and send messages. Collaborators can also rename the conversation. |
+| **Viewer** | Can read only. |
+
+A viewer's composer is disabled, with a line explaining why: "You were added as a viewer, so you can read this conversation but not send to it." Viewers cannot rename or delete the conversation, and the approval mode chip does not apply to them.
+
+### Taking turns
+
+Only one turn runs at a time. While a colleague's message is being worked on, the send button tells you whose turn is running, and any approval or question cards from that turn are read-only for you, marked "Waiting on" that person. Avatars at the top of the chat show who has the conversation open right now.
+
+### Removing someone
+
+Only the owner removes people. The removed person loses access straight away: the conversation disappears from their list, and if a turn of theirs is running it stops at its next step. Files they added stay in the conversation.
+
+### Archiving a shared conversation
+
+The owner of a shared conversation does not see a plain delete. Instead the switcher offers **Archive for everyone**, which removes the conversation for every member at once. See [Conversations](/chat/overview) for the details.
+
+## The conversation's files
+
+Click **Library** at the top of the chat to open the files pane. It lists everything attached to the conversation and everything the agent has generated, with tabs to filter by **All**, **Uploaded**, or **Generated**. Select a file to preview it.
+
+![The files pane open on a conversation, with filter tabs and a preview area](/images/chat/library-pane.jpg)
+
+Two actions matter here:
+
+- **Keep in data room** files a copy into the organisation's or project's [data room](/projects/data-room), where it becomes citable evidence. When Vellum cannot tell where to file it, a picker asks you to choose the destination. Viewers are not offered this action.
+- **Delete** removes a file from the conversation. The confirm says exactly what happens: the file is removed from the chat for every member, but a copy already kept in the data room stays there.
+
+<Warning>
+Deleting a file from the conversation's library is a delete for everyone. Each member of the conversation loses it at the same time.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Chat assistant overview" href="/chat/overview">
+    Conversations, scopes, and where the assistant lives.
+  </Card>
+  <Card title="Working with the agent" href="/chat/working-with-the-agent">
+    Approvals and whose turn can act on them.
+  </Card>
+  <Card title="Project sharing and access" href="/projects/sharing-and-access">
+    Sharing projects, which is separate from sharing conversations.
+  </Card>
+  <Card title="Data room" href="/projects/data-room">
+    Where kept files live.
+  </Card>
+</CardGroup>

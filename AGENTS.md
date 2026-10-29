@@ -1,33 +1,35 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
+# Vellum help center — project instructions
 
-# Documentation project instructions
+This is the end-user help center for Vellum (vellum.com.au), an impact
+measurement and valuation platform for advisory firms and their client
+organisations. Built on [Mintlify](https://mintlify.com): pages are MDX with
+YAML frontmatter, navigation and branding live in `docs.json`.
 
-## About this project
+## Readers
 
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
-- Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
+Impact-firm staff (advisors, analysts) and their clients' members. Not
+developers: no code, SQL, internal route names, plan numbers or repo paths.
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- "organisation" = a client the firm measures impact for (never "client company").
+- "project" = one measurement engagement; its calculation lives on the Workbench.
+- "factor" = a sourced, versioned reference value; "formula" = an engine-governed calculation.
+- The golden rule, stated wherever relevant: report numbers are computed by the
+  deterministic engine, never typed by a person and never produced by the AI agent.
+- British/Australian spelling (organisation, catalogue). Exact UI labels in bold.
 
-## Style preferences
+## Style
 
-{/* Add any project-specific style rules below */}
+Follow STYLE-GUIDE.md in this repo. Highlights: second person, plain English,
+sentence-case headings, no em-dashes anywhere, `<Steps>` for tasks, tables for
+fields and statuses, `<Note>` for permissions, `<Warning>` for irreversible
+actions, Related cards at page end.
 
-- Use active voice and second person ("you")
-- Keep sentences concise — one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
+## Screenshots
 
-## Content boundaries
-
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+Real screenshots of the real app with fully synthetic demo data (the hero
+organisation is "Harbourlight Youth Foundation"; files are SAMPLE-prefixed; the
+user is "Demo Advisor"). Tooling to retake them lives in `tools/shoot.mjs`
+(see its header) against a locally seeded demo stack. Run `node tools/check.mjs`
+before publishing: it verifies nav/files/images/links/frontmatter and style rules.

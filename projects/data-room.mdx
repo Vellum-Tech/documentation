@@ -1,0 +1,97 @@
+---
+title: "Data room"
+description: "The project's evidence: files, the Registry, gaps, and the outcome, activity and beneficiary registers."
+---
+
+The **Data room** tab is the project's gathering surface: the evidence you have, the numbers it yields, and what those numbers claim. It is the organisation's one document vault seen through a project lens, so a file uploaded here is tagged to this project but lives on the [organisation's Data tab](/organisations/data) too.
+
+A rail on the left switches between six sections: **Files**, **Registry**, **Gaps**, **Outcomes**, **Activities** and **Beneficiaries**.
+
+## Files
+
+The **Files** section lists the project's evidence: uploaded files and written documents together, newest first, with search and **Type** and **Approval** filters in the toolbar.
+
+![The Files section listing two sample evidence PDFs with their type and approval status](/images/projects/data-room-files.jpg)
+
+| Column | What it shows |
+| --- | --- |
+| ID | The document's evidence id, such as E-05, used wherever the document is cited |
+| Name | The file or document name |
+| Type | Its classification, for example Programme data |
+| Owner | Who is responsible for the document |
+| Approval | The document's evidence status, from Draft to approved |
+| Cited by | How many places use it |
+| Updated | When it last changed |
+
+### Uploading evidence
+
+Click **Add** and choose **File** to upload, or **Document** to write one in place. You can also drag files straight onto the page. Uploads are tagged to this project automatically.
+
+After a file is uploaded, Vellum processes it in the background:
+
+1. The file is parsed and its contents read.
+2. A summary is written for the file panel. It is AI-generated and marked as such, so verify it before relying on it.
+3. Numbers and tables found in the file become extracted values and datapoints: candidate numbers waiting for you to accept them into the Registry. Nothing enters your model without that explicit step.
+
+### The file panel
+
+Click a file to open it: the original on the left, and an intelligence pane on the right with the summary, where the document is used in reports, and the values read out of it.
+
+![The file panel showing a sample PDF beside its AI written summary](/images/projects/data-room-file-open.jpg)
+
+Each extracted value and datapoint shows its figure, what it measures and the period it covers, with an **Add to Registry** button. Accepting one creates (or fills) a Registry row with the document attached as its evidence, pointing at the exact place the value was read.
+
+![Extracted values and datapoints in the file panel, each with an Add to Registry button](/images/projects/data-room-file-panel.jpg)
+
+## Registry
+
+The **Registry** is the project's register of every number a formula can use: each data point (a fact from the client), assumption and factor is one row, with its value, its owner, its status and its evidence. It is the audit answer to "where did this number come from?".
+
+![The Registry sheet with data point, assumption and factor rows, each with a value and period](/images/projects/data-room-registry.jpg)
+
+- The tabs above the sheet filter by kind: **All**, **Factors**, **Data points**, **Assumptions**, and **Proposed**, the candidate rows read from documents that are still waiting to be accepted or rejected.
+- Every cell edits in place: type in the **Value** cell to record the next version of a value, and pick **Kind**, **Status**, **Owner** and review **Cadence** directly in the row. The **Period** column says which reporting period a value belongs to, which is what the Time card's actual and forecast split works from.
+- Each row carries **Internal evidence** (a document in the Data room, at the page or cell the value was read from) and an **External reference**. Clicking a row's evidence opens the document at that exact spot.
+- **Used by** counts the formulas that depend on the row, so you can see the blast radius of a stale value before changing it.
+- **Send request** exports the rows still awaiting the client as a data request.
+
+Factor rows are bound in the [Workbench](/projects/workbench) and maintained in the firm's [Factor library](/libraries/factors), so a rate updated there flows to every project that uses it.
+
+## Gaps
+
+The **Gaps** section is the register of missing evidence: what you still need, why, and what has been asked of the client. Each gap records a category, the outcome or activity it is about, the weak or missing evidence, and what is needed to close it.
+
+![The Gaps sheet with its columns and the rounds of questions band](/images/projects/data-room-gaps.jpg)
+
+Gaps are worked in rounds of questions: **New round** drafts one question for each open gap not already asked, the answers come back against the same rows, and confirming an answer closes its gap in the same step (untick the close box to keep it open). Open gaps surface on the project's report as its open-gaps list, so a report cannot quietly rest on evidence that was never provided; resolve or dismiss them before the report goes out. See [Sign-off and reports](/projects/sign-off-and-reports).
+
+## Outcomes, Activities and Beneficiaries
+
+The last three sections are the project's model entities, the same registers the Workbench fills as the model is built.
+
+![The Outcomes register listing outcomes with their SDG and account count](/images/projects/data-room-outcomes.jpg)
+
+- **Outcomes** lists the distinct outcomes claimed across the project's account rows, each with its SDG alignment and how many accounts claim it. Outcomes are global: renaming one here renames it everywhere it is used, and curated entries come from the [Outcome library](/libraries/outcomes).
+- **Activities** are the units of work valued within this project, for example a programme the organisation runs. They belong to the project; add, edit or delete them here. See the [Activity library](/libraries/activities) for the governed catalogue they draw on.
+- **Beneficiaries** are the groups the impact accrues to. They belong to the organisation, so the same groups are shared by every one of its projects. See the [Beneficiary library](/libraries/beneficiaries).
+
+<Note>
+On a locked project the Data room is read-only: rows and registers can be read but not changed.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Workbench" href="/projects/workbench">
+    Where Registry rows are bound into formulas and valued.
+  </Card>
+  <Card title="Factor library" href="/libraries/factors">
+    The firm-wide catalogue of reference rates.
+  </Card>
+  <Card title="Organisation data" href="/organisations/data">
+    The same vault seen from the organisation's side.
+  </Card>
+  <Card title="Audit trail" href="/projects/audit-trail">
+    Every change to the evidence, recorded automatically.
+  </Card>
+</CardGroup>

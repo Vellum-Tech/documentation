@@ -1,0 +1,69 @@
+---
+title: "Sharing and access"
+description: "Who can open a project, the owner, editor and viewer roles, and what viewers see."
+---
+
+Access to a project is per person. Vellum staff see every project in the workspace; members of the client organisation see only the projects they have been added to. A project someone cannot open simply is not there for them: the link shows a "Project not found" panel, the same whether the project is missing or belongs to someone else, so nothing is revealed either way.
+
+## The Share dialog
+
+Click **Share** in the project header to see who has access. Everyone who can open the project can open the dialog; the owner and Vellum staff can change what is in it.
+
+![The Share dialog with a person picker, a role picker and the list of people with access](/images/projects/share-dialog.jpg)
+
+## Roles
+
+| Role | What it allows |
+| --- | --- |
+| Owner | Shares the project and can change everything |
+| Editor | Can read and change the project |
+| Viewer | Can read everything, change nothing |
+
+A project has one owner. Only the owner and Vellum staff can add people, change roles, remove people or hand ownership on; everyone else sees the same list read-only. Deleting the project is also reserved for the owner and staff.
+
+## Adding people
+
+<Steps>
+  <Step title="Open the Share dialog">
+    Click **Share** in the project header.
+  </Step>
+  <Step title="Pick a person">
+    The picker offers the active employees of the project's organisation who are not yet on the project. If the person is not listed, invite them to the organisation first on its [People tab](/organisations/people).
+  </Step>
+  <Step title="Choose a role and add them">
+    Pick **Editor** or **Viewer**, then click **Add**. They see the whole project straight away.
+  </Step>
+</Steps>
+
+Removing someone takes effect immediately, and everything they added stays in the project.
+
+<Note>
+Vellum staff are not added to projects: they see every project without appearing on the list. Firm-level roles are described under [Roles and permissions](/admin/roles-and-permissions).
+</Note>
+
+## What viewers experience
+
+A viewer reads everything an editor reads and changes nothing. The project header shows a **View only** badge in place of the editing controls, and any write a viewer attempts is refused with the message "You can view this project but not change it." To contribute, they need the owner to make them an editor.
+
+## Owner duties and handover
+
+The owner is the person who decides who the project is shared with. To hand the project on, the owner (or staff) uses the crown button next to a member and confirms **Make owner**: that person becomes the owner, and the previous owner stays on as an editor if they still work for the organisation.
+
+If a project has no active owner, for example because the owner left the organisation, the dialog says so: until someone is made owner, only Vellum staff can change who the project is shared with. Staff see an **Assign an owner** control in that state and can pick any active employee of the organisation.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The project record" href="/projects/project-record">
+    The header the Share button lives in.
+  </Card>
+  <Card title="People" href="/organisations/people">
+    Inviting an organisation's members so they can be added to projects.
+  </Card>
+  <Card title="Roles and permissions" href="/admin/roles-and-permissions">
+    Firm-level roles for your own team.
+  </Card>
+  <Card title="Audit trail" href="/projects/audit-trail">
+    Membership changes are recorded like any other change.
+  </Card>
+</CardGroup>

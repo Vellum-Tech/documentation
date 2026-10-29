@@ -1,0 +1,73 @@
+---
+title: "Archive and trash"
+description: "Archive organisations you are not working with, move them to trash, restore them, and read the audit trail."
+---
+
+When work with an organisation winds down you have two options. Archiving tucks it away but keeps it reachable; moving it to trash takes it out of circulation until someone restores it. Nothing on this page permanently deletes an organisation.
+
+## Archive an organisation
+
+Open the organisation and click the **Organisation actions** menu (the three dots at the top right), then **Archive**. There is no confirmation step; the change applies straight away and a toast confirms it. You can also archive from an organisation's row menu on the list page.
+
+![The organisation actions menu open on a sample organisation, showing archive and move to trash](/images/organisations/actions-menu.jpg)
+
+Archiving changes the organisation's status to **Archived**:
+
+- It disappears from the Organisations list until you click **Show archived**, which appears in the toolbar whenever archived organisations exist.
+- The record itself stays fully open: its projects, data, and history are untouched.
+- The status pill on the record reads **Archived**.
+
+![An archived organisation record with the archived status pill in the header](/images/organisations/archived-record.jpg)
+
+To bring it back, open the same menu and click **Unarchive**. The organisation returns to the status it had before it was archived.
+
+## Move an organisation to trash
+
+<Note>
+Moving organisations to trash and restoring them from the Trash page are staff actions.
+</Note>
+
+From the **Organisation actions** menu, click **Move to trash**. A confirmation dialog explains what happens before anything changes.
+
+![The move to trash confirmation dialog explaining the organisation can be restored at any time](/images/organisations/trash-confirm.jpg)
+
+A trashed organisation is removed from the Organisations list and from search. It is not deleted: it waits in the trash until someone restores it. Right after trashing, the toast offers a one-click **Restore**.
+
+## The Trash page
+
+Click **Trash** at the top of the Organisations list to open the staff trash page. Each entry shows when it was deleted, with a **Restore** button that returns the organisation to the list.
+
+![The organisation trash page with one sample organisation and its restore button](/images/organisations/trash-page.jpg)
+
+When nothing is waiting, the page shows **Trash is empty**.
+
+## The audit trail
+
+Every organisation record keeps a history of its own changes on the **Audit trail** tab.
+
+![The audit trail tab showing recent field level changes with who made each one](/images/organisations/audit-trail.jpg)
+
+The tab has three sections:
+
+- **Recent changes** lists field-level edits to the organisation record itself: a status change, a new contact, an edited profile field, each with when it happened and who did it.
+- **Projects & everything else** covers every other recorded change under the organisation, whoever made it and however it was made.
+- **Earlier (reconstructed)** shows history inferred from the record's current state, from before change tracking was captured. Filter buttons (**All**, **Summary**, **Documents**, **Sources**, **Notes**, **Goals**) narrow this section.
+
+For the audit trail inside a project, see [Project audit trail](/projects/audit-trail).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Organisations overview" href="/organisations/overview">
+    The list page, the show archived toggle, and the Trash link.
+  </Card>
+  <Card title="Profile and goals" href="/organisations/profile-and-goals">
+    The record the archive and trash actions live on.
+  </Card>
+  <Card title="Project audit trail" href="/projects/audit-trail">
+    Change history inside a project.
+  </Card>
+  <Card title="Roles and permissions" href="/admin/roles-and-permissions">
+    Which actions need a staff role.
+  </Card>
+</CardGroup>

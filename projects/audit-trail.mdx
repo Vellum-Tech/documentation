@@ -1,0 +1,48 @@
+---
+title: "Audit trail"
+description: "The project's change history: every edit, who made it and when."
+---
+
+The **Audit trail** tab is the project's change history: every recorded change to the project and the records inside it, newest first. It fills itself; there is nothing to switch on and nothing to remember to log.
+
+![The audit trail listing recent changes with timestamps, field changes and who made each one](/images/projects/audit-trail.jpg)
+
+## What each entry shows
+
+Every entry answers who, what and when:
+
+- **When**: the time of the change, shown relative to now.
+- **What happened**: a headline such as "Project detail updated", "Document updated" or "Project member added". Created and deleted records are marked as such.
+- **Which fields moved**: an update lists each changed field with its old and new value, so you can see exactly what "updated" means.
+- **Who**: the person who made the change. An actor that cannot be matched to a person is shown as an id rather than a guessed name, and background processing appears as the system.
+
+## Where the entries come from
+
+The trail is written at the database level, not by the screens you click. That means every change lands in it the same way, whoever or whatever made it: an edit on the Overview cards, a value typed into the Registry, a change made by the [Vellum agent](/chat/working-with-the-agent) during a conversation, or a record touched by background processing such as file ingestion. If the data changed, the trail says so.
+
+The scope is the whole project: its own details, membership changes, documents, Registry rows, gaps, model entities, valuation lines and sign-off events all report here.
+
+<Note>
+The trail is read-only. Entries cannot be edited or removed, which is the point: it is the record you reach for when a number in a report needs explaining months later.
+</Note>
+
+## Audit trails elsewhere
+
+Projects are not the only records with a trail. An organisation's record carries the same feed for changes scoped to the organisation itself; see [Organisations](/organisations/overview). Governance decisions on a project, such as locking or unlocking the reporting methodology, are additionally recorded against a named person on the [project record](/projects/project-record).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The project record" href="/projects/project-record">
+    The record all these changes belong to.
+  </Card>
+  <Card title="Data room" href="/projects/data-room">
+    Evidence and Registry rows, each carrying its own status and owner.
+  </Card>
+  <Card title="Sharing and access" href="/projects/sharing-and-access">
+    Membership changes appear in the trail too.
+  </Card>
+  <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
+    The approvals the trail backs up.
+  </Card>
+</CardGroup>

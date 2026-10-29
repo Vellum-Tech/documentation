@@ -1,0 +1,77 @@
+---
+title: "Working with the agent"
+description: "How to ask questions, approve the agent's actions, and use the composer's shortcuts."
+---
+
+The assistant answers questions from your workspace data and can make changes on your behalf, but it only acts with your say-so. This page covers the day-to-day mechanics: asking, approving, and steering.
+
+## Asking questions
+
+Type into the composer and press `Enter` to send (`Shift+Enter` adds a line break). On an empty conversation the chat greets you and offers a few starter prompts, such as summarising your recent projects.
+
+Good questions to ask:
+
+- Status checks: "Can you give me a status summary of the Harbourlight FY26 Impact Valuation?"
+- Gaps and next steps: "What's still missing before we can draft the report?"
+- Actions: "Flag the evidence status for review with Mia before Friday."
+
+The assistant explains figures but never calculates them. When an answer includes a dollar value, that value came from Vellum's calculation engine, and the assistant can walk you through the inputs behind it. If you ask it to change something that affects a valuation, it changes the inputs and the engine recomputes.
+
+## Approvals
+
+When the agent wants to take an action that changes your data, it pauses and shows an approval card asking **Approve this change?** (or **Approve this step?**), with a short description of exactly what it wants to do. Click **Approve** to let it continue or **Deny** to stop it. The card then records the outcome in place: an approved action reads "Approved and done", a denied one reads "Denied, nothing was changed".
+
+In a shared conversation, an approval belongs to whoever sent the message that triggered it. Everyone else sees the same card read-only, marked "Waiting on" that person.
+
+### Approval mode
+
+The chip next to the paperclip in the composer sets how approvals work for the messages you send:
+
+![The approval mode menu open above the composer, offering Ask first and Auto-approve](/images/chat/approval-mode.jpg)
+
+| Mode | What it means |
+|------|---------------|
+| **Ask first** | The agent asks before each action. This is the default. |
+| **Auto-approve** | Actions run without asking. Questions still wait for you. |
+
+Switching **Auto-approve** on asks you to confirm every time, because it means the agent will write values, change formulas, and delete records without asking first. Each action it takes this way is recorded as auto-approved under your name, so the project's audit trail always shows who allowed what.
+
+A few things worth knowing:
+
+- The setting is per conversation and per person. In a shared conversation it covers only the turns you send, never a colleague's.
+- While the chip shows **Auto-approve** it turns into a filled warning pill, so the mode is always visible.
+- Viewers cannot set an approval mode, because they cannot send messages.
+- The chip becomes available once the conversation has started (after the first message).
+
+## Other cards you may see
+
+Alongside plain answers, the agent uses a few richer message types. Questions appear as a card with answer options when the agent needs your input to continue. Plans lay out the steps of a larger piece of work before the agent starts. Review checklists list proposed changes for you to confirm item by item. Deep research runs show a report being assembled section by section, and finish with proposed writes you can apply. Sub-agent cards show a helper agent working on a subtask, and sandbox cards show a script run whose output is informational only, never an engine value. Each card carries its own buttons, and in shared conversations they all follow the same rule as approvals: only the person whose turn it is can act on them.
+
+## Composer shortcuts
+
+- **Attach a file.** Click the paperclip, or drag a file into the chat. Attached files land on the conversation's machine for the agent to read, and appear in the conversation's [Library](/chat/sharing-and-files).
+- **Mention with @.** Type `@` to reference an organisation or a document without typing its full name. Documents are scoped to the page you are on, so inside a project you see that project's data room files first. Files attached in chat but not yet filed show a "not filed" hint: the agent can read them, but they cannot be cited in reports until they are kept in the [data room](/projects/data-room).
+- **Commands with /.** Type `/` at the start of a message to see the commands and skills the agent offers, and pick one with the arrow keys and `Enter`.
+
+![The mention menu open in the composer, listing organisations to reference](/images/chat/composer-mention.jpg)
+
+## Rating answers
+
+Every answer carries a thumbs up and thumbs down underneath. Click one to record how useful the answer was, or click it again to clear your vote. The rating is a signal to the Vellum team only: it never regenerates the answer or changes the conversation.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Chat assistant overview" href="/chat/overview">
+    Where the assistant lives and how conversations work.
+  </Card>
+  <Card title="Sharing and files" href="/chat/sharing-and-files">
+    Share a conversation and manage its library.
+  </Card>
+  <Card title="Data room" href="/projects/data-room">
+    Where kept files become citable evidence.
+  </Card>
+  <Card title="Audit trail" href="/projects/audit-trail">
+    Every change, including auto-approved ones, on the record.
+  </Card>
+</CardGroup>

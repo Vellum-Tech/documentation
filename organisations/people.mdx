@@ -1,0 +1,66 @@
+---
+title: "People"
+description: "Invite people from a client organisation to sign in, manage their roles, and revoke invitations."
+---
+
+The **People** tab controls who from the client organisation can sign in to Vellum. It is separate from the Contacts tab: a contact is a record of a person, while someone on the People tab has (or has been offered) a login.
+
+![The people tab with an invite button, an empty roster, and a pending invitations section](/images/organisations/people-tab.jpg)
+
+Each person on the roster sees this organisation and only the projects they are added to. Being listed here does not open every project; project access is granted per project. See [Sharing and access](/projects/sharing-and-access).
+
+Before anyone has joined, the roster shows "Nobody from the organisation has joined yet" with a prompt to invite someone.
+
+<Note>
+Staff can always manage the People tab. Within the client organisation, only someone with the Admin role can invite, change roles, revoke invitations, and remove people. Everyone else sees the list without the controls.
+</Note>
+
+## Roles
+
+| Role | What it allows |
+| --- | --- |
+| Admin | Invites and removes colleagues |
+| Member | Opens the projects they are added to |
+
+An admin's role is about managing colleagues; it does not grant extra access to projects or data. For the full picture of roles across Vellum, see [Roles and permissions](/admin/roles-and-permissions).
+
+## Invite someone
+
+<Steps>
+  <Step title="Click Invite">
+    The button sits at the top right of the People tab.
+  </Step>
+  <Step title="Enter their email and role">
+    The dialog is titled **Invite to** followed by the organisation's name. Type the person's work email and pick **Member** or **Admin**.
+
+    ![The invite dialog with an email field, a role selector set to Member, and a send invitation button](/images/organisations/invite-dialog.jpg)
+  </Step>
+  <Step title="Click Send invitation">
+    The person receives an email invitation to sign in. Once they accept, they appear on the roster and see this organisation and the projects they are added to.
+  </Step>
+</Steps>
+
+## Pending invitations
+
+Invitations that have been sent but not yet accepted sit in the **Pending invitations** section, each showing the email, the role, and when it was sent. To withdraw one, click the **X** on its row and confirm **Revoke**. The invitation stops working, and you can invite the person again later.
+
+## Managing the roster
+
+Once people have joined, each row shows their name and email with a role selector. Change a role by picking the new value. Remove someone with the **X** on their row; if they own work that needs a new owner, Vellum asks you to pick an active colleague to take it over.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Sharing and access" href="/projects/sharing-and-access">
+    Add people to the specific projects they should see.
+  </Card>
+  <Card title="Roles and permissions" href="/admin/roles-and-permissions">
+    How staff and client roles work across Vellum.
+  </Card>
+  <Card title="Profile and goals" href="/organisations/profile-and-goals">
+    Contacts, goals, and the rest of the organisation record.
+  </Card>
+  <Card title="Team" href="/admin/team">
+    Manage your own practice's staff.
+  </Card>
+</CardGroup>
