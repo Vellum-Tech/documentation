@@ -1,0 +1,108 @@
+---
+title: "Draft history"
+description: "Restore points of a report draft that you can open, compare with other versions and restore."
+---
+
+While you write, Vellum keeps restore points of the draft: the report as it
+stood at a moment in time. Use them to read an earlier wording, check which
+figures have changed since, or put the draft back the way it was. Nothing in
+the history is ever changed or deleted.
+
+![The report builder with the History rail open on the right, listing restore points newest first with Before restore and Before publish labels](/images/workbench/report-history.jpg)
+
+## When a restore point is kept
+
+A restore point is kept automatically:
+
+| Point | When it is kept |
+| --- | --- |
+| (no label) | Once in every 10 minutes of editing. |
+| **Before restore** | Just before you restore another point, holding the draft that the restore replaced. |
+| **Before publish** | Just before a version is published. |
+| **Before agent run** | Just before you confirm a drafting run by the assistant, so everything that run changes can be undone in one step. |
+
+There are no manual saves to manage. A brand new draft has no history until it
+is first edited.
+
+## Opening the history
+
+Click **Versions** in the builder and choose **History**. The **History** rail
+opens beside the paper, newest point first. Each row shows when the point was
+kept, who saved it and, where there is one, its label. **Load more** at the
+bottom pages back through older points.
+
+Each row offers three actions:
+
+- **Open** shows the point read-only.
+- **Compare** lists **Compare with the current draft** and each published
+  version, such as **Compare with v2**.
+- **Restore** makes the point the draft again.
+
+## Reading a restore point
+
+**Open** shows the point on its own read-only page, with a banner reading
+"Restore point from" and the time it was kept, its label, and a **Restore**
+button. You cannot type into it.
+
+![A restore point opened read-only, with the banner naming its time, the Before publish label and a Restore button](/images/workbench/restore-point.jpg)
+
+A restore point keeps the report's words and which figures it shows, never the
+values themselves. Its figures always show today's values from the engine, so
+reading an old point never brings back an old number. This is different from a
+[published version](/projects/publishing-and-exports), which keeps the figures
+exactly as they were when it was published.
+
+To compare from this page, use **Compare with…** in the top bar. **Back to the
+draft** returns to the builder.
+
+## Comparing
+
+A comparison lists only the figures that differ between the two sides, each
+marked **Changed**, **Added** or **Removed** with what each side prints. Vellum
+does not work out the difference between two numbers; it shows both. Text
+changes are not listed: open the point to read its wording.
+
+Because a restore point's figures resolve to today's values, comparing it with
+the current draft only ever shows figures that were added or removed. Compare
+it with a published version to see how the numbers have moved since then.
+
+## Restoring
+
+<Steps>
+  <Step title="Click Restore">
+    On the point's row in the **History** rail, or in the banner on its page.
+  </Step>
+  <Step title="Confirm">
+    The row asks "Restore this point? The current draft is kept in History."
+    Click **Restore** to go ahead, or **Cancel**.
+  </Step>
+</Steps>
+
+The restored point becomes the next version of the draft, and the draft it
+replaced is kept as a **Before restore** point at the top of the list. Restoring
+never deletes anything, so you can always restore the point you came from.
+
+If someone else changed the draft while you were restoring, nothing is
+restored and you are asked to try again.
+
+<Note>
+Anyone who can edit the report can restore a point. The assistant cannot
+restore, and a restore is always made by a person.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="The report builder" href="/projects/report-builder">
+    Write the report with live figures, tables and charts.
+  </Card>
+  <Card title="Publishing and exports" href="/projects/publishing-and-exports">
+    Freeze a version, compare versions, or export a file.
+  </Card>
+  <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
+    The document list and the approval ladder behind publishing.
+  </Card>
+  <Card title="Chat assistant" href="/chat/overview">
+    What the assistant can draft, and what it cannot do.
+  </Card>
+</CardGroup>

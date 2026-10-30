@@ -68,6 +68,62 @@ The same menu also inserts reusable text sections such as **Background**,
 **Methodology notes**, **Limitations** and **Disclaimer**: project text that
 can be shared by every report on the project or written for this report only.
 
+## Typed numbers
+
+Any number typed into prose is checked: a money amount, a percentage or a
+count, small ones and number words included (a year such as 2025 or FY2025 is
+fine). Each one gets a wavy amber underline and is a blocking gap, because a
+number on the page should come from the engine.
+
+![A sentence with two typed numbers underlined and the Make figure and Ignore controls open beneath the first](/images/workbench/typed-number.jpg)
+
+Click an underlined number to choose what happens to it:
+
+- **Make figure** swaps the typed text for the figure picker, already searching
+  for that number, with figures of the same value listed first. Pick one and it
+  replaces the typed text as a live figure. Press `Escape` (or click away
+  without choosing) and your typed text is put back.
+- **Ignore** keeps the number as typed when it is not a quantity at all. Pick
+  why: **A name**, **A date or period**, **A reference number (clause,
+  section)** or **Other** (which asks you to say why, then **Ignore it**). The
+  underline turns into a quiet dotted line and the gap clears.
+
+An ignored number stays on record: click its dotted underline to see who
+ignored it, when and why, and **Restore** to bring the gap back. Ignored
+numbers are listed under **Numbers left as typed** in the **Sign-off trail**
+block, and a published version keeps the list as it stood.
+
+<Note>
+Anyone who can edit the report can use **Make figure**. Only Vellum staff can
+ignore or restore a typed number, and the assistant never can.
+</Note>
+
+## Images
+
+To add a picture, pick **Image** from the `/` menu and choose a file, or paste
+or drop a picture straight onto the paper. Pictures must be PNG or JPEG files
+of 10 MB or less. Each one is uploaded into the project's
+[data room](/projects/data-room) as a document, and the report refers to that
+document.
+
+![A selected image block with its resize handle, the Small, Medium and Full width presets, and the caption and description fields](/images/workbench/image-block.jpg)
+
+Click a picture to select it and show its controls:
+
+- **Width**: drag the handle on its right edge, or pick **Small**, **Medium**
+  or **Full**. The width is kept as a share of the text column, so the
+  picture sits the same way in the editor, a published version, the PDF and
+  the Word file.
+- **Caption** is optional and prints under the picture.
+- **Description (alt text)** says what the picture shows for readers who
+  cannot see it. It is required to publish; while it is empty the image is a
+  blocking gap.
+
+If the picture's document is later removed from the data room or marked
+sensitive, the image becomes a blocking gap, and a reader who is not allowed
+to see that document gets nothing printed in its place: no picture, caption or
+description.
+
 ## Report settings
 
 Click **Report** in the top bar to open the settings rail:
@@ -89,6 +145,9 @@ draft was changed in another tab or by someone else, a banner says the report
 changed elsewhere, nothing you typed was saved over it, and offers **Reload**
 to pick up the latest version.
 
+Vellum also keeps restore points of the draft as you work, so you can read,
+compare or go back to an earlier state; see [Draft history](/projects/draft-history).
+
 ## The gaps panel
 
 **Gaps** under the outline lists what stands between this draft and
@@ -105,6 +164,13 @@ appears as a callout beside that block on the paper. Typical blocking gaps:
   is flagged for rewording, because alignment is your assessment and never a
   finding of compliance. This gap has no dismiss; the words must change
   before the report can be published.
+- A typed number, worded for example as: "120" looks like a typed number.
+  Insert it as a figure from the slash menu, or ignore this occurrence. See
+  [Typed numbers](#typed-numbers).
+- An image with no description: "Add a description to this image."
+- An image that cannot be used, with the reason: "This image's file is no
+  longer in the data room.", "This image is not a PNG or JPEG file.", "This
+  image is over the 10 MB limit." or "This image can't be shown in a report."
 
 The panel's list is exactly what publishing checks, so there are no surprises
 in the publish dialog; see
@@ -116,8 +182,8 @@ in the publish dialog; see
   <Card title="Publishing and exports" href="/projects/publishing-and-exports">
     Freeze a version of the draft, or export it as a file.
   </Card>
-  <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
-    The document list and the approval ladder behind publishing.
+  <Card title="Draft history" href="/projects/draft-history">
+    Read, compare and restore earlier states of the draft.
   </Card>
   <Card title="The Workbench" href="/projects/workbench">
     Where every figure on the paper is computed.
