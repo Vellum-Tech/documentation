@@ -54,6 +54,7 @@
           "projects/workbench",
           "projects/sign-off-and-reports",
           "projects/report-builder",
+          "projects/draft-history",
           "projects/publishing-and-exports",
           "projects/audit-trail"
         ]

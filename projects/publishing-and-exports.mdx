@@ -41,6 +41,57 @@ on the Workbench, ever reaches an already published version. The document's
 **State** on the Report tab shows the newest version, and the builder's header
 links to it.
 
+Pictures in the report, and the organisation's logo used on exported files,
+are copied into the version when it is published. Replacing or removing the
+file in the data room later never changes what a published version shows or
+exports.
+
+## The Versions menu
+
+**Versions** in the builder lists every published version, newest first, with
+its name, publish date and who published it. Click one to open it. Beside each
+version, **Compare with draft** opens that version with a comparison against
+the current draft. The menu also holds **History**, the draft's restore points;
+see [Draft history](/projects/draft-history).
+
+![The Versions menu open, with History at the top and two published versions, each with Compare with draft](/images/workbench/versions-menu.jpg)
+
+A published version's page has the same **Versions** menu, plus:
+
+- **Rename** (or **Name this version** when it has no name) beside the
+  version badge. Type a new name and click **Save**; clear the field to remove
+  the name. The name is the only thing about a published version that can
+  change.
+- **Compare with…** in the top bar, to compare this version with **the
+  current draft** or with any other published version.
+- **Export**, which renders this version (not the draft) as a file.
+- **Back to the draft**, to return to the builder.
+
+## Comparing versions
+
+A comparison sits above the paper and lists only the figures that differ
+between the two sides: each one marked **Changed**, **Added** or **Removed**,
+with what each side prints. Vellum shows both values side by side and never
+works out a difference between them. A line underneath says how many other
+figures are the same on both sides. Text changes are not listed; open each
+version to read its wording.
+
+![Version 1 compared with version 2, showing the total impact changed, under a banner saying the workbench has changed since version 1 was published](/images/workbench/version-compare.jpg)
+
+## Banners on a published version
+
+A published version always prints the figures it froze. Two banners tell you
+when that matters:
+
+- **Out of date**: "The workbench has changed since this version was
+  published. It still prints the figures it froze on" the publish date. Click
+  **Compare with the current draft** in the banner to see which figures have
+  moved.
+- **Archived**: the report has been archived. Its published versions stay
+  readable by their link; unarchive it from the project's
+  [Report tab](/projects/sign-off-and-reports#report-documents) to list it
+  again.
+
 ## Exporting a file
 
 **Export**, beside **Publish**, renders the draft as a file:
@@ -54,6 +105,11 @@ links to it.
   Word footnotes.
 - **Export as PDF** renders the same content as an A4 PDF with its own cover
   and branding.
+
+To export a published version, open it and use **Export** there. The file is
+rendered from what the version froze, including its pictures and logo, and is
+named after the report's title with the version number, for example
+`impact-report-2025-26-v2.docx`.
 
 Exports carry the organisation's report branding (colours, fonts and logo)
 where it is set, and Vellum's house style otherwise. An export is a picture of
@@ -75,10 +131,10 @@ can be shared for review before it is publishable.
   <Card title="Sign-off and reports" href="/projects/sign-off-and-reports">
     Moving the ladder to Report-ready draft.
   </Card>
+  <Card title="Draft history" href="/projects/draft-history">
+    Restore points of the draft, kept before each publish.
+  </Card>
   <Card title="The Workbench" href="/projects/workbench">
     The calculation every version and export reads from.
-  </Card>
-  <Card title="Audit trail" href="/projects/audit-trail">
-    The project's recorded history, including publishes.
   </Card>
 </CardGroup>
